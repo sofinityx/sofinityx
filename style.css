@@ -34,18 +34,7 @@ main {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: center;
   gap: 1.5rem;
-  text-align: center;
-}
-
-.hero-image {
-  width: 150px;
-  height: 150px;
-  object-fit: cover;
-  border-radius: 50%;
-  margin-bottom: 1rem;
-  border: 2px solid var(--accent);
 }
 
 .hero-line {
