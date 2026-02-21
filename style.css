@@ -57,7 +57,7 @@ main {
 h1 {
   font-size: clamp(2.5rem, 8vw, 4rem);
   font-weight: 400;
-  letter-spacing: 0.1em;
+  letter-spacing: 0.06em;
 }
 
 .tagline {
