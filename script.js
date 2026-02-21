@@ -1,3 +1,26 @@
+const art = document.querySelector('.brand-art');
+
+let currentX = 0;
+let currentY = 0;
+let targetX = 0;
+let targetY = 0;
+
+document.addEventListener('mousemove', (e) => {
+  const { innerWidth, innerHeight } = window;
+  targetX = (e.clientX / innerWidth - 0.5) * 18;
+  targetY = (e.clientY / innerHeight - 0.5) * 18;
+});
+
+function animate() {
+  currentX += (targetX - currentX) * 0.08;
+  currentY += (targetY - currentY) * 0.08;
+
+  art.style.transform = `translate(${currentX}px, ${currentY}px)`;
+  requestAnimationFrame(animate);
+}
+
+animate();
+
 document.addEventListener('DOMContentLoaded', () => {
   const reveals = document.querySelectorAll('.reveal');
 
