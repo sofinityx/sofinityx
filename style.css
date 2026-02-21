@@ -37,6 +37,19 @@ main {
   gap: 2rem;
 }
 
+.brand-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.brand-art {
+  width: 60px;
+  height: 60px;
+  object-fit: contain;
+}
+
 .hero-line {
   opacity: 0;
   transform: translateY(20px);
