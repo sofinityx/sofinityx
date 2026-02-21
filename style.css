@@ -180,3 +180,24 @@ h1 {
     width: 140px;
   }
 }
+
+#cursor-glow {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+
+  /* Change this color if you want blue instead */
+  --glow-color: rgba(201, 162, 39, 0.9);
+
+  background:
+    radial-gradient(
+      300px at var(--x, 50%) var(--y, 50%),
+      var(--glow-color),
+      transparent 70%
+    );
+
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  mix-blend-mode: screen;
+}

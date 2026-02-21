@@ -34,3 +34,15 @@ document.addEventListener('DOMContentLoaded', () => {
 
   reveals.forEach(el => observer.observe(el));
 });
+
+const cursorGlow = document.getElementById('cursor-glow');
+
+document.addEventListener('mousemove', (e) => {
+  cursorGlow.style.setProperty('--x', `${e.clientX}px`);
+  cursorGlow.style.setProperty('--y', `${e.clientY}px`);
+  cursorGlow.style.opacity = '1';
+});
+
+document.addEventListener('mouseleave', () => {
+  cursorGlow.style.opacity = '0';
+});
