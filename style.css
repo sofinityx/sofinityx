@@ -166,11 +166,12 @@ h1 {
 }
 
 @media (max-width: 600px) {
-  main {
-    padding: 2rem 1.5rem;
-  }
-  
-  .services {
+  .brand-wrap {
     flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  .brand-art {
+    width: 140px;
   }
 }
