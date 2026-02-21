@@ -51,17 +51,17 @@ main {
   z-index: 2;
 }
 
+.parallax-wrap {
+  perspective: 800px;
+}
+
 .brand-art {
   width: 180px;
   max-width: 30vw;
   opacity: 0.9;
   filter: drop-shadow(0 0 40px rgba(255, 255, 255, 0.08));
-  animation: floatSlow 7s ease-in-out infinite;
-}
-
-.parallax-wrap {
-  position: relative;
-  z-index: 1;
+  will-change: transform;
+  transition: transform 0.15s ease-out;
 }
 
 .hero-line {
