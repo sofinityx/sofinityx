@@ -1,4 +1,5 @@
 const art = document.querySelector('.brand-art');
+const glow = document.getElementById("cursor-glow");
 
 let currentX = 0;
 let currentY = 0;
@@ -9,6 +10,17 @@ document.addEventListener('mousemove', (e) => {
   const { innerWidth, innerHeight } = window;
   targetX = (e.clientX / innerWidth - 0.5) * 18;
   targetY = (e.clientY / innerHeight - 0.5) * 18;
+
+  const x = (e.clientX / window.innerWidth) * 100;
+  const y = (e.clientY / window.innerHeight) * 100;
+
+  glow.style.setProperty("--x", `${x}%`);
+  glow.style.setProperty("--y", `${y}%`);
+  glow.style.opacity = "0.35";
+});
+
+document.addEventListener("mouseleave", () => {
+  glow.style.opacity = "0";
 });
 
 function animate() {
@@ -33,16 +45,4 @@ document.addEventListener('DOMContentLoaded', () => {
   }, { threshold: 0.15 });
 
   reveals.forEach(el => observer.observe(el));
-});
-
-const cursorGlow = document.getElementById('cursor-glow');
-
-document.addEventListener('mousemove', (e) => {
-  cursorGlow.style.setProperty('--x', `${e.clientX}px`);
-  cursorGlow.style.setProperty('--y', `${e.clientY}px`);
-  cursorGlow.style.opacity = '1';
-});
-
-document.addEventListener('mouseleave', () => {
-  cursorGlow.style.opacity = '0';
 });
