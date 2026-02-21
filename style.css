@@ -30,11 +30,11 @@ main {
 }
 
 .hero {
-  min-height: 60vh;
+  min-height: 70vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  gap: 1.5rem;
+  gap: 2rem;
 }
 
 .hero-line {
