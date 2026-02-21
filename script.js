@@ -7,7 +7,7 @@ document.addEventListener('DOMContentLoaded', () => {
         entry.target.classList.add('visible');
       }
     });
-  }, { threshold: 0.1 });
+  }, { threshold: 0.15 });
 
   reveals.forEach(el => observer.observe(el));
 });
