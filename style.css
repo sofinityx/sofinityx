@@ -40,8 +40,15 @@ main {
 .brand-wrap {
   display: flex;
   align-items: center;
-  justify-content: center;
-  gap: 1rem;
+  gap: 3rem;
+}
+
+.brand-wrap h1 {
+  font-size: clamp(3.5rem, 8vw, 5rem);
+  font-weight: 600;
+  letter-spacing: -0.03em;
+  position: relative;
+  z-index: 2;
 }
 
 .brand-art {
