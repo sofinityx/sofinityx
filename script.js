@@ -4,6 +4,7 @@ const ctx = canvas ? canvas.getContext('2d') : null;
 const cursor = document.querySelector('.cursor-glow');
 const toggle = document.querySelector('.psychedelic-toggle');
 const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+const mobileQuery = window.matchMedia('(max-width: 700px), (pointer: coarse)');
 
 let mouseX = 0;
 let mouseY = 0;
@@ -11,6 +12,8 @@ let cursorX = 0;
 let cursorY = 0;
 let intensity = 1;
 let particles = [];
+let isMobile = mobileQuery.matches;
+let tickingScroll = false;
 
 function setMotionVars() {
   const scrollShift = window.scrollY || 0;
@@ -19,7 +22,9 @@ function setMotionVars() {
   root.style.setProperty('--mouse-y', `${mouseY}px`);
 }
 
-document.addEventListener('mousemove', (event) => {
+function handlePointerMove(event) {
+  if (isMobile) return;
+
   const x = event.clientX / window.innerWidth - 0.5;
   const y = event.clientY / window.innerHeight - 0.5;
   mouseX = x * 34;
@@ -30,9 +35,22 @@ document.addEventListener('mousemove', (event) => {
     document.body.classList.add('cursor-active');
   }
   setMotionVars();
-});
+}
 
-document.addEventListener('scroll', setMotionVars, { passive: true });
+document.addEventListener('mousemove', handlePointerMove);
+
+function handleScroll() {
+  if (isMobile) return;
+  if (tickingScroll) return;
+
+  tickingScroll = true;
+  requestAnimationFrame(() => {
+    setMotionVars();
+    tickingScroll = false;
+  });
+}
+
+document.addEventListener('scroll', handleScroll, { passive: true });
 setMotionVars();
 
 function animateCursor() {
@@ -72,12 +90,13 @@ function resizeCanvas() {
   canvas.style.height = `${window.innerHeight}px`;
   ctx.setTransform(pixelRatio, 0, 0, pixelRatio, 0, 0);
 
-  const count = window.innerWidth < 700 ? 22 : 38;
+  isMobile = mobileQuery.matches;
+  const count = isMobile ? 10 : 38;
   particles = Array.from({ length: count }, (_, index) => ({
     x: Math.random() * window.innerWidth,
     y: Math.random() * window.innerHeight,
-    radius: 70 + Math.random() * 150,
-    speed: 0.12 + Math.random() * 0.28,
+    radius: isMobile ? 90 + Math.random() * 120 : 70 + Math.random() * 150,
+    speed: isMobile ? 0.04 + Math.random() * 0.1 : 0.12 + Math.random() * 0.28,
     phase: Math.random() * Math.PI * 2,
     hue: [318, 174, 48, 252, 105][index % 5],
   }));
@@ -90,13 +109,13 @@ function drawAura(time = 0) {
 
   particles.forEach((particle, index) => {
     const drift = time * 0.00012 * particle.speed;
-    const x = particle.x + Math.sin(drift + particle.phase) * 60 + mouseX * (index % 3);
-    const y = particle.y + Math.cos(drift + particle.phase) * 46 + (window.scrollY * particle.speed * 0.08);
+    const x = particle.x + Math.sin(drift + particle.phase) * (isMobile ? 28 : 60) + mouseX * (index % 3);
+    const y = particle.y + Math.cos(drift + particle.phase) * (isMobile ? 22 : 46) + (isMobile ? 0 : window.scrollY * particle.speed * 0.08);
     const wrappedY = ((y % (window.innerHeight + 240)) + window.innerHeight + 240) % (window.innerHeight + 240) - 120;
     const gradient = ctx.createRadialGradient(x, wrappedY, 0, x, wrappedY, particle.radius);
 
-    gradient.addColorStop(0, `hsla(${particle.hue}, 100%, 68%, ${0.18 * intensity})`);
-    gradient.addColorStop(0.5, `hsla(${particle.hue}, 100%, 58%, ${0.065 * intensity})`);
+    gradient.addColorStop(0, `hsla(${particle.hue}, 100%, 68%, ${(isMobile ? 0.1 : 0.18) * intensity})`);
+    gradient.addColorStop(0.5, `hsla(${particle.hue}, 100%, 58%, ${(isMobile ? 0.035 : 0.065) * intensity})`);
     gradient.addColorStop(1, `hsla(${particle.hue}, 100%, 50%, 0)`);
 
     ctx.fillStyle = gradient;
@@ -114,9 +133,10 @@ if (canvas && ctx) {
   resizeCanvas();
   drawAura();
   window.addEventListener('resize', resizeCanvas);
+  mobileQuery.addEventListener('change', resizeCanvas);
 }
 
-if (!reduceMotion) {
+if (!reduceMotion && !isMobile) {
   document.querySelectorAll('.living-section').forEach((section) => {
     section.addEventListener('mousemove', (event) => {
       const rect = section.getBoundingClientRect();
