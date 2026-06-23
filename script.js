@@ -1,25 +1,174 @@
-const art = document.querySelector('.brand-art');
+const root = document.documentElement;
+const canvas = document.querySelector('.aura-canvas');
+const ctx = canvas ? canvas.getContext('2d') : null;
+const cursor = document.querySelector('.cursor-glow');
+const toggle = document.querySelector('.psychedelic-toggle');
+const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-let currentX = 0;
-let currentY = 0;
-let targetX = 0;
-let targetY = 0;
+let mouseX = 0;
+let mouseY = 0;
+let cursorX = 0;
+let cursorY = 0;
+let intensity = 1;
+let particles = [];
 
-document.addEventListener('mousemove', (e) => {
-  const { innerWidth, innerHeight } = window;
-  targetX = (e.clientX / innerWidth - 0.5) * 18;
-  targetY = (e.clientY / innerHeight - 0.5) * 18;
-});
-
-function animate() {
-  currentX += (targetX - currentX) * 0.08;
-  currentY += (targetY - currentY) * 0.08;
-
-  art.style.transform = `translate(${currentX}px, ${currentY}px)`;
-  requestAnimationFrame(animate);
+function setMotionVars() {
+  const scrollShift = window.scrollY || 0;
+  root.style.setProperty('--scroll-shift', `${scrollShift}px`);
+  root.style.setProperty('--mouse-x', `${mouseX}px`);
+  root.style.setProperty('--mouse-y', `${mouseY}px`);
 }
 
-animate();
+document.addEventListener('mousemove', (event) => {
+  const x = event.clientX / window.innerWidth - 0.5;
+  const y = event.clientY / window.innerHeight - 0.5;
+  mouseX = x * 34;
+  mouseY = y * 34;
+  cursorX = event.clientX;
+  cursorY = event.clientY;
+  if (document.body.classList.contains('psychedelic-mode')) {
+    document.body.classList.add('cursor-active');
+  }
+  setMotionVars();
+});
+
+document.addEventListener('scroll', setMotionVars, { passive: true });
+setMotionVars();
+
+function animateCursor() {
+  if (!cursor || reduceMotion) return;
+
+  cursor.style.transform = `translate3d(${cursorX - 11}px, ${cursorY - 11}px, 0)`;
+  requestAnimationFrame(animateCursor);
+}
+
+animateCursor();
+
+document.querySelectorAll('a, button, .tilt-card').forEach((element) => {
+  element.addEventListener('mouseenter', () => document.body.classList.add('cursor-hover'));
+  element.addEventListener('mouseleave', () => document.body.classList.remove('cursor-hover'));
+});
+
+if (toggle) {
+  toggle.addEventListener('click', () => {
+    const enabled = document.body.classList.toggle('psychedelic-mode');
+    toggle.setAttribute('aria-pressed', String(enabled));
+    toggle.textContent = enabled ? 'Soft Mode' : 'Intensify';
+    intensity = enabled ? 1.45 : 1;
+    document.body.classList.toggle('cursor-active', enabled);
+    if (!enabled) {
+      document.body.classList.remove('cursor-hover');
+    }
+  });
+}
+
+function resizeCanvas() {
+  if (!canvas || !ctx) return;
+
+  const pixelRatio = Math.min(window.devicePixelRatio || 1, 2);
+  canvas.width = Math.floor(window.innerWidth * pixelRatio);
+  canvas.height = Math.floor(window.innerHeight * pixelRatio);
+  canvas.style.width = `${window.innerWidth}px`;
+  canvas.style.height = `${window.innerHeight}px`;
+  ctx.setTransform(pixelRatio, 0, 0, pixelRatio, 0, 0);
+
+  const count = window.innerWidth < 700 ? 22 : 38;
+  particles = Array.from({ length: count }, (_, index) => ({
+    x: Math.random() * window.innerWidth,
+    y: Math.random() * window.innerHeight,
+    radius: 70 + Math.random() * 150,
+    speed: 0.12 + Math.random() * 0.28,
+    phase: Math.random() * Math.PI * 2,
+    hue: [318, 174, 48, 252, 105][index % 5],
+  }));
+}
+
+function drawAura(time = 0) {
+  if (!canvas || !ctx) return;
+
+  ctx.clearRect(0, 0, window.innerWidth, window.innerHeight);
+
+  particles.forEach((particle, index) => {
+    const drift = time * 0.00012 * particle.speed;
+    const x = particle.x + Math.sin(drift + particle.phase) * 60 + mouseX * (index % 3);
+    const y = particle.y + Math.cos(drift + particle.phase) * 46 + (window.scrollY * particle.speed * 0.08);
+    const wrappedY = ((y % (window.innerHeight + 240)) + window.innerHeight + 240) % (window.innerHeight + 240) - 120;
+    const gradient = ctx.createRadialGradient(x, wrappedY, 0, x, wrappedY, particle.radius);
+
+    gradient.addColorStop(0, `hsla(${particle.hue}, 100%, 68%, ${0.18 * intensity})`);
+    gradient.addColorStop(0.5, `hsla(${particle.hue}, 100%, 58%, ${0.065 * intensity})`);
+    gradient.addColorStop(1, `hsla(${particle.hue}, 100%, 50%, 0)`);
+
+    ctx.fillStyle = gradient;
+    ctx.beginPath();
+    ctx.arc(x, wrappedY, particle.radius, 0, Math.PI * 2);
+    ctx.fill();
+  });
+
+  if (!reduceMotion) {
+    requestAnimationFrame(drawAura);
+  }
+}
+
+if (canvas && ctx) {
+  resizeCanvas();
+  drawAura();
+  window.addEventListener('resize', resizeCanvas);
+}
+
+if (!reduceMotion) {
+  document.querySelectorAll('.living-section').forEach((section) => {
+    section.addEventListener('mousemove', (event) => {
+      const rect = section.getBoundingClientRect();
+      const x = event.clientX - rect.left;
+      const y = event.clientY - rect.top;
+      const xPercent = (x / rect.width) * 100;
+      const yPercent = (y / rect.height) * 100;
+      const angle = Math.atan2(y - rect.height / 2, x - rect.width / 2) * 180 / Math.PI;
+
+      section.style.setProperty('--section-x', `${xPercent}%`);
+      section.style.setProperty('--section-y', `${yPercent}%`);
+      section.style.setProperty('--section-angle', `${angle}deg`);
+    });
+
+    section.addEventListener('mouseleave', () => {
+      section.style.setProperty('--section-x', '50%');
+      section.style.setProperty('--section-y', '50%');
+      section.style.setProperty('--section-angle', '0deg');
+    });
+  });
+
+  document.querySelectorAll('.tilt-card').forEach((card) => {
+    card.addEventListener('mousemove', (event) => {
+      const rect = card.getBoundingClientRect();
+      const x = event.clientX - rect.left;
+      const y = event.clientY - rect.top;
+      const rotateY = ((x / rect.width) - 0.5) * 10;
+      const rotateX = ((y / rect.height) - 0.5) * -10;
+
+      card.style.setProperty('--card-x', `${(x / rect.width) * 100}%`);
+      card.style.setProperty('--card-y', `${(y / rect.height) * 100}%`);
+      card.style.transform = `perspective(900px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-6px)`;
+    });
+
+    card.addEventListener('mouseleave', () => {
+      card.style.transform = '';
+    });
+  });
+
+  document.querySelectorAll('.magnetic').forEach((button) => {
+    button.addEventListener('mousemove', (event) => {
+      const rect = button.getBoundingClientRect();
+      const x = event.clientX - rect.left - rect.width / 2;
+      const y = event.clientY - rect.top - rect.height / 2;
+      button.style.transform = `translate(${x * 0.12}px, ${y * 0.18}px)`;
+    });
+
+    button.addEventListener('mouseleave', () => {
+      button.style.transform = '';
+    });
+  });
+}
 
 document.addEventListener('DOMContentLoaded', () => {
   const reveals = document.querySelectorAll('.reveal');
@@ -30,7 +179,7 @@ document.addEventListener('DOMContentLoaded', () => {
         entry.target.classList.add('visible');
       }
     });
-  }, { threshold: 0.15 });
+  }, { threshold: 0.16 });
 
   reveals.forEach(el => observer.observe(el));
 });
