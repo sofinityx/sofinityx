@@ -1050,6 +1050,22 @@ h3 {
   font-weight: 800;
 }
 
+.capability-list a {
+  padding: 0.85rem 1rem;
+  border: 1px solid rgba(255, 249, 238, 0.18);
+  border-radius: 8px;
+  background: rgba(255, 249, 238, 0.07);
+  color: var(--ink);
+  font-weight: 800;
+  text-decoration: none;
+}
+
+.capability-list a:hover,
+.capability-list a:focus-visible {
+  border-color: rgba(62, 230, 212, 0.72);
+  color: var(--aqua);
+}
+
 .visual-grid {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
@@ -1072,6 +1088,221 @@ h3 {
 .visual-grid span {
   color: var(--ink);
   font-weight: 800;
+}
+
+.case-study-page {
+  padding-top: 28px;
+}
+
+.case-hero {
+  min-height: calc(78vh - 82px);
+}
+
+.case-meta {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+  max-width: 760px;
+  margin-top: 1.6rem;
+}
+
+.case-meta div {
+  padding: 1rem;
+  border: 1px solid rgba(255, 249, 238, 0.16);
+  border-radius: 8px;
+  background: rgba(255, 249, 238, 0.06);
+}
+
+.case-meta dt {
+  color: var(--sun);
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.case-meta dd {
+  margin-top: 0.7rem;
+  color: var(--muted);
+  font-weight: 700;
+}
+
+.case-section {
+  --section-x: 50%;
+  --section-y: 50%;
+  --section-angle: 0deg;
+  position: relative;
+  margin: 0 0 52px;
+  padding: clamp(1.6rem, 4vw, 3.3rem);
+  border: 1px solid rgba(255, 249, 238, 0.16);
+  border-radius: 8px;
+  background:
+    radial-gradient(circle at var(--section-x, 50%) var(--section-y, 50%), rgba(62, 230, 212, 0.13), transparent 28%),
+    linear-gradient(135deg, rgba(255, 249, 238, 0.082), rgba(255, 249, 238, 0.032));
+  backdrop-filter: blur(22px) saturate(1.18);
+  overflow: hidden;
+}
+
+.case-section h2 {
+  max-width: 860px;
+  margin-bottom: 1.2rem;
+}
+
+.case-section > p:not(.section-kicker) {
+  max-width: 900px;
+  color: var(--muted);
+  font-size: clamp(1rem, 1.5vw, 1.2rem);
+}
+
+.case-list-grid,
+.decision-grid,
+.asset-grid,
+.comparison-grid {
+  display: grid;
+  gap: 1rem;
+  margin-top: 1.4rem;
+}
+
+.case-list-grid,
+.decision-grid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.case-list-grid article,
+.decision-grid article {
+  min-height: 190px;
+  padding: 1.2rem;
+  border: 1px solid rgba(255, 249, 238, 0.16);
+  border-radius: 8px;
+  background: rgba(18, 14, 24, 0.5);
+}
+
+.case-list-grid p,
+.decision-grid p {
+  margin-top: 0.8rem;
+  color: var(--muted);
+}
+
+.tag-list,
+.outcome-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.8rem;
+  margin-top: 1.3rem;
+  padding: 0;
+  list-style: none;
+}
+
+.tag-list li,
+.outcome-list li {
+  padding: 0.85rem 1rem;
+  border: 1px solid rgba(255, 249, 238, 0.16);
+  border-radius: 8px;
+  background: rgba(255, 249, 238, 0.07);
+  color: var(--ink);
+  font-weight: 800;
+}
+
+.outcome-list {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.outcome-list li {
+  color: var(--muted);
+  font-weight: 700;
+}
+
+.journey-strip {
+  display: grid;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  gap: 0.8rem;
+  margin-top: 1.4rem;
+}
+
+.journey-strip span {
+  min-height: 120px;
+  display: flex;
+  align-items: flex-end;
+  padding: 1rem;
+  border: 1px solid rgba(255, 249, 238, 0.16);
+  border-radius: 8px;
+  background:
+    linear-gradient(145deg, rgba(255, 79, 196, 0.1), transparent 44%),
+    rgba(18, 14, 24, 0.56);
+  color: var(--ink);
+  font-weight: 800;
+}
+
+.asset-grid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.comparison-grid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.asset-placeholder {
+  min-height: 320px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 1rem;
+  border: 1px solid rgba(255, 249, 238, 0.16);
+  border-radius: 8px;
+  background:
+    linear-gradient(135deg, rgba(255, 79, 196, 0.12), transparent 36%),
+    linear-gradient(300deg, rgba(62, 230, 212, 0.12), transparent 44%),
+    repeating-linear-gradient(90deg, rgba(255, 255, 255, 0.035) 0 1px, transparent 1px 42px),
+    rgba(8, 7, 15, 0.68);
+}
+
+.asset-figure {
+  min-height: 320px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 0.75rem;
+  border: 1px solid rgba(255, 249, 238, 0.16);
+  border-radius: 8px;
+  background: rgba(8, 7, 15, 0.68);
+  overflow: hidden;
+}
+
+.asset-figure img {
+  width: 100%;
+  min-height: 240px;
+  object-fit: cover;
+  object-position: top center;
+  border-radius: 6px;
+  border: 1px solid rgba(255, 249, 238, 0.12);
+}
+
+.asset-figure figcaption {
+  margin-top: 0.9rem;
+  color: var(--ink);
+  font-size: clamp(1.1rem, 1.8vw, 1.55rem);
+  font-weight: 800;
+}
+
+.asset-placeholder span {
+  color: rgba(255, 249, 238, 0.72);
+  font-size: 0.78rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+}
+
+.asset-placeholder figcaption {
+  color: var(--ink);
+  font-size: clamp(1.3rem, 2.2vw, 2rem);
+  font-weight: 800;
+}
+
+.next-project {
+  margin: 0 0 64px;
+  padding: 2rem 0;
+  border-top: 1px solid rgba(255, 249, 238, 0.16);
+  border-bottom: 1px solid rgba(255, 249, 238, 0.16);
 }
 
 .services,
@@ -1357,7 +1588,13 @@ h3 {
   .case-card,
   .credibility,
   .process-grid,
-  .visual-grid {
+  .visual-grid,
+  .case-meta,
+  .case-list-grid,
+  .decision-grid,
+  .asset-grid,
+  .comparison-grid,
+  .outcome-list {
     grid-template-columns: 1fr;
   }
 
@@ -1473,6 +1710,21 @@ h3 {
     min-height: 330px;
   }
 
+  .case-hero {
+    min-height: auto;
+  }
+
+  .case-section {
+    backdrop-filter: none;
+    background:
+      linear-gradient(135deg, rgba(255, 249, 238, 0.092), rgba(255, 249, 238, 0.038)),
+      rgba(18, 14, 24, 0.58);
+  }
+
+  .journey-strip {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
   .credibility {
     margin-bottom: 52px;
   }
@@ -1557,6 +1809,27 @@ h3 {
 
   .case-visual {
     min-height: 270px;
+  }
+
+  .case-study-page {
+    padding-top: 8px;
+  }
+
+  .case-section {
+    margin-bottom: 42px;
+    padding: 1.2rem;
+  }
+
+  .journey-strip {
+    grid-template-columns: 1fr;
+  }
+
+  .journey-strip span {
+    min-height: 86px;
+  }
+
+  .asset-placeholder {
+    min-height: 230px;
   }
 
   .mock-window {

@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Trendium case study by Sofi: a launch-ready Windows Electron app for local-first cryptocurrency trend awareness, timeframe alignment, market phase, and directional risk." />
+  <meta property="og:title" content="Trendium Case Study | Sofi" />
+  <meta property="og:description" content="Desktop product design case study for a local-first cryptocurrency market awareness application." />
+  <meta property="og:type" content="article" />
+  <meta property="og:url" content="https://sofinityx.com/trendium.html" />
+  <meta property="og:image" content="https://sofinityx.com/assets/trendium-dashboard.webp" />
+  <title>Trendium Case Study | Sofi</title>
+  <link rel="icon" type="image/png" href="Images/My site.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <canvas class="aura-canvas" aria-hidden="true"></canvas>
+  <div class="noise-overlay" aria-hidden="true"></div>
+  <div class="cursor-glow" aria-hidden="true"></div>
+  <div class="flow-field" aria-hidden="true">
+    <span class="flow-line line-one"></span>
+    <span class="flow-line line-two"></span>
+    <span class="flow-line line-three"></span>
+  </div>
+
+  <header class="site-header">
+    <a href="index.html#top" class="site-logo magnetic" aria-label="Sofi home">Sofi<span>SofinityX</span></a>
+    <nav class="site-nav" aria-label="Primary navigation">
+      <a href="index.html#work">Work</a>
+      <a href="index.html#about">About</a>
+      <a href="index.html#services">Services</a>
+      <a href="index.html#contact">Contact</a>
+    </nav>
+  </header>
+
+  <button class="psychedelic-toggle" type="button" aria-pressed="false">Intensify</button>
+
+  <main id="top" class="case-study-page">
+    <section class="case-hero hero">
+      <div class="hero-copy">
+        <p class="eyebrow hero-line delay-1">Desktop Product Design &middot; Market Intelligence</p>
+        <h1 class="hero-line delay-2">Trendium</h1>
+        <p class="tagline hero-line delay-3">
+          A launch-ready Windows Electron desktop app for crypto trend awareness. Trendium fetches public market candle data, calculates indicators and scoring locally, and presents multi-timeframe trend pressure, market phase, timeframe agreement, and directional risk.
+        </p>
+        <dl class="case-meta hero-line delay-4">
+          <div>
+            <dt>Role</dt>
+            <dd>Product Direction, UX Structure, UI Design, Visual System, Interaction Design</dd>
+          </div>
+          <div>
+            <dt>Platform</dt>
+            <dd>Windows Electron Desktop Application</dd>
+          </div>
+          <div>
+            <dt>Status</dt>
+            <dd>Launch-ready desktop app. Direct app 0.1.1 and Microsoft Store package 1.0.2.</dd>
+          </div>
+          <div>
+            <dt>Access model</dt>
+            <dd>Direct builds use Cloudflare license validation. Microsoft Store builds use Store-managed access.</dd>
+          </div>
+        </dl>
+      </div>
+      <div class="hero-visual hero-line delay-3">
+        <div class="portal product-orbit" aria-hidden="true">
+          <span class="portal-ring ring-one"></span>
+          <span class="portal-ring ring-two"></span>
+          <span class="portal-ring ring-three"></span>
+          <span class="portal-core"></span>
+          <span class="portal-particle particle-one"></span>
+          <span class="portal-particle particle-two"></span>
+          <span class="portal-particle particle-three"></span>
+        </div>
+        <p>Trend pressure<br />risk awareness</p>
+      </div>
+    </section>
+
+    <section class="case-section reveal living-section">
+      <p class="section-kicker">Overview</p>
+      <h2>Crypto market context without buy or sell signals.</h2>
+      <p>Trendium is for crypto traders and learners who want a clearer way to understand market structure without manually interpreting every timeframe and indicator. It turns candles, timeframe behavior, trend pressure, and risk context into structured dashboards, graphs, score states, and plain-English explanations.</p>
+      <p>The product is intentionally framed as educational market awareness, not financial advice, prediction, trade execution, or a signal system.</p>
+    </section>
+
+    <section class="case-section reveal living-section">
+      <p class="section-kicker">The Problem</p>
+      <div class="case-list-grid">
+        <article><h3>Raw indicator overload</h3><p>Trading platforms often overwhelm users with raw indicators, dense charts, and fragmented context.</p></article>
+        <article><h3>Timeframe fragmentation</h3><p>Users frequently switch between separate tools and timeframes to understand the broader market structure.</p></article>
+        <article><h3>Beginner interpretation gap</h3><p>Learners can struggle to understand indicators in context, especially during transitions, compression, and conflicting timeframes.</p></article>
+        <article><h3>Responsible product language</h3><p>The interface needed to stay informative while avoiding direct buy/sell signals, predictions, guaranteed outcomes, or profit framing.</p></article>
+        <article><h3>Changing data</h3><p>Large amounts of live and historical market data had to remain visually manageable and stable enough to review.</p></article>
+      </div>
+    </section>
+
+    <section class="case-section reveal living-section">
+      <p class="section-kicker">My Role</p>
+      <p>I directed the product concept, positioning, visual direction, UX hierarchy, terminology, and release-readiness decisions.</p>
+      <ul class="tag-list">
+        <li>Product direction</li>
+        <li>Information architecture</li>
+        <li>User-flow planning</li>
+        <li>Dashboard design</li>
+        <li>Interface and component design</li>
+        <li>Visual system</li>
+        <li>Interaction states</li>
+        <li>Feature definition</li>
+        <li>Testing and iteration</li>
+        <li>Implementation collaboration</li>
+      </ul>
+    </section>
+
+    <section class="case-section reveal living-section">
+      <p class="section-kicker">Product Scope</p>
+      <div class="decision-grid">
+        <article><h3>Main screens</h3><p>Dashboard overview, coin detail view, directional risk section, timeframe detail cards, market guide, learning content, and help/about/contact/disclaimer/license modals.</p></article>
+        <article><h3>Core workflows</h3><p>Compare BTC, ETH, and SOL; open a coin detail view; review combined trend pressure; inspect directional risk; compare timeframe agreement; read timeframe-specific explanations.</p></article>
+        <article><h3>Important components</h3><p>Coin cards, trend-pressure graphs, score pills, timeframe score buttons, directional risk meter, market phase cards, stage path chips, help popovers, and coin-specific detail icons.</p></article>
+        <article><h3>Unique analysis views</h3><p>Multi-timeframe trend pressure, candle-by-candle score history, closed vs live candle awareness, timeframe agreement, market phase, and long/short directional risk structure.</p></article>
+      </div>
+    </section>
+
+    <section class="case-section reveal living-section">
+      <p class="section-kicker">Core User Journey</p>
+      <div class="journey-strip">
+        <span>Compare supported coins</span>
+        <span>Review market state</span>
+        <span>Open a coin detail view</span>
+        <span>Inspect trend pressure</span>
+        <span>Compare timeframe agreement</span>
+        <span>Review directional risk</span>
+        <span>Read educational context</span>
+        <span>Decide independently</span>
+      </div>
+    </section>
+
+    <section class="case-section reveal living-section">
+      <p class="section-kicker">Key Design Decisions</p>
+      <div class="decision-grid">
+        <article><h3>Readable market-state labels</h3><p>Multiple indicators are translated into beginner-safe labels such as market phase, pressure weakening, recovery attempt, compression, transition, and higher timeframe conflict.</p></article>
+        <article><h3>Trend pressure score</h3><p>A -100 to +100 pressure score gives users a quick visual sense of directional pressure while preserving more detailed graph and timeframe context.</p></article>
+        <article><h3>Risk separate from direction</h3><p>Directional risk bars separate market direction from risk awareness so trend pressure does not imply a trade recommendation.</p></article>
+        <article><h3>Timeframes without crowding</h3><p>Higher, middle, and lower timeframe grouping keeps the interface scannable while still supporting deeper review.</p></article>
+        <article><h3>Educational tone</h3><p>The app avoids words like buy, sell, signal, prediction, guaranteed, win rate, and profit. It uses market-awareness terminology instead.</p></article>
+        <article><h3>Stable graph behavior</h3><p>Closed historical graph points are cached during the app session to reduce visual shifting while live candles remain clearly marked as changeable.</p></article>
+      </div>
+    </section>
+
+    <section class="case-section reveal living-section">
+      <p class="section-kicker">Interface Showcase</p>
+      <div class="asset-grid">
+        <figure class="asset-figure"><img src="assets/trendium-dashboard.webp" alt="Trendium dashboard overview screenshot" /><figcaption>Main dashboard</figcaption></figure>
+        <figure class="asset-figure"><img src="assets/trendium-coin-cards.webp" alt="Trendium dashboard coin cards screenshot" /><figcaption>Coin cards</figcaption></figure>
+        <figure class="asset-figure"><img src="assets/trendium-trend-graph.webp" alt="Trendium trend pressure graph screenshot" /><figcaption>Trend graph</figcaption></figure>
+        <figure class="asset-figure"><img src="assets/trendium-timeframes.webp" alt="Trendium timeframe detail screenshot" /><figcaption>Timeframe comparison</figcaption></figure>
+        <figure class="asset-figure"><img src="assets/trendium-risk-meter.webp" alt="Trendium directional risk screenshot" /><figcaption>Risk meter</figcaption></figure>
+        <figure class="asset-figure"><img src="assets/trendium-detail-view.webp" alt="Trendium detailed coin page screenshot" /><figcaption>Detailed coin page</figcaption></figure>
+        <figure class="asset-figure"><img src="assets/trendium-states.webp" alt="Trendium risk and state interface screenshot" /><figcaption>Risk and state views</figcaption></figure>
+      </div>
+    </section>
+
+    <section class="case-section reveal living-section">
+      <p class="section-kicker">Iteration</p>
+      <h2>Refining hierarchy, trust, and release readiness.</h2>
+      <p>Recent improvements included a more premium dashboard hero area, cleaner coin cards, a connected coin-detail header, easier dashboard return navigation, refined modal close buttons, UTC graph hover labels, closed/live candle states, coin images in detail headers, separated Store/direct licensing behavior, and production obfuscation before packaging.</p>
+      <div class="comparison-grid">
+        <figure class="asset-placeholder"><span>assets/trendium-before.webp</span><figcaption>Earlier UI screenshot needed</figcaption></figure>
+        <figure class="asset-figure"><img src="assets/trendium-dashboard.webp" alt="Latest Trendium dashboard interface screenshot" /><figcaption>Latest refined dashboard</figcaption></figure>
+      </div>
+    </section>
+
+    <section class="case-section reveal living-section">
+      <p class="section-kicker">Constraints</p>
+      <ul class="tag-list">
+        <li>Windows Electron desktop app</li>
+        <li>Public Bybit OHLCV/kline candle data</li>
+        <li>Requires internet for live public market data</li>
+        <li>No private exchange API keys</li>
+        <li>No exchange account access</li>
+        <li>No trade execution</li>
+        <li>No direct buy or sell signals</li>
+        <li>Financial disclaimer requirements</li>
+        <li>Live candles can change until closed</li>
+        <li>Production obfuscation can add slight startup overhead</li>
+      </ul>
+    </section>
+
+    <section class="case-section reveal living-section">
+      <p class="section-kicker">Outcome</p>
+      <ul class="outcome-list">
+        <li>Developed into a launch-ready functional Windows desktop application.</li>
+        <li>Established a reusable component and visual system.</li>
+        <li>Unified several market-analysis workflows inside one product.</li>
+        <li>Created a foundation for future features and product expansion.</li>
+      </ul>
+    </section>
+
+    <section class="case-section reveal living-section">
+      <p class="section-kicker">External Links</p>
+      <div class="capability-list">
+        <a href="https://trendium-license.sofinityx.workers.dev/privacy" target="_blank" rel="noopener noreferrer">Privacy Policy</a>
+        <a href="https://trendium-license.sofinityx.workers.dev/support" target="_blank" rel="noopener noreferrer">Support</a>
+        <a href="https://x.com/SofinityX" target="_blank" rel="noopener noreferrer">Contact on X</a>
+      </div>
+    </section>
+
+    <section class="next-project reveal">
+      <p class="section-kicker">Next Project</p>
+      <a href="lumaro.html" class="case-link magnetic">Read the Lumaro case study</a>
+    </section>
+
+    <footer class="footer">
+      <p>Sofi · SofinityX</p>
+      <a href="mailto:SofinityX@gmail.com">SofinityX@gmail.com</a>
+    </footer>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
