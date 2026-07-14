@@ -17,7 +17,11 @@ let tickingScroll = false;
 
 function setMotionVars() {
   const scrollShift = window.scrollY || 0;
+  const scrollMax = Math.max(1, document.documentElement.scrollHeight - window.innerHeight);
+  const scrollProgress = Math.max(0, Math.min(1, scrollShift / scrollMax));
+
   root.style.setProperty('--scroll-shift', `${scrollShift}px`);
+  root.style.setProperty('--scroll-progress', scrollProgress.toFixed(4));
   root.style.setProperty('--mouse-x', `${mouseX}px`);
   root.style.setProperty('--mouse-y', `${mouseY}px`);
 }
@@ -40,7 +44,6 @@ function handlePointerMove(event) {
 document.addEventListener('mousemove', handlePointerMove);
 
 function handleScroll() {
-  if (isMobile) return;
   if (tickingScroll) return;
 
   tickingScroll = true;
@@ -133,7 +136,12 @@ if (canvas && ctx) {
   resizeCanvas();
   drawAura();
   window.addEventListener('resize', resizeCanvas);
+  window.addEventListener('resize', setMotionVars);
   mobileQuery.addEventListener('change', resizeCanvas);
+  mobileQuery.addEventListener('change', () => {
+    isMobile = mobileQuery.matches;
+    setMotionVars();
+  });
 }
 
 if (!reduceMotion && !isMobile) {

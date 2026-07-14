@@ -19,6 +19,7 @@
   --glass: rgba(255, 249, 238, 0.08);
   --intensity: 1;
   --scroll-shift: 0px;
+  --scroll-progress: 0;
   --mouse-x: 0px;
   --mouse-y: 0px;
 }
@@ -292,6 +293,29 @@ main {
   width: min(1180px, calc(100% - 40px));
   margin: 0 auto;
   padding: 28px 0 80px;
+}
+
+.scroll-progress {
+  position: fixed;
+  top: 116px;
+  bottom: 116px;
+  left: clamp(10px, 1.5vw, 22px);
+  z-index: 24;
+  width: 3px;
+  border-radius: 999px;
+  background: rgba(255, 249, 238, 0.1);
+  box-shadow: inset 0 0 0 1px rgba(255, 249, 238, 0.06);
+  pointer-events: none;
+}
+
+.scroll-progress span {
+  position: absolute;
+  inset: 0 0 auto;
+  height: calc(var(--scroll-progress) * 100%);
+  min-height: 28px;
+  border-radius: inherit;
+  background: linear-gradient(180deg, var(--hot), var(--violet), var(--aqua), var(--leaf), var(--sun));
+  box-shadow: 0 0 22px rgba(62, 230, 212, 0.3), 0 0 34px rgba(255, 79, 196, 0.18);
 }
 
 .hero {
