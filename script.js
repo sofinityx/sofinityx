@@ -192,6 +192,10 @@ if (!reduceMotion && !isMobile) {
 
 document.addEventListener('DOMContentLoaded', () => {
   const reveals = document.querySelectorAll('.reveal');
+  const navLinks = document.querySelectorAll('.site-nav a[href^="#"]');
+  const navTargets = Array.from(navLinks)
+    .map(link => document.querySelector(link.getAttribute('href')))
+    .filter(Boolean);
 
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
@@ -202,4 +206,16 @@ document.addEventListener('DOMContentLoaded', () => {
   }, { threshold: 0.16 });
 
   reveals.forEach(el => observer.observe(el));
+
+  const navObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (!entry.isIntersecting) return;
+
+      navLinks.forEach(link => {
+        link.classList.toggle('is-active', link.getAttribute('href') === `#${entry.target.id}`);
+      });
+    });
+  }, { rootMargin: '-35% 0px -55% 0px', threshold: 0.01 });
+
+  navTargets.forEach(target => navObserver.observe(target));
 });
