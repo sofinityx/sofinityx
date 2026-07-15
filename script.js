@@ -184,6 +184,28 @@ if (!reduceMotion && !isMobile) {
     });
   });
 
+  document.querySelectorAll('.visual-card').forEach((card) => {
+    card.addEventListener('mousemove', (event) => {
+      const rect = card.getBoundingClientRect();
+      const x = event.clientX - rect.left;
+      const y = event.clientY - rect.top;
+      const xOffset = ((x / rect.width) - 0.5) * 5;
+      const yOffset = ((y / rect.height) - 0.5) * 5;
+
+      card.style.setProperty('--visual-x', `${(x / rect.width) * 100}%`);
+      card.style.setProperty('--visual-y', `${(y / rect.height) * 100}%`);
+      card.style.setProperty('--visual-dx', `${xOffset}px`);
+      card.style.setProperty('--visual-dy', `${yOffset}px`);
+    });
+
+    card.addEventListener('mouseleave', () => {
+      card.style.setProperty('--visual-x', '50%');
+      card.style.setProperty('--visual-y', '50%');
+      card.style.setProperty('--visual-dx', '0px');
+      card.style.setProperty('--visual-dy', '0px');
+    });
+  });
+
   document.querySelectorAll('.magnetic').forEach((button) => {
     button.addEventListener('mousemove', (event) => {
       const rect = button.getBoundingClientRect();
