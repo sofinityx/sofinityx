@@ -2105,15 +2105,17 @@ h3 {
   }
 
   .psychedelic-toggle {
-    top: 10px;
-    right: 10px;
-    min-height: 38px;
-    padding: 0.58rem 0.72rem;
-    font-size: 0.68rem;
+    display: none;
   }
 
   .footer {
     flex-direction: column;
+  }
+}
+
+@media (pointer: coarse) {
+  .psychedelic-toggle {
+    display: none;
   }
 }
 
