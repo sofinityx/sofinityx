@@ -680,7 +680,7 @@ h3 {
 .case-hero-shot {
   position: relative;
   z-index: 3;
-  width: min(94%, 620px);
+  width: min(100%, 680px);
   margin: 0;
   padding: 0.75rem;
   border: 1px solid rgba(255, 249, 238, 0.18);
@@ -709,9 +709,10 @@ h3 {
 .case-hero-shot img {
   display: block;
   width: 100%;
-  min-height: 320px;
-  object-fit: cover;
+  height: clamp(300px, 34vw, 420px);
+  object-fit: contain;
   object-position: top center;
+  background: rgba(5, 7, 16, 0.62);
   border: 1px solid rgba(255, 249, 238, 0.12);
   border-radius: 6px;
 }
@@ -2409,9 +2410,10 @@ h3 {
 
 .asset-figure img {
   width: 100%;
-  min-height: 240px;
-  object-fit: cover;
+  height: clamp(240px, 28vw, 360px);
+  object-fit: contain;
   object-position: top center;
+  background: rgba(5, 7, 16, 0.62);
   border-radius: 6px;
   border: 1px solid rgba(255, 249, 238, 0.12);
 }
@@ -2980,7 +2982,7 @@ h3 {
   }
 
   .case-hero-shot img {
-    min-height: 210px;
+    height: 210px;
   }
 
   .case-study-page {
