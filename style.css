@@ -1054,6 +1054,24 @@ h3 {
   text-shadow: 0 12px 44px rgba(0, 0, 0, 0.42);
 }
 
+
+.trendium-banner .brand-wordmark {
+  max-width: calc(100% - 2rem);
+  font-size: clamp(2.05rem, 4.6vw, 4.85rem);
+  text-align: center;
+}
+
+.sofinityx-banner .brand-wordmark {
+  max-width: calc(100% - 2rem);
+  font-size: clamp(1.85rem, 4vw, 4.15rem);
+  text-align: center;
+}
+
+.vespera-banner .brand-wordmark,
+.lumaro-banner .brand-wordmark {
+  max-width: calc(100% - 2rem);
+  text-align: center;
+}
 .brand-signal {
   position: relative;
   z-index: 1;
@@ -2983,6 +3001,12 @@ h3 {
 
   .case-hero-shot img {
     height: 210px;
+  }
+
+
+  .trendium-banner .brand-wordmark,
+  .sofinityx-banner .brand-wordmark {
+    font-size: clamp(1.72rem, 10vw, 2.62rem);
   }
 
   .case-study-page {
