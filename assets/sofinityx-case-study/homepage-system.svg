@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 1000" role="img" aria-labelledby="title desc">
+  <title id="title">SofinityX homepage system</title>
+  <desc id="desc">A visual map of the SofinityX homepage structure from hero to selected work, credibility, process, services, and contact.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" x2="1" y1="0" y2="1"><stop offset="0" stop-color="#26172d"/><stop offset=".48" stop-color="#171421"/><stop offset="1" stop-color="#30221b"/></linearGradient>
+  </defs>
+  <rect width="1600" height="1000" fill="url(#bg)"/>
+  <circle cx="1280" cy="250" r="260" fill="#ff4fc4" fill-opacity=".18"/>
+  <circle cx="420" cy="740" r="300" fill="#3ee6d4" fill-opacity=".16"/>
+  <text x="96" y="120" fill="#fff9ee" font-family="Montserrat, Arial, sans-serif" font-size="44" font-weight="800">Homepage Information System</text>
+  <text x="98" y="166" fill="#d9c8bb" font-family="Montserrat, Arial, sans-serif" font-size="22" font-weight="700">A portfolio-first path that makes the work visible before the services.</text>
+  <g font-family="Montserrat, Arial, sans-serif" font-weight="800">
+    <rect x="170" y="260" width="1260" height="92" rx="12" fill="#fff9ee" fill-opacity=".08" stroke="#fff9ee" stroke-opacity=".18"/>
+    <text x="220" y="318" fill="#fff9ee" font-size="26">Hero: product design positioning</text>
+    <rect x="170" y="384" width="1260" height="132" rx="12" fill="#fff9ee" fill-opacity=".08" stroke="#3ee6d4" stroke-opacity=".5"/>
+    <text x="220" y="440" fill="#fff9ee" font-size="26">Selected Work: six focused case studies</text>
+    <text x="220" y="478" fill="#d9c8bb" font-size="18">Trendium brand · Trendium product system · Lumaro brand · Lumaro launch · SofinityX · Client visual work</text>
+    <rect x="170" y="548" width="390" height="132" rx="12" fill="#fff9ee" fill-opacity=".08" stroke="#fff9ee" stroke-opacity=".18"/>
+    <text x="214" y="606" fill="#fff9ee" font-size="24">Credibility</text>
+    <text x="214" y="644" fill="#d9c8bb" font-size="17">Professional history and range</text>
+    <rect x="604" y="548" width="390" height="132" rx="12" fill="#fff9ee" fill-opacity=".08" stroke="#fff9ee" stroke-opacity=".18"/>
+    <text x="648" y="606" fill="#fff9ee" font-size="24">Process</text>
+    <text x="648" y="644" fill="#d9c8bb" font-size="17">Understand · Structure · Design · Refine</text>
+    <rect x="1038" y="548" width="392" height="132" rx="12" fill="#fff9ee" fill-opacity=".08" stroke="#fff9ee" stroke-opacity=".18"/>
+    <text x="1082" y="606" fill="#fff9ee" font-size="24">Capabilities</text>
+    <text x="1082" y="644" fill="#d9c8bb" font-size="17">Product, web, systems, motion</text>
+    <rect x="170" y="712" width="604" height="132" rx="12" fill="#fff9ee" fill-opacity=".08" stroke="#fff9ee" stroke-opacity=".18"/>
+    <text x="214" y="770" fill="#fff9ee" font-size="24">Selected Visual Work</text>
+    <text x="214" y="808" fill="#d9c8bb" font-size="17">Commercial craft supports the product profile</text>
+    <rect x="826" y="712" width="604" height="132" rx="12" fill="#fff9ee" fill-opacity=".08" stroke="#ff4fc4" stroke-opacity=".45"/>
+    <text x="870" y="770" fill="#fff9ee" font-size="24">Contact</text>
+    <text x="870" y="808" fill="#d9c8bb" font-size="17">Simple inquiry path for complex digital ideas</text>
+  </g>
+  <path d="M800 352v32M800 516v32M560 680v32M1038 680v32" stroke="#fff9ee" stroke-opacity=".34" stroke-width="3" stroke-linecap="round"/>
+</svg>

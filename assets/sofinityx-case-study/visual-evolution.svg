@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 1000" role="img" aria-labelledby="title desc">
+  <title id="title">SofinityX visual evolution</title>
+  <desc id="desc">A before-to-after style board showing SofinityX evolving from dark minimal identity into a controlled immersive portfolio.</desc>
+  <rect width="1600" height="1000" fill="#151219"/>
+  <text x="100" y="130" fill="#fff9ee" font-family="Montserrat, Arial, sans-serif" font-size="44" font-weight="800">Visual Evolution</text>
+  <text x="102" y="176" fill="#d9c8bb" font-family="Montserrat, Arial, sans-serif" font-size="22" font-weight="700">From minimal identity to controlled immersive portfolio language.</text>
+  <g>
+    <rect x="120" y="270" width="560" height="430" rx="18" fill="#08070f" stroke="#fff9ee" stroke-opacity=".18"/>
+    <text x="166" y="338" fill="#d9c8bb" font-family="Montserrat, Arial, sans-serif" font-size="18" font-weight="800">EARLIER DIRECTION</text>
+    <text x="166" y="438" fill="#fff9ee" font-family="Montserrat, Arial, sans-serif" font-size="58" font-weight="800">SofinityX</text>
+    <rect x="166" y="488" width="312" height="16" rx="8" fill="#d9c8bb" fill-opacity=".42"/>
+    <rect x="166" y="522" width="232" height="16" rx="8" fill="#d9c8bb" fill-opacity=".28"/>
+    <circle cx="512" cy="514" r="84" fill="none" stroke="#fff9ee" stroke-opacity=".16" stroke-width="12"/>
+  </g>
+  <path d="M738 488h124" stroke="#fff9ee" stroke-opacity=".42" stroke-width="3"/>
+  <path d="M842 454l38 34-38 34" fill="none" stroke="#fff9ee" stroke-opacity=".42" stroke-width="3"/>
+  <g>
+    <rect x="920" y="270" width="560" height="430" rx="18" fill="#08070f" stroke="#fff9ee" stroke-opacity=".2"/>
+    <circle cx="1118" cy="496" r="160" fill="#ff4fc4" fill-opacity=".28"/>
+    <circle cx="1266" cy="548" r="150" fill="#3ee6d4" fill-opacity=".22"/>
+    <circle cx="1224" cy="400" r="120" fill="#8f6bff" fill-opacity=".22"/>
+    <text x="966" y="338" fill="#ffc857" font-family="Montserrat, Arial, sans-serif" font-size="18" font-weight="800">CURRENT DIRECTION</text>
+    <text x="966" y="438" fill="#fff9ee" font-family="Montserrat, Arial, sans-serif" font-size="56" font-weight="800">Sofi</text>
+    <text x="966" y="486" fill="#fff9ee" font-family="Montserrat, Arial, sans-serif" font-size="24" font-weight="800">Product Designer &amp; Visual Experience Designer</text>
+    <rect x="966" y="538" width="360" height="16" rx="8" fill="#d9c8bb" fill-opacity=".62"/>
+    <rect x="966" y="572" width="292" height="16" rx="8" fill="#d9c8bb" fill-opacity=".42"/>
+    <rect x="966" y="626" width="146" height="48" rx="8" fill="#3ee6d4"/>
+    <rect x="1130" y="626" width="146" height="48" rx="8" fill="#fff9ee" fill-opacity=".08" stroke="#fff9ee" stroke-opacity=".18"/>
+  </g>
+  <g font-family="Montserrat, Arial, sans-serif" font-size="22" font-weight="800" fill="#fff9ee">
+    <text x="164" y="806">Quiet, minimal, atmospheric</text>
+    <text x="964" y="806">Structured, portfolio-led, immersive</text>
+  </g>
+</svg>

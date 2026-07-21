@@ -677,6 +677,70 @@ h3 {
   font-weight: 800;
 }
 
+.case-hero-shot {
+  position: relative;
+  z-index: 3;
+  width: min(94%, 620px);
+  margin: 0;
+  padding: 0.75rem;
+  border: 1px solid rgba(255, 249, 238, 0.18);
+  border-radius: 8px;
+  background:
+    linear-gradient(135deg, rgba(255, 249, 238, 0.1), rgba(255, 249, 238, 0.035)),
+    rgba(8, 7, 15, 0.72);
+  box-shadow: 0 30px 100px rgba(0, 0, 0, 0.32);
+  transform: perspective(900px) rotateX(4deg) rotateY(-7deg);
+  transition: transform 0.32s ease, border-color 0.32s ease, box-shadow 0.32s ease;
+}
+
+.case-hero-shot::before {
+  content: "";
+  display: block;
+  height: 32px;
+  margin-bottom: 0.75rem;
+  border-radius: 6px;
+  background:
+    radial-gradient(circle at 18px 50%, rgba(255, 79, 196, 0.9) 0 5px, transparent 6px),
+    radial-gradient(circle at 40px 50%, rgba(255, 200, 87, 0.9) 0 5px, transparent 6px),
+    radial-gradient(circle at 62px 50%, rgba(62, 230, 212, 0.9) 0 5px, transparent 6px),
+    rgba(255, 249, 238, 0.06);
+}
+
+.case-hero-shot img {
+  display: block;
+  width: 100%;
+  min-height: 320px;
+  object-fit: cover;
+  object-position: top center;
+  border: 1px solid rgba(255, 249, 238, 0.12);
+  border-radius: 6px;
+}
+
+.case-hero-shot figcaption {
+  margin-top: 0.85rem;
+  color: var(--ink);
+  font-size: clamp(1rem, 1.8vw, 1.45rem);
+  font-weight: 800;
+}
+
+.case-hero-shot:hover {
+  border-color: rgba(62, 230, 212, 0.48);
+  box-shadow: 0 34px 110px rgba(62, 230, 212, 0.12);
+  transform: perspective(900px) rotateX(2deg) rotateY(-3deg) translateY(-6px);
+}
+
+
+.vespera-hero-shot {
+  border-color: rgba(255, 209, 168, 0.24);
+  background:
+    linear-gradient(135deg, rgba(255, 209, 168, 0.1), rgba(145, 121, 255, 0.04)),
+    rgba(8, 7, 15, 0.76);
+}
+
+.vespera-hero-shot:hover {
+  border-color: rgba(255, 209, 168, 0.5);
+  box-shadow: 0 34px 110px rgba(145, 121, 255, 0.14);
+}
 @keyframes morph {
   0%, 100% { border-radius: 42% 58% 45% 55%; }
   33% { border-radius: 58% 42% 52% 48%; }
@@ -1060,6 +1124,91 @@ h3 {
 
 .sofinityx-banner .brand-signal i {
   background: linear-gradient(180deg, rgba(255, 79, 196, 0.78), rgba(62, 230, 212, 0.14));
+}
+
+.client-banner {
+  background:
+    radial-gradient(circle at 34% 24%, rgba(255, 200, 87, 0.22), transparent 38%),
+    radial-gradient(circle at 72% 70%, rgba(255, 79, 196, 0.18), transparent 44%),
+    rgba(5, 7, 16, 0.7);
+}
+
+.placeholder-logo {
+  display: grid;
+  place-items: center;
+  color: var(--ink);
+  font-size: 1.28rem;
+  font-weight: 800;
+  line-height: 1;
+}
+
+.client-banner .brand-signal i {
+  background: linear-gradient(180deg, rgba(255, 200, 87, 0.74), rgba(255, 79, 196, 0.15));
+}
+
+.vespera-banner {
+  background:
+    radial-gradient(circle at 32% 28%, rgba(145, 121, 255, 0.24), transparent 38%),
+    radial-gradient(circle at 72% 72%, rgba(255, 159, 108, 0.2), transparent 42%),
+    radial-gradient(circle at 50% 48%, rgba(28, 49, 96, 0.36), transparent 54%),
+    rgba(7, 8, 18, 0.76);
+}
+
+.vespera-banner .brand-signal i {
+  background: linear-gradient(180deg, rgba(255, 209, 168, 0.76), rgba(145, 121, 255, 0.16));
+}
+
+.vespera-disclosure {
+  margin-top: 1.2rem;
+  padding: 1rem;
+  border: 1px solid rgba(255, 209, 168, 0.32);
+  border-radius: 8px;
+  background: rgba(255, 209, 168, 0.08);
+  color: var(--ink);
+  font-weight: 800;
+}
+
+.vespera-palette {
+  display: grid;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  gap: 0.8rem;
+  margin-top: 1.4rem;
+}
+
+.vespera-swatch {
+  min-height: 150px;
+  display: flex;
+  flex-direction: column;
+  justify-content: end;
+  gap: 0.3rem;
+  padding: 1rem;
+  border: 1px solid rgba(255, 249, 238, 0.16);
+  border-radius: 8px;
+  background: var(--swatch);
+  color: var(--ink);
+  box-shadow: inset 0 -80px 80px rgba(0, 0, 0, 0.25);
+}
+
+.vespera-swatch strong,
+.vespera-swatch span {
+  text-shadow: 0 2px 18px rgba(0, 0, 0, 0.6);
+}
+
+.vespera-swatch strong {
+  font-size: 0.9rem;
+  font-weight: 800;
+}
+
+.vespera-swatch span {
+  color: rgba(255, 249, 238, 0.78);
+  font-size: 0.75rem;
+  font-weight: 800;
+}
+
+.slot-vespera {
+  --slot-a: rgba(145, 121, 255, 0.66);
+  --slot-b: rgba(255, 209, 168, 0.58);
+  --slot-c: rgba(47, 68, 126, 0.66);
 }
 
 @keyframes signal-breathe {
@@ -2082,6 +2231,7 @@ h3 {
 }
 
 .asset-placeholder {
+  position: relative;
   min-height: 320px;
   display: flex;
   flex-direction: column;
@@ -2094,6 +2244,155 @@ h3 {
     linear-gradient(300deg, rgba(62, 230, 212, 0.12), transparent 44%),
     repeating-linear-gradient(90deg, rgba(255, 255, 255, 0.035) 0 1px, transparent 1px 42px),
     rgba(8, 7, 15, 0.68);
+  overflow: hidden;
+  isolation: isolate;
+  transition: border-color 0.28s ease, transform 0.28s ease, box-shadow 0.28s ease;
+}
+
+.designed-slot {
+  --slot-a: rgba(255, 79, 196, 0.72);
+  --slot-b: rgba(62, 230, 212, 0.68);
+  --slot-c: rgba(255, 200, 87, 0.6);
+  min-height: 360px;
+}
+
+.designed-slot::before,
+.designed-slot::after {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  pointer-events: none;
+  transition: transform 0.42s ease, opacity 0.42s ease, filter 0.42s ease;
+}
+
+.designed-slot::before {
+  inset: 64px 13% 76px;
+  border: 1px solid rgba(255, 249, 238, 0.18);
+  border-radius: 8px;
+  background:
+    radial-gradient(circle at 18% 24%, var(--slot-a), transparent 9%),
+    radial-gradient(circle at 50% 50%, var(--slot-b), transparent 10%),
+    radial-gradient(circle at 82% 76%, var(--slot-c), transparent 9%),
+    linear-gradient(90deg, transparent 0 18%, rgba(255, 249, 238, 0.2) 18% calc(18% + 1px), transparent calc(18% + 1px) 50%, rgba(255, 249, 238, 0.16) 50% calc(50% + 1px), transparent calc(50% + 1px) 82%, rgba(255, 249, 238, 0.2) 82% calc(82% + 1px), transparent calc(82% + 1px)),
+    linear-gradient(0deg, transparent 0 24%, rgba(255, 249, 238, 0.16) 24% calc(24% + 1px), transparent calc(24% + 1px) 50%, rgba(255, 249, 238, 0.12) 50% calc(50% + 1px), transparent calc(50% + 1px) 76%, rgba(255, 249, 238, 0.16) 76% calc(76% + 1px), transparent calc(76% + 1px)),
+    rgba(255, 249, 238, 0.045);
+  box-shadow: inset 0 0 40px rgba(255, 249, 238, 0.04), 0 22px 70px rgba(0, 0, 0, 0.24);
+}
+
+.designed-slot::after {
+  width: 42%;
+  aspect-ratio: 1;
+  left: 50%;
+  top: 50%;
+  border: 1px solid rgba(255, 249, 238, 0.18);
+  border-radius: 50%;
+  background:
+    conic-gradient(from 140deg, var(--slot-a), transparent 22%, var(--slot-b), transparent 55%, var(--slot-c), var(--slot-a)),
+    radial-gradient(circle, rgba(255, 249, 238, 0.08), transparent 58%);
+  filter: blur(0.2px) saturate(1.12);
+  opacity: 0.72;
+  transform: translate(-50%, -50%) rotate(0deg);
+}
+
+.designed-slot:hover {
+  border-color: rgba(255, 249, 238, 0.28);
+  box-shadow: 0 22px 70px rgba(0, 0, 0, 0.22);
+  transform: translateY(-3px);
+}
+
+.designed-slot:hover::before {
+  transform: translate3d(0, -4px, 0) scale(1.015);
+}
+
+.designed-slot:hover::after {
+  opacity: 0.86;
+  transform: translate(-50%, -50%) rotate(16deg) scale(1.04);
+}
+
+.slot-brand::after {
+  width: min(210px, 44%);
+  border-radius: 28% 72% 58% 42% / 48% 32% 68% 52%;
+}
+
+.slot-product::before {
+  background:
+    linear-gradient(180deg, transparent 0 28%, rgba(255, 249, 238, 0.13) 28% calc(28% + 1px), transparent calc(28% + 1px) 56%, rgba(255, 249, 238, 0.1) 56% calc(56% + 1px), transparent calc(56% + 1px)),
+    linear-gradient(90deg, transparent 0 34%, rgba(255, 249, 238, 0.16) 34% calc(34% + 1px), transparent calc(34% + 1px) 67%, rgba(255, 249, 238, 0.12) 67% calc(67% + 1px), transparent calc(67% + 1px)),
+    radial-gradient(circle at 19% 30%, var(--slot-a), transparent 7%),
+    radial-gradient(circle at 50% 56%, var(--slot-b), transparent 9%),
+    radial-gradient(circle at 82% 42%, var(--slot-c), transparent 7%),
+    rgba(255, 249, 238, 0.045);
+}
+
+.slot-product::after {
+  width: 54%;
+  aspect-ratio: 1.75;
+  border-radius: 8px;
+}
+
+.slot-launch::before {
+  inset: 70px 10% 76px;
+  background:
+    linear-gradient(90deg, rgba(255, 249, 238, 0.16) 0 1px, transparent 1px 33%, rgba(255, 249, 238, 0.1) 33% calc(33% + 1px), transparent calc(33% + 1px) 66%, rgba(255, 249, 238, 0.1) 66% calc(66% + 1px), transparent calc(66% + 1px)),
+    radial-gradient(circle at 24% 34%, var(--slot-a), transparent 8%),
+    radial-gradient(circle at 56% 62%, var(--slot-b), transparent 11%),
+    radial-gradient(circle at 80% 42%, var(--slot-c), transparent 9%),
+    rgba(255, 249, 238, 0.045);
+}
+
+.slot-launch::after {
+  width: 58%;
+  aspect-ratio: 1.42;
+  border-radius: 8px;
+}
+
+.slot-web::before {
+  inset: 70px 16% 82px;
+  border-radius: 18px;
+  background:
+    radial-gradient(circle at 18% 26%, var(--slot-a), transparent 8%),
+    radial-gradient(circle at 48% 48%, var(--slot-b), transparent 10%),
+    radial-gradient(circle at 80% 72%, var(--slot-c), transparent 8%),
+    repeating-conic-gradient(from 38deg, rgba(255, 249, 238, 0.1) 0 8deg, transparent 8deg 18deg),
+    rgba(255, 249, 238, 0.04);
+}
+
+.slot-web::after {
+  width: 50%;
+  border-radius: 34% 66% 44% 56% / 56% 36% 64% 44%;
+}
+
+.slot-client::before {
+  inset: 68px 12% 78px;
+  background:
+    linear-gradient(135deg, transparent 0 32%, rgba(255, 249, 238, 0.18) 32% calc(32% + 1px), transparent calc(32% + 1px) 68%, rgba(255, 249, 238, 0.12) 68% calc(68% + 1px), transparent calc(68% + 1px)),
+    radial-gradient(circle at 25% 35%, var(--slot-a), transparent 9%),
+    radial-gradient(circle at 58% 48%, var(--slot-b), transparent 10%),
+    radial-gradient(circle at 78% 70%, var(--slot-c), transparent 8%),
+    rgba(255, 249, 238, 0.045);
+}
+
+.slot-client::after {
+  width: 46%;
+  border-radius: 8px 42px 8px 42px;
+}
+
+.slot-trendium {
+  --slot-a: rgba(62, 230, 212, 0.76);
+  --slot-b: rgba(57, 255, 136, 0.55);
+  --slot-c: rgba(143, 107, 255, 0.62);
+}
+
+.slot-lumaro {
+  --slot-a: rgba(255, 200, 87, 0.74);
+  --slot-b: rgba(62, 230, 212, 0.52);
+  --slot-c: rgba(255, 249, 238, 0.56);
+}
+
+.slot-sofinityx {
+  --slot-a: rgba(255, 79, 196, 0.76);
+  --slot-b: rgba(143, 107, 255, 0.62);
+  --slot-c: rgba(62, 230, 212, 0.55);
 }
 
 .asset-figure {
@@ -2433,6 +2732,7 @@ h3 {
   .decision-grid,
   .asset-grid,
   .comparison-grid,
+  .vespera-palette,
   .outcome-list {
     grid-template-columns: 1fr;
   }
@@ -2555,6 +2855,11 @@ h3 {
     transform: none;
   }
 
+  .case-hero-shot {
+    width: min(100%, 620px);
+    transform: none;
+  }
+
   .case-hero {
     min-height: auto;
   }
@@ -2668,6 +2973,14 @@ h3 {
   .brand-wordmark {
     margin-top: 96px;
     font-size: clamp(2rem, 12vw, 3.1rem);
+  }
+
+  .case-hero-shot {
+    padding: 0.55rem;
+  }
+
+  .case-hero-shot img {
+    min-height: 210px;
   }
 
   .case-study-page {

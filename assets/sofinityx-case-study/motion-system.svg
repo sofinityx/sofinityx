@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 1000" role="img" aria-labelledby="title desc">
+  <title id="title">SofinityX motion system</title>
+  <desc id="desc">A visual board describing layered aura, scroll progress, cursor-reactive depth, and reduced-motion fallback.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" x2="1" y1="0" y2="1"><stop offset="0" stop-color="#151219"/><stop offset=".55" stop-color="#231b2a"/><stop offset="1" stop-color="#10211d"/></linearGradient>
+    <filter id="blur"><feGaussianBlur stdDeviation="18"/></filter>
+  </defs>
+  <rect width="1600" height="1000" fill="url(#bg)"/>
+  <g filter="url(#blur)" opacity=".78">
+    <circle cx="360" cy="330" r="190" fill="#ff4fc4"/>
+    <circle cx="990" cy="354" r="230" fill="#3ee6d4"/>
+    <circle cx="760" cy="690" r="210" fill="#8f6bff"/>
+    <circle cx="1240" cy="690" r="160" fill="#ffc857"/>
+  </g>
+  <rect x="92" y="90" width="1416" height="820" rx="26" fill="#08070f" fill-opacity=".58" stroke="#fff9ee" stroke-opacity=".18"/>
+  <text x="140" y="164" fill="#fff9ee" font-family="Montserrat, Arial, sans-serif" font-size="44" font-weight="800">Interaction and Motion System</text>
+  <text x="142" y="210" fill="#d9c8bb" font-family="Montserrat, Arial, sans-serif" font-size="22" font-weight="700">Motion supports hierarchy instead of constantly competing with the content.</text>
+  <g fill="none" stroke-linecap="round">
+    <path d="M214 570c142-194 286-194 430 0s288 194 432 0 288-194 432 0" stroke="#3ee6d4" stroke-width="8" opacity=".76"/>
+    <path d="M214 642c142-150 286-150 430 0s288 150 432 0 288-150 432 0" stroke="#ff4fc4" stroke-width="8" opacity=".7"/>
+    <path d="M214 714c142-106 286-106 430 0s288 106 432 0 288-106 432 0" stroke="#ffc857" stroke-width="8" opacity=".62"/>
+  </g>
+  <g font-family="Montserrat, Arial, sans-serif" font-weight="800">
+    <rect x="160" y="300" width="270" height="126" rx="12" fill="#fff9ee" fill-opacity=".08" stroke="#fff9ee" stroke-opacity=".18"/>
+    <text x="190" y="354" fill="#fff9ee" font-size="26">Aura Field</text>
+    <text x="190" y="392" fill="#d9c8bb" font-size="16">Layered color depth</text>
+    <rect x="498" y="300" width="270" height="126" rx="12" fill="#fff9ee" fill-opacity=".08" stroke="#fff9ee" stroke-opacity=".18"/>
+    <text x="528" y="354" fill="#fff9ee" font-size="26">Scroll Flow</text>
+    <text x="528" y="392" fill="#d9c8bb" font-size="16">Progress and reveals</text>
+    <rect x="836" y="300" width="270" height="126" rx="12" fill="#fff9ee" fill-opacity=".08" stroke="#fff9ee" stroke-opacity=".18"/>
+    <text x="866" y="354" fill="#fff9ee" font-size="26">Hover Depth</text>
+    <text x="866" y="392" fill="#d9c8bb" font-size="16">Subtle card response</text>
+    <rect x="1174" y="300" width="270" height="126" rx="12" fill="#fff9ee" fill-opacity=".08" stroke="#fff9ee" stroke-opacity=".18"/>
+    <text x="1204" y="354" fill="#fff9ee" font-size="26">Reduced Motion</text>
+    <text x="1204" y="392" fill="#d9c8bb" font-size="16">Accessible fallback</text>
+  </g>
+  <circle cx="798" cy="610" r="112" fill="none" stroke="#fff9ee" stroke-opacity=".22" stroke-width="2"/>
+  <circle cx="798" cy="610" r="70" fill="#fff9ee" fill-opacity=".06" stroke="#3ee6d4" stroke-opacity=".78" stroke-width="8"/>
+  <circle cx="798" cy="610" r="16" fill="#fff9ee"/>
+</svg>
