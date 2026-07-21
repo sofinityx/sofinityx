@@ -3111,6 +3111,81 @@ h3 {
   }
 }
 
+
+@media (max-width: 880px), (pointer: coarse) {
+  body::before {
+    filter: none;
+    opacity: 0.34;
+    background:
+      radial-gradient(circle at 18% 12%, rgba(255, 79, 196, 0.22), transparent 30%),
+      radial-gradient(circle at 82% 24%, rgba(62, 230, 212, 0.18), transparent 34%),
+      radial-gradient(circle at 45% 82%, rgba(255, 200, 87, 0.12), transparent 30%),
+      linear-gradient(140deg, #26172d 0%, #171421 42%, #1b241d 100%);
+  }
+
+  body::after,
+  .aura-canvas,
+  .noise-overlay,
+  .flow-line,
+  .cursor-glow {
+    display: none;
+  }
+
+  .site-header {
+    backdrop-filter: none;
+    background: rgba(13, 11, 22, 0.92);
+    box-shadow: 0 12px 34px rgba(0, 0, 0, 0.24);
+  }
+
+  .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+
+  .portal,
+  .portal::after,
+  .portal-core,
+  .portal-ring,
+  .portal-particle,
+  .ticker,
+  .brand-signal i {
+    animation: none !important;
+  }
+
+  .visual-sofinityx {
+    background:
+      linear-gradient(145deg, rgba(255, 79, 196, 0.12), transparent 38%),
+      linear-gradient(300deg, rgba(62, 230, 212, 0.12), transparent 44%),
+      rgba(8, 7, 15, 0.72);
+  }
+
+  .hero-visual::before,
+  .hero-visual::after,
+  .case-card::before,
+  .case-visual::after,
+  .brand-banner::before,
+  .project-card::before {
+    display: none;
+  }
+
+
+
+  .case-card,
+  .case-visual,
+  .brand-banner,
+  .case-hero-shot,
+  .asset-figure,
+  .project-card {
+    box-shadow: none;
+  }
+
+  .brand-banner,
+  .case-hero-shot,
+  .asset-figure img {
+    transform: none !important;
+  }
+}
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,

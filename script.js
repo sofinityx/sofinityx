@@ -14,16 +14,20 @@ let intensity = 1;
 let particles = [];
 let isMobile = mobileQuery.matches;
 let tickingScroll = false;
+let auraFrame = null;
 
 function setMotionVars() {
   const scrollShift = window.scrollY || 0;
   const scrollMax = Math.max(1, document.documentElement.scrollHeight - window.innerHeight);
   const scrollProgress = Math.max(0, Math.min(1, scrollShift / scrollMax));
 
-  root.style.setProperty('--scroll-shift', `${scrollShift}px`);
+  root.style.setProperty('--scroll-shift', isMobile ? '0px' : `${scrollShift}px`);
   root.style.setProperty('--scroll-progress', scrollProgress.toFixed(4));
-  root.style.setProperty('--mouse-x', `${mouseX}px`);
-  root.style.setProperty('--mouse-y', `${mouseY}px`);
+
+  if (!isMobile) {
+    root.style.setProperty('--mouse-x', `${mouseX}px`);
+    root.style.setProperty('--mouse-y', `${mouseY}px`);
+  }
 }
 
 function handlePointerMove(event) {
@@ -57,7 +61,7 @@ document.addEventListener('scroll', handleScroll, { passive: true });
 setMotionVars();
 
 function animateCursor() {
-  if (!cursor || reduceMotion) return;
+  if (!cursor || reduceMotion || isMobile) return;
 
   cursor.style.transform = `translate3d(${cursorX - 11}px, ${cursorY - 11}px, 0)`;
   requestAnimationFrame(animateCursor);
@@ -86,6 +90,18 @@ if (toggle) {
 function resizeCanvas() {
   if (!canvas || !ctx) return;
 
+  isMobile = mobileQuery.matches;
+  if (isMobile || reduceMotion) {
+    canvas.width = 1;
+    canvas.height = 1;
+    particles = [];
+    if (auraFrame) {
+      cancelAnimationFrame(auraFrame);
+      auraFrame = null;
+    }
+    return;
+  }
+
   const pixelRatio = Math.min(window.devicePixelRatio || 1, 2);
   canvas.width = Math.floor(window.innerWidth * pixelRatio);
   canvas.height = Math.floor(window.innerHeight * pixelRatio);
@@ -93,32 +109,34 @@ function resizeCanvas() {
   canvas.style.height = `${window.innerHeight}px`;
   ctx.setTransform(pixelRatio, 0, 0, pixelRatio, 0, 0);
 
-  isMobile = mobileQuery.matches;
-  const count = isMobile ? 10 : 38;
+  const count = 30;
   particles = Array.from({ length: count }, (_, index) => ({
     x: Math.random() * window.innerWidth,
     y: Math.random() * window.innerHeight,
-    radius: isMobile ? 90 + Math.random() * 120 : 70 + Math.random() * 150,
-    speed: isMobile ? 0.04 + Math.random() * 0.1 : 0.12 + Math.random() * 0.28,
+    radius: 70 + Math.random() * 150,
+    speed: 0.12 + Math.random() * 0.28,
     phase: Math.random() * Math.PI * 2,
     hue: [318, 174, 48, 252, 105][index % 5],
   }));
 }
 
 function drawAura(time = 0) {
-  if (!canvas || !ctx) return;
+  if (!canvas || !ctx || isMobile || reduceMotion) {
+    auraFrame = null;
+    return;
+  }
 
   ctx.clearRect(0, 0, window.innerWidth, window.innerHeight);
 
   particles.forEach((particle, index) => {
     const drift = time * 0.00012 * particle.speed;
-    const x = particle.x + Math.sin(drift + particle.phase) * (isMobile ? 28 : 60) + mouseX * (index % 3);
-    const y = particle.y + Math.cos(drift + particle.phase) * (isMobile ? 22 : 46) + (isMobile ? 0 : window.scrollY * particle.speed * 0.08);
+    const x = particle.x + Math.sin(drift + particle.phase) * 60 + mouseX * (index % 3);
+    const y = particle.y + Math.cos(drift + particle.phase) * 46 + window.scrollY * particle.speed * 0.08;
     const wrappedY = ((y % (window.innerHeight + 240)) + window.innerHeight + 240) % (window.innerHeight + 240) - 120;
     const gradient = ctx.createRadialGradient(x, wrappedY, 0, x, wrappedY, particle.radius);
 
-    gradient.addColorStop(0, `hsla(${particle.hue}, 100%, 68%, ${(isMobile ? 0.1 : 0.18) * intensity})`);
-    gradient.addColorStop(0.5, `hsla(${particle.hue}, 100%, 58%, ${(isMobile ? 0.035 : 0.065) * intensity})`);
+    gradient.addColorStop(0, `hsla(${particle.hue}, 100%, 68%, ${0.18 * intensity})`);
+    gradient.addColorStop(0.5, `hsla(${particle.hue}, 100%, 58%, ${0.065 * intensity})`);
     gradient.addColorStop(1, `hsla(${particle.hue}, 100%, 50%, 0)`);
 
     ctx.fillStyle = gradient;
@@ -127,19 +145,23 @@ function drawAura(time = 0) {
     ctx.fill();
   });
 
-  if (!reduceMotion) {
-    requestAnimationFrame(drawAura);
-  }
+  auraFrame = requestAnimationFrame(drawAura);
 }
 
 if (canvas && ctx) {
   resizeCanvas();
-  drawAura();
+  if (!isMobile && !reduceMotion) {
+    drawAura();
+  }
   window.addEventListener('resize', resizeCanvas);
   window.addEventListener('resize', setMotionVars);
   mobileQuery.addEventListener('change', resizeCanvas);
   mobileQuery.addEventListener('change', () => {
     isMobile = mobileQuery.matches;
+    if (!isMobile && !reduceMotion && !auraFrame) {
+      resizeCanvas();
+      drawAura();
+    }
     setMotionVars();
   });
 }
