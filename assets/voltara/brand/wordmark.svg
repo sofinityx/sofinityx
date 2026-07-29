@@ -1,0 +1,7 @@
+﻿<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 780 150" role="img" aria-labelledby="title">
+  <title id="title">VOLTARA wordmark</title>
+  <rect width="780" height="150" fill="none"/>
+  <text x="18" y="108" fill="#101114" font-family="Arial Narrow, Arial, sans-serif" font-size="112" font-weight="900">VOLTARA</text>
+  <path d="M34 116 90 34h24l-56 82H34Z" fill="#ff6230"/>
+  <path d="M407 116 463 34h24l-56 82h-24Z" fill="#ff6230"/>
+</svg>

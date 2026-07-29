@@ -1,0 +1,28 @@
+﻿<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1080 1080" role="img" aria-labelledby="title">
+  <title id="title">VOLTARA social media grid concept</title>
+  <rect width="1080" height="1080" fill="#f4f0e8"/>
+  <g>
+    <rect x="40" y="40" width="316" height="316" fill="#101114"/>
+    <text x="198" y="124" text-anchor="middle" fill="#f4f0e8" font-family="Arial Narrow, Arial, sans-serif" font-size="42" font-weight="900">VOLTARA</text>
+    <text x="198" y="262" text-anchor="middle" fill="#f4f0e8" font-family="Arial Narrow, Arial, sans-serif" font-size="44" font-weight="900">NEXT REP.</text>
+    <rect x="40" y="382" width="316" height="316" fill="#ff6230"/>
+    <text x="198" y="542" text-anchor="middle" fill="#101114" font-family="Arial Narrow, Arial, sans-serif" font-size="62" font-weight="900">IGNITE</text>
+    <rect x="40" y="724" width="316" height="316" fill="#101114"/>
+    <path d="M66 1008 246 756h62L128 1008H66Z" fill="#a45cff"/>
+    <rect x="382" y="40" width="316" height="316" fill="#14c8e8"/>
+    <text x="540" y="214" text-anchor="middle" fill="#101114" font-family="Arial Narrow, Arial, sans-serif" font-size="62" font-weight="900">HYDRA</text>
+    <rect x="382" y="382" width="316" height="316" fill="#101114"/>
+    <path d="M418 650 596 426h60L478 650h-60Z" fill="#f4f0e8"/>
+    <rect x="382" y="724" width="316" height="316" fill="#a45cff"/>
+    <text x="540" y="884" text-anchor="middle" fill="#101114" font-family="Arial Narrow, Arial, sans-serif" font-size="48" font-weight="900">RECOVER</text>
+    <rect x="724" y="40" width="316" height="316" fill="#101114"/>
+    <text x="882" y="164" text-anchor="middle" fill="#f4f0e8" font-family="Arial Narrow, Arial, sans-serif" font-size="52" font-weight="900">TRAIN</text>
+    <text x="882" y="224" text-anchor="middle" fill="#f4f0e8" font-family="Arial Narrow, Arial, sans-serif" font-size="52" font-weight="900">CLEAN.</text>
+    <rect x="724" y="382" width="316" height="316" fill="#f4f0e8" stroke="#d7dde0"/>
+    <text x="882" y="510" text-anchor="middle" fill="#101114" font-family="Arial Narrow, Arial, sans-serif" font-size="44" font-weight="900">PRODUCT</text>
+    <text x="882" y="566" text-anchor="middle" fill="#101114" font-family="Arial Narrow, Arial, sans-serif" font-size="44" font-weight="900">SYSTEM</text>
+    <rect x="724" y="724" width="316" height="316" fill="#101114"/>
+    <path d="M762 996 930 756h76L838 996h-76Z" fill="#ff6230"/>
+  </g>
+</svg>
+

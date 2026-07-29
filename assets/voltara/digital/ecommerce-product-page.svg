@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 820" role="img" aria-labelledby="title">
+  <title id="title">VOLTARA e-commerce product page concept</title>
+  <defs>
+    <clipPath id="visualizationClip">
+      <rect x="102" y="202" width="428" height="422"/>
+    </clipPath>
+  </defs>
+  <rect width="1200" height="820" fill="#f4f0e8"/>
+  <rect x="56" y="46" width="1088" height="70" fill="#101114"/>
+  <text x="84" y="91" fill="#f4f0e8" font-family="Arial Narrow, Arial, sans-serif" font-size="34" font-weight="900">VOLTARA</text>
+  <text x="1012" y="88" text-anchor="middle" fill="#f4f0e8" font-family="Arial, sans-serif" font-size="14" font-weight="700">PRODUCTS  SYSTEM  CART</text>
+  <rect x="56" y="150" width="520" height="590" rx="8" fill="#ffffff" stroke="#d7dde0"/>
+  <g clip-path="url(#visualizationClip)">
+    <rect x="102" y="202" width="428" height="422" fill="#101114"/>
+    <path d="M148 586 348 238h64L212 586h-64Z" fill="#ff6230"/>
+    <path d="M248 586 448 238h64L312 586h-64Z" fill="#14c8e8"/>
+  </g>
+  <rect x="102" y="202" width="428" height="422" fill="none" stroke="#101114"/>
+  <text x="124" y="682" fill="#101114" font-family="Arial, sans-serif" font-size="16" font-weight="700">Product visualization area</text>
+  <rect x="632" y="150" width="512" height="590" rx="8" fill="#ffffff" stroke="#d7dde0"/>
+  <text x="676" y="224" fill="#707a80" font-family="Arial, sans-serif" font-size="14" font-weight="900">PRE-WORKOUT</text>
+  <text x="676" y="292" fill="#101114" font-family="Arial Narrow, Arial, sans-serif" font-size="82" font-weight="900">IGNITE</text>
+  <text x="676" y="332" fill="#101114" font-family="Arial, sans-serif" font-size="20">Blood Orange Citrus / 30 Servings</text>
+  <rect x="676" y="376" width="118" height="42" fill="#ff6230"/>
+  <rect x="808" y="376" width="118" height="42" fill="#f4f0e8" stroke="#101114"/>
+  <rect x="940" y="376" width="118" height="42" fill="#f4f0e8" stroke="#101114"/>
+  <text x="735" y="403" text-anchor="middle" fill="#101114" font-family="Arial, sans-serif" font-size="13" font-weight="900">IGNITE</text>
+  <text x="867" y="403" text-anchor="middle" fill="#101114" font-family="Arial, sans-serif" font-size="13" font-weight="900">HYDRA</text>
+  <text x="999" y="403" text-anchor="middle" fill="#101114" font-family="Arial, sans-serif" font-size="13" font-weight="900">RECOVER</text>
+  <line x1="676" y1="468" x2="1098" y2="468" stroke="#d7dde0"/>
+  <text x="676" y="512" fill="#101114" font-family="Arial, sans-serif" font-size="17" font-weight="700">Product Details</text>
+  <text x="676" y="548" fill="#707a80" font-family="Arial, sans-serif" font-size="15">Energy / Focus / Training Intensity</text>
+  <text x="676" y="584" fill="#707a80" font-family="Arial, sans-serif" font-size="15">Restrained supporting information</text>
+  <rect x="676" y="646" width="422" height="54" fill="#101114"/>
+  <text x="887" y="681" text-anchor="middle" fill="#f4f0e8" font-family="Arial, sans-serif" font-size="15" font-weight="900">ADD TO CART</text>
+</svg>
+
+
+
+
+
+
+

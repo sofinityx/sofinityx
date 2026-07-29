@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 180 180" role="img" aria-labelledby="title">
+  <title id="title">VOLTARA compact symbol</title>
+  <rect x="10" y="10" width="160" height="160" rx="18" fill="#101114"/>
+  <path d="M38 44h38l20 57 20-57h38l-40 92H78L38 44Z" fill="#f4f0e8"/>
+  <path d="M111 44h19L81 136H62l49-92Z" fill="#ff6230"/>
+</svg>
