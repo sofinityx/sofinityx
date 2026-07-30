@@ -1178,6 +1178,131 @@ h3 {
 }
 
 
+
+.visual-eclipse {
+  background:
+    linear-gradient(145deg, rgba(255, 52, 64, 0.12), transparent 34%),
+    linear-gradient(300deg, rgba(69, 230, 238, 0.13), transparent 44%),
+    radial-gradient(circle at 50% 50%, rgba(255, 249, 238, 0.08), transparent 46%),
+    rgba(5, 6, 10, 0.84);
+}
+
+.eclipse-banner {
+  min-height: 320px;
+  background:
+    radial-gradient(circle at 26% 20%, rgba(69, 230, 238, 0.14), transparent 34%),
+    radial-gradient(circle at 78% 70%, rgba(255, 52, 64, 0.12), transparent 42%),
+    linear-gradient(135deg, rgba(255, 249, 238, 0.06), rgba(255, 249, 238, 0.018)),
+    rgba(2, 3, 6, 0.86);
+}
+
+.eclipse-banner::before {
+  width: 380px;
+  background: radial-gradient(circle, rgba(69, 230, 238, 0.18), transparent 62%);
+}
+
+.eclipse-card-cover {
+  position: absolute;
+  inset: 1rem;
+  width: calc(100% - 2rem);
+  height: calc(100% - 2rem);
+  object-fit: cover;
+  border: 1px solid rgba(255, 249, 238, 0.14);
+  border-radius: 6px;
+  opacity: 0.48;
+  filter: grayscale(0.22) contrast(1.1);
+}
+
+.eclipse-banner .brand-wordmark {
+  max-width: calc(100% - 2rem);
+  margin-top: 0;
+  color: #fff9ee;
+  font-size: clamp(1.85rem, 4vw, 4.1rem);
+  line-height: 0.95;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.eclipse-banner .brand-signal i {
+  background: linear-gradient(180deg, rgba(69, 230, 238, 0.76), rgba(255, 52, 64, 0.15));
+}
+
+.eclipse-hero-shot {
+  border-color: rgba(69, 230, 238, 0.22);
+  background:
+    linear-gradient(135deg, rgba(69, 230, 238, 0.08), rgba(255, 52, 64, 0.035)),
+    rgba(4, 5, 9, 0.82);
+}
+
+.eclipse-hero-shot img {
+  height: clamp(320px, 36vw, 470px);
+  object-fit: cover;
+  object-position: center;
+  filter: contrast(1.04) grayscale(0.08);
+}
+
+.eclipse-hero-shot:hover {
+  border-color: rgba(69, 230, 238, 0.48);
+  box-shadow: 0 34px 110px rgba(69, 230, 238, 0.12);
+}
+
+.eclipse-disclosure {
+  border-color: rgba(69, 230, 238, 0.26);
+  background: rgba(69, 230, 238, 0.07);
+}
+
+.eclipse-system-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 0.9rem;
+}
+
+.eclipse-system-grid div {
+  min-height: 170px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 1.1rem;
+  border: 1px solid rgba(255, 249, 238, 0.14);
+  border-radius: 8px;
+  background:
+    linear-gradient(135deg, rgba(255, 249, 238, 0.075), rgba(255, 249, 238, 0.025)),
+    rgba(5, 7, 16, 0.62);
+}
+
+.eclipse-system-grid strong {
+  color: var(--ink);
+  font-size: clamp(1.25rem, 2.4vw, 2rem);
+  line-height: 1;
+}
+
+.eclipse-system-grid span {
+  color: var(--muted);
+}
+
+.eclipse-gallery {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.eclipse-frame {
+  min-height: 390px;
+}
+
+.eclipse-frame img,
+.eclipse-cover-figure img {
+  height: clamp(290px, 30vw, 430px);
+  object-fit: cover;
+  object-position: center;
+  filter: contrast(1.04);
+}
+
+.eclipse-cover-figure:first-child {
+  grid-column: span 2;
+}
+
+.eclipse-cover-figure:first-child img {
+  height: clamp(360px, 42vw, 560px);
+}
 .visual-voltara {
   background:
     linear-gradient(145deg, rgba(255, 98, 48, 0.16), transparent 36%),
@@ -1221,6 +1346,13 @@ h3 {
 .voltara-hero-shot:hover {
   border-color: rgba(255, 98, 48, 0.5);
   box-shadow: 0 34px 110px rgba(20, 200, 232, 0.12);
+}
+
+.voltara-hero-shot img.voltara-hero-art {
+  height: clamp(320px, 36vw, 470px);
+  object-fit: contain;
+  object-position: center;
+  background: rgba(5, 7, 16, 0.62);
 }
 
 .voltara-pack-stage {
@@ -2874,7 +3006,9 @@ h3 {
 }
 
 @media (max-width: 880px) {
-  .voltara-identity-board,
+  .eclipse-system-grid,
+  .eclipse-gallery,
+  .eclipse-cover-figure:first-child,  .voltara-identity-board,
   .voltara-motion-system {
     grid-template-columns: 1fr;
   }
@@ -2883,6 +3017,23 @@ h3 {
     min-height: 310px;
   }
 
+  .voltara-hero-shot img.voltara-hero-art {
+    height: 260px;
+  }
+
+  .eclipse-banner {
+    min-height: 280px;
+  }
+
+  .eclipse-cover-figure:first-child {
+    grid-column: auto;
+  }
+
+  .eclipse-frame img,
+  .eclipse-cover-figure img,
+  .eclipse-cover-figure:first-child img {
+    height: 260px;
+  }
   .voltara-pack {
     width: min(36%, 150px);
   }

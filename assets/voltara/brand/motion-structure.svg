@@ -1,22 +1,25 @@
-﻿<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 680" role="img" aria-labelledby="title">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 680" role="img" aria-labelledby="title">
   <title id="title">VOLTARA motion structure</title>
   <rect width="1200" height="680" fill="#101114"/>
-  <g opacity=".82">
-    <path d="M-90 610 220 70h110L20 610H-90Z" fill="#ff6230"/>
-    <path d="M190 610 500 70h76L266 610h-76Z" fill="#f4f0e8"/>
-    <path d="M390 610 700 70h156L546 610H390Z" fill="#14c8e8"/>
-    <path d="M762 610 1072 70h96L858 610h-96Z" fill="#a45cff"/>
-  </g>
-  <g fill="none" stroke="#f4f0e8" stroke-width="2" opacity=".18">
+  <g fill="none" stroke="#f4f0e8" stroke-width="2" opacity=".16">
     <path d="M76 106h1020M36 202h1020M-6 298h1020M-48 394h1020M-90 490h1020"/>
   </g>
-  <rect x="54" y="478" width="1092" height="136" rx="4" fill="#101114" opacity=".92"/>
-  <text x="88" y="570" fill="#f4f0e8" font-family="Arial Narrow, Arial, sans-serif" font-size="72" font-weight="900">BUILT FOR THE NEXT REP.</text>
+  <g opacity=".84">
+    <path d="M96 470 326 106h96L192 470H96Z" fill="#ff6230"/>
+    <path d="M330 470 560 106h96L426 470H330Z" fill="#f4f0e8"/>
+    <path d="M564 470 794 106h96L660 470H564Z" fill="#14c8e8"/>
+    <path d="M798 470 1028 106h96L894 470H798Z" fill="#a45cff"/>
+  </g>
+  <g opacity=".2">
+    <path d="M96 506h1028" stroke="#f4f0e8" stroke-width="2"/>
+    <path d="M96 80h1028" stroke="#f4f0e8" stroke-width="2"/>
+  </g>
+  <rect x="54" y="500" width="1092" height="118" rx="4" fill="#101114" opacity=".94"/>
+  <text x="88" y="578" fill="#f4f0e8" font-family="Arial Narrow, Arial, sans-serif" font-size="70" font-weight="900">BUILT FOR THE NEXT REP.</text>
   <g fill="#f4f0e8" opacity=".72">
     <rect x="820" y="132" width="220" height="10"/>
-    <rect x="820" y="164" width="162" height="10"/>
-    <rect x="820" y="196" width="292" height="10"/>
-    <rect x="820" y="228" width="120" height="10"/>
+    <rect x="820" y="164" width="220" height="10"/>
+    <rect x="820" y="196" width="220" height="10"/>
+    <rect x="820" y="228" width="220" height="10"/>
   </g>
 </svg>
-

@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 240" role="img" aria-labelledby="title desc">
+  <title id="title">SofinityX gradient mark</title>
+  <desc id="desc">A clean geometric SofinityX mark with a cyan, violet, magenta, and ivory gradient.</desc>
+  <defs>
+    <linearGradient id="sofinityx-premium-gradient" x1="46" y1="40" x2="194" y2="200" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#3ee6d4"/>
+      <stop offset="0.4" stop-color="#8f6bff"/>
+      <stop offset="0.75" stop-color="#ff4fc4"/>
+      <stop offset="1" stop-color="#fff9ee"/>
+    </linearGradient>
+    <filter id="soft-glow" x="-28%" y="-28%" width="156%" height="156%">
+      <feGaussianBlur stdDeviation="5" result="blur"/>
+      <feColorMatrix in="blur" type="matrix" values="0 0 0 0 0.246 0 0 0 0 0.902 0 0 0 0 0.831 0 0 0 0.42 0" result="glow"/>
+      <feMerge>
+        <feMergeNode in="glow"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+  <path d="M60 46h120v40h-66l66 58v50H60v-40h72L60 92Z" fill="url(#sofinityx-premium-gradient)" filter="url(#soft-glow)"/>
+</svg>
