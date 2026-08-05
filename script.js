@@ -3,6 +3,7 @@ const canvas = document.querySelector('.aura-canvas');
 const ctx = canvas ? canvas.getContext('2d') : null;
 const cursor = document.querySelector('.cursor-glow');
 const toggle = document.querySelector('.psychedelic-toggle');
+const hireHanger = document.querySelector('.hire-hanger');
 const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 const mobileQuery = window.matchMedia('(max-width: 700px), (pointer: coarse)');
 
@@ -15,6 +16,16 @@ let particles = [];
 let isMobile = mobileQuery.matches;
 let tickingScroll = false;
 let auraFrame = null;
+let lastScrollY = window.scrollY || 0;
+let hireAngle = 0;
+let hireVelocity = 0;
+let hireLift = 0;
+let hireLiftVelocity = 0;
+let hireFloatX = 0;
+let hireFloatVelocityX = 0;
+let hireFloatY = 0;
+let hireFloatVelocityY = 0;
+let hireFloatSeed = 0;
 
 function setMotionVars() {
   const scrollShift = window.scrollY || 0;
@@ -52,6 +63,21 @@ function handleScroll() {
 
   tickingScroll = true;
   requestAnimationFrame(() => {
+    const currentScrollY = window.scrollY || 0;
+    const scrollDelta = currentScrollY - lastScrollY;
+    lastScrollY = currentScrollY;
+
+    if (hireHanger && !reduceMotion) {
+      hireFloatSeed += Math.abs(scrollDelta) * 0.012 + 0.17;
+      const drift = Math.sin(hireFloatSeed) * 0.55 + Math.sin(hireFloatSeed * 0.47 + 1.8) * 0.45;
+      const direction = scrollDelta >= 0 ? 1 : -1;
+
+      hireVelocity += Math.max(-0.95, Math.min(0.95, scrollDelta * 0.006 + drift * 0.32));
+      hireFloatVelocityX += Math.max(-1.15, Math.min(1.15, direction * drift * 0.62 + scrollDelta * 0.0024));
+      hireFloatVelocityY += Math.max(-0.52, Math.min(0.52, Math.abs(scrollDelta) * 0.0018 + Math.cos(hireFloatSeed * 0.8) * 0.14));
+      hireLiftVelocity += Math.max(-0.7, Math.min(0.7, Math.abs(scrollDelta) * 0.003));
+    }
+
     setMotionVars();
     tickingScroll = false;
   });
@@ -68,6 +94,42 @@ function animateCursor() {
 }
 
 animateCursor();
+
+function animateHireHanger() {
+  if (!hireHanger || reduceMotion) return;
+
+  const stiffness = isMobile ? 0.035 : 0.028;
+  const damping = isMobile ? 0.82 : 0.86;
+  hireVelocity += (0 - hireAngle) * stiffness;
+  hireVelocity *= damping;
+  hireAngle += hireVelocity;
+  hireAngle = Math.max(-5.5, Math.min(5.5, hireAngle));
+
+  hireLiftVelocity += (0 - hireLift) * 0.08;
+  hireLiftVelocity *= 0.78;
+  hireLift += hireLiftVelocity;
+  hireLift = Math.max(0, Math.min(5, hireLift));
+
+  hireFloatVelocityX += (0 - hireFloatX) * 0.045;
+  hireFloatVelocityX *= isMobile ? 0.78 : 0.84;
+  hireFloatX += hireFloatVelocityX;
+  hireFloatX = Math.max(isMobile ? -3 : -8, Math.min(isMobile ? 3 : 8, hireFloatX));
+
+  hireFloatVelocityY += (0 - hireFloatY) * 0.055;
+  hireFloatVelocityY *= 0.8;
+  hireFloatY += hireFloatVelocityY;
+  hireFloatY = Math.max(isMobile ? -1 : -3, Math.min(isMobile ? 4 : 6, hireFloatY));
+
+  const x = Math.sin(hireAngle * Math.PI / 180) * (isMobile ? 1.5 : 3) + hireFloatX;
+  const y = hireLift + hireFloatY;
+  hireHanger.style.setProperty('--hire-rotate', `${hireAngle.toFixed(3)}deg`);
+  hireHanger.style.setProperty('--hire-x', `${x.toFixed(3)}px`);
+  hireHanger.style.setProperty('--hire-y', `${y.toFixed(3)}px`);
+
+  requestAnimationFrame(animateHireHanger);
+}
+
+animateHireHanger();
 
 document.querySelectorAll('a, button, .tilt-card').forEach((element) => {
   element.addEventListener('mouseenter', () => document.body.classList.add('cursor-hover'));
@@ -240,6 +302,149 @@ if (!reduceMotion && !isMobile) {
       button.style.transform = '';
     });
   });
+
+  const brandMarquee = document.querySelector('.brand-marquee');
+
+  if (brandMarquee) {
+    const pills = Array.from(brandMarquee.querySelectorAll('.brand-pill'));
+    const state = {
+      x: 0,
+      y: 0,
+      tiltX: 0,
+      tiltY: 0,
+      targetX: 0,
+      targetY: 0,
+      targetTiltX: 0,
+      targetTiltY: 0,
+      glowX: 50,
+      glowY: 50,
+      isNear: false,
+    };
+    const pillStates = pills.map(pill => ({
+      pill,
+      x: 0,
+      y: 0,
+      tiltX: 0,
+      tiltY: 0,
+      vx: 0,
+      vy: 0,
+      vTiltX: 0,
+      vTiltY: 0,
+      targetX: 0,
+      targetY: 0,
+      targetTiltX: 0,
+      targetTiltY: 0,
+      pull: 0,
+    }));
+
+    const resetBrandMarquee = () => {
+      state.targetX = 0;
+      state.targetY = 0;
+      state.targetTiltX = 0;
+      state.targetTiltY = 0;
+      state.isNear = false;
+      brandMarquee.classList.remove('is-reacting');
+      pillStates.forEach((pillState) => {
+        pillState.targetX = 0;
+        pillState.targetY = 0;
+        pillState.targetTiltX = 0;
+        pillState.targetTiltY = 0;
+        pillState.pull = 0;
+        pillState.pill.classList.remove('is-pulled');
+      });
+    };
+
+    const updateBrandTarget = (event) => {
+      const rect = brandMarquee.getBoundingClientRect();
+      const reach = 84;
+      const isNear = (
+        event.clientX >= rect.left - reach &&
+        event.clientX <= rect.right + reach &&
+        event.clientY >= rect.top - reach &&
+        event.clientY <= rect.bottom + reach
+      );
+
+      if (!isNear) {
+        resetBrandMarquee();
+        return;
+      }
+
+      const clampedX = Math.max(0, Math.min(1, (event.clientX - rect.left) / rect.width));
+      const clampedY = Math.max(0, Math.min(1, (event.clientY - rect.top) / rect.height));
+      const distanceX = Math.max(rect.left - event.clientX, 0, event.clientX - rect.right);
+      const distanceY = Math.max(rect.top - event.clientY, 0, event.clientY - rect.bottom);
+      const distance = Math.hypot(distanceX, distanceY);
+      const strength = Math.max(0, Math.min(1, 1 - distance / reach));
+      const x = clampedX - 0.5;
+      const y = clampedY - 0.5;
+
+      state.targetX = x * 7 * strength;
+      state.targetY = y * 3 * strength;
+      state.targetTiltX = y * -1.8 * strength;
+      state.targetTiltY = x * 2.4 * strength;
+      state.glowX = clampedX * 100;
+      state.glowY = clampedY * 100;
+      state.isNear = true;
+      brandMarquee.classList.add('is-reacting');
+
+      pillStates.forEach((pillState) => {
+        const pillRect = pillState.pill.getBoundingClientRect();
+        const centerX = pillRect.left + pillRect.width / 2;
+        const centerY = pillRect.top + pillRect.height / 2;
+        const dx = event.clientX - centerX;
+        const dy = event.clientY - centerY;
+        const influenceX = Math.max(0, 1 - Math.abs(dx) / 240);
+        const influenceY = Math.max(0, 1 - Math.abs(dy) / 140);
+        const influence = Math.pow(influenceX * influenceY, 1.65);
+        const clampedPullY = Math.max(-16, Math.min(16, dy * 0.22));
+        const clampedPullX = Math.max(-8, Math.min(8, dx * 0.055));
+
+        pillState.targetX = clampedPullX * influence;
+        pillState.targetY = clampedPullY * influence;
+        pillState.targetTiltX = Math.max(-7, Math.min(7, dy * -0.12)) * influence;
+        pillState.targetTiltY = Math.max(-5, Math.min(5, dx * 0.055)) * influence;
+        pillState.pull = influence;
+        pillState.pill.classList.toggle('is-pulled', influence > 0.34);
+      });
+    };
+
+    const animateBrandMarquee = () => {
+      state.x += (state.targetX - state.x) * 0.06;
+      state.y += (state.targetY - state.y) * 0.06;
+      state.tiltX += (state.targetTiltX - state.tiltX) * 0.06;
+      state.tiltY += (state.targetTiltY - state.tiltY) * 0.06;
+
+      brandMarquee.style.setProperty('--brand-shift-x', `${state.x.toFixed(3)}px`);
+      brandMarquee.style.setProperty('--brand-shift-y', `${state.y.toFixed(3)}px`);
+      brandMarquee.style.setProperty('--brand-tilt-x', `${state.tiltX.toFixed(3)}deg`);
+      brandMarquee.style.setProperty('--brand-tilt-y', `${state.tiltY.toFixed(3)}deg`);
+      brandMarquee.style.setProperty('--brand-glow-x', `${state.glowX.toFixed(2)}%`);
+      brandMarquee.style.setProperty('--brand-glow-y', `${state.glowY.toFixed(2)}%`);
+
+      pillStates.forEach((pillState) => {
+        pillState.vx = (pillState.vx + (pillState.targetX - pillState.x) * 0.09) * 0.78;
+        pillState.vy = (pillState.vy + (pillState.targetY - pillState.y) * 0.09) * 0.78;
+        pillState.vTiltX = (pillState.vTiltX + (pillState.targetTiltX - pillState.tiltX) * 0.09) * 0.78;
+        pillState.vTiltY = (pillState.vTiltY + (pillState.targetTiltY - pillState.tiltY) * 0.09) * 0.78;
+        pillState.x += pillState.vx;
+        pillState.y += pillState.vy;
+        pillState.tiltX += pillState.vTiltX;
+        pillState.tiltY += pillState.vTiltY;
+
+        pillState.pill.style.setProperty('--pill-shift-x', `${pillState.x.toFixed(3)}px`);
+        pillState.pill.style.setProperty('--pill-shift-y', `${pillState.y.toFixed(3)}px`);
+        pillState.pill.style.setProperty('--pill-tilt-x', `${pillState.tiltX.toFixed(3)}deg`);
+        pillState.pill.style.setProperty('--pill-tilt-y', `${pillState.tiltY.toFixed(3)}deg`);
+      });
+
+      requestAnimationFrame(animateBrandMarquee);
+    };
+
+    document.addEventListener('mousemove', updateBrandTarget);
+    document.addEventListener('mouseleave', resetBrandMarquee);
+    window.addEventListener('scroll', resetBrandMarquee, { passive: true });
+    animateBrandMarquee();
+  }
 }
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -249,15 +454,24 @@ document.addEventListener('DOMContentLoaded', () => {
     .map(link => document.querySelector(link.getAttribute('href')))
     .filter(Boolean);
 
-  const observer = new IntersectionObserver((entries) => {
+  const createRevealObserver = threshold => new IntersectionObserver((entries) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
         entry.target.classList.add('visible');
       }
     });
-  }, { threshold: 0.16 });
+  }, { threshold });
 
-  reveals.forEach(el => observer.observe(el));
+  const defaultRevealObserver = createRevealObserver(0.16);
+  const tallSectionRevealObserver = createRevealObserver(0.045);
+
+  reveals.forEach(el => {
+    const observer = el.classList.contains('selected-work')
+      ? tallSectionRevealObserver
+      : defaultRevealObserver;
+
+    observer.observe(el);
+  });
 
   const navObserver = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
