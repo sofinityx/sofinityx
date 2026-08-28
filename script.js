@@ -3,6 +3,7 @@ const canvas = document.querySelector('.aura-canvas');
 const ctx = canvas ? canvas.getContext('2d') : null;
 const cursor = document.querySelector('.cursor-glow');
 const toggle = document.querySelector('.psychedelic-toggle');
+const themeBrush = document.querySelector('.theme-brush');
 const hireHanger = document.querySelector('.hire-hanger');
 const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 const mobileQuery = window.matchMedia('(max-width: 700px), (pointer: coarse)');
@@ -26,6 +27,39 @@ let hireFloatVelocityX = 0;
 let hireFloatY = 0;
 let hireFloatVelocityY = 0;
 let hireFloatSeed = 0;
+const colorThemes = [
+  { name: 'default', label: 'Original spectrum' },
+  { name: 'violet', label: 'Violet dream' },
+  { name: 'ember', label: 'Ember glow' },
+  { name: 'forest', label: 'Forest signal' },
+  { name: 'cyan', label: 'Cyan pulse' },
+];
+let currentThemeIndex = 0;
+
+function applyColorTheme(themeName) {
+  colorThemes.forEach((theme) => {
+    document.body.classList.toggle(`theme-${theme.name}`, theme.name !== 'default' && theme.name === themeName);
+  });
+
+  currentThemeIndex = Math.max(0, colorThemes.findIndex((theme) => theme.name === themeName));
+  const activeTheme = colorThemes[currentThemeIndex] || colorThemes[0];
+
+  if (themeBrush) {
+    themeBrush.setAttribute('aria-label', `Change website color theme. Current theme: ${activeTheme.label}`);
+    themeBrush.setAttribute('title', `Theme: ${activeTheme.label}`);
+  }
+}
+
+try {
+  const savedTheme = localStorage.getItem('sofinityx-color-theme');
+  if (savedTheme && colorThemes.some((theme) => theme.name === savedTheme)) {
+    applyColorTheme(savedTheme);
+  } else {
+    applyColorTheme('default');
+  }
+} catch (error) {
+  applyColorTheme('default');
+}
 
 function setMotionVars() {
   const scrollShift = window.scrollY || 0;
@@ -145,6 +179,23 @@ if (toggle) {
     document.body.classList.toggle('cursor-active', enabled);
     if (!enabled) {
       document.body.classList.remove('cursor-hover');
+    }
+  });
+}
+
+if (themeBrush) {
+  themeBrush.addEventListener('click', () => {
+    currentThemeIndex = (currentThemeIndex + 1) % colorThemes.length;
+    const nextTheme = colorThemes[currentThemeIndex];
+    applyColorTheme(nextTheme.name);
+    themeBrush.classList.remove('theme-brush-pop');
+    void themeBrush.offsetWidth;
+    themeBrush.classList.add('theme-brush-pop');
+
+    try {
+      localStorage.setItem('sofinityx-color-theme', nextTheme.name);
+    } catch (error) {
+      // Theme switching still works even when storage is unavailable.
     }
   });
 }
