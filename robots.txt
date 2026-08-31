@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+Disallow: /sofinityx-logo-concepts.html
+
+Sitemap: https://sofinityx.com/sitemap.xml

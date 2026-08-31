@@ -885,13 +885,22 @@ h3 {
   border: 1px solid rgba(255, 249, 238, 0.25);
   border-radius: 42% 58% 45% 55%;
   background:
-    radial-gradient(circle at calc(50% + var(--mouse-x) * 0.7) calc(50% + var(--mouse-y) * 0.7), rgba(255, 255, 255, 0.2), transparent 20%),
-    repeating-conic-gradient(from 45deg, rgba(255, 79, 196, 0.18) 0 8deg, rgba(62, 230, 212, 0.18) 8deg 16deg, rgba(255, 200, 87, 0.14) 16deg 24deg),
+    radial-gradient(circle at var(--membrane-x, 50%) var(--membrane-y, 50%), rgba(255, 249, 238, calc(0.2 * var(--membrane-pull, 0))), transparent 24%),
+    radial-gradient(circle at calc(50% + var(--mouse-x) * 0.7) calc(50% + var(--mouse-y) * 0.7), rgba(255, 255, 255, 0.15), transparent 22%),
+    repeating-conic-gradient(from 45deg, rgba(255, 79, 196, 0.12) 0 8deg, rgba(62, 230, 212, 0.12) 8deg 16deg, rgba(255, 200, 87, 0.08) 16deg 24deg),
     rgba(255, 249, 238, 0.06);
   box-shadow: inset 0 0 80px rgba(255, 249, 238, 0.08), 0 34px 100px rgba(0, 0, 0, 0.36);
-  transform: translate3d(calc(var(--mouse-x) * 0.5), calc(var(--mouse-y) * 0.34), 0) rotate(calc(var(--scroll-shift) * 0.02deg));
-  animation: morph 13s ease-in-out infinite, portalSpin 24s linear infinite;
-  overflow: hidden;
+  transform:
+    translate3d(
+      calc(var(--mouse-x) * 0.5 + var(--membrane-dx, 0px)),
+      calc(var(--mouse-y) * 0.34 + var(--membrane-dy, 0px)),
+      0
+    )
+    scaleX(calc(1 + var(--membrane-pull, 0) * 0.035))
+    scaleY(calc(1 - var(--membrane-pull, 0) * 0.018))
+    rotate(calc(var(--scroll-shift) * 0.02deg + var(--membrane-angle, 0deg) * 0.015));
+  animation: morph 13s ease-in-out infinite;
+  overflow: visible;
 }
 
 .portal::before,
@@ -906,21 +915,26 @@ h3 {
 
 .portal::before {
   background:
-    linear-gradient(90deg, transparent 46%, rgba(255, 249, 238, 0.18) 49%, transparent 52%),
-    linear-gradient(0deg, transparent 46%, rgba(255, 249, 238, 0.12) 49%, transparent 52%);
-  transform: rotate(calc(var(--mouse-x) * 1.4deg));
+    radial-gradient(ellipse at var(--membrane-x, 50%) var(--membrane-y, 50%), rgba(255, 249, 238, calc(0.18 * var(--membrane-pull, 0))), transparent 34%),
+    radial-gradient(circle at 34% 30%, rgba(255, 249, 238, 0.08), transparent 28%),
+    radial-gradient(circle at 68% 72%, rgba(62, 230, 212, 0.065), transparent 34%);
+  transform:
+    translate3d(calc(var(--membrane-dx, 0px) * 0.55), calc(var(--membrane-dy, 0px) * 0.55), 0)
+    scale(calc(1 + var(--membrane-pull, 0) * 0.045));
+  opacity: calc(0.62 + var(--membrane-pull, 0) * 0.18);
 }
 
 .portal::after {
-  inset: 22%;
-  background: conic-gradient(from 0deg, rgba(255, 79, 196, 0.28), rgba(62, 230, 212, 0.2), rgba(152, 245, 119, 0.18), rgba(255, 79, 196, 0.28));
-  filter: blur(16px);
-  opacity: 0.6;
+  inset: 18%;
+  background:
+    radial-gradient(circle at var(--membrane-x, 50%) var(--membrane-y, 50%), rgba(255, 249, 238, calc(0.42 * var(--membrane-pull, 0))), transparent 32%),
+    conic-gradient(from 0deg, rgba(255, 79, 196, 0.24), rgba(62, 230, 212, 0.18), rgba(152, 245, 119, 0.14), rgba(255, 79, 196, 0.24));
+  filter: blur(22px);
+  opacity: calc(0.34 + var(--membrane-pull, 0) * 0.22);
   animation: pulseCore 4.8s ease-in-out infinite;
 }
 
 .portal-ring,
-.portal-core,
 .portal-particle {
   position: absolute;
   display: block;
@@ -938,7 +952,13 @@ h3 {
   border-right-color: rgba(255, 249, 238, 0.2);
   border-radius: 44% 56% 52% 48%;
   filter: drop-shadow(0 0 18px var(--ring-glow));
-  transform: rotate(var(--ring-angle)) translate3d(calc(var(--mouse-x) * var(--ring-depth)), calc(var(--mouse-y) * var(--ring-depth)), 0);
+  transform:
+    rotate(calc(var(--ring-angle) + var(--membrane-angle, 0deg) * var(--ring-membrane, 0.012)))
+    translate3d(
+      calc(var(--mouse-x) * var(--ring-depth) + var(--membrane-dx, 0px) * var(--ring-pull, 0.22)),
+      calc(var(--mouse-y) * var(--ring-depth) + var(--membrane-dy, 0px) * var(--ring-pull, 0.22)),
+      0
+    );
   animation: ringOrbit var(--ring-speed) linear infinite;
 }
 
@@ -949,6 +969,8 @@ h3 {
   --ring-angle: 12deg;
   --ring-depth: 0.14;
   --ring-speed: 18s;
+  --ring-pull: 0.28;
+  --ring-membrane: 0.018;
 }
 
 .ring-two {
@@ -958,6 +980,8 @@ h3 {
   --ring-angle: -32deg;
   --ring-depth: -0.2;
   --ring-speed: 13s;
+  --ring-pull: 0.2;
+  --ring-membrane: -0.014;
   animation-direction: reverse;
 }
 
@@ -968,19 +992,8 @@ h3 {
   --ring-angle: 60deg;
   --ring-depth: 0.26;
   --ring-speed: 9s;
-}
-
-.portal-core {
-  width: 34%;
-  aspect-ratio: 1;
-  border-radius: 42% 58% 46% 54%;
-  background:
-    radial-gradient(circle at 38% 32%, rgba(255, 249, 238, 0.95), rgba(255, 200, 87, 0.46) 18%, transparent 34%),
-    conic-gradient(from 180deg, rgba(5, 5, 16, 0.92), rgba(255, 79, 196, 0.5), rgba(62, 230, 212, 0.52), rgba(5, 5, 16, 0.92));
-  box-shadow: inset 0 0 36px rgba(0, 0, 0, 0.38), 0 0 54px rgba(255, 79, 196, 0.2);
-  transform: translate3d(calc(var(--mouse-x) * -0.28), calc(var(--mouse-y) * -0.28), 0);
-  animation: morph 7s ease-in-out infinite;
-  z-index: 2;
+  --ring-pull: 0.14;
+  --ring-membrane: 0.02;
 }
 
 .portal-particle {
@@ -1015,14 +1028,104 @@ h3 {
   animation-direction: reverse;
 }
 
-.hero-visual p {
+.orbit-bubble {
   position: absolute;
-  right: 2vw;
-  bottom: 7vh;
-  z-index: 3;
-  color: rgba(255, 249, 238, 0.78);
-  font-size: clamp(1.25rem, 2.5vw, 2.5rem);
-  font-weight: 800;
+  left: 0;
+  top: 0;
+  z-index: 4;
+  width: clamp(38px, 4.1vw, 54px);
+  aspect-ratio: 1;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 249, 238, 0.34);
+  background:
+    radial-gradient(circle at 34% 28%, rgba(255, 249, 238, 0.86), rgba(255, 249, 238, 0.16) 16%, transparent 31%),
+    radial-gradient(circle at 72% 76%, rgba(62, 230, 212, 0.28), transparent 42%),
+    linear-gradient(135deg, rgba(255, 249, 238, 0.18), rgba(255, 79, 196, 0.12) 42%, rgba(62, 230, 212, 0.14));
+  box-shadow:
+    inset -10px -12px 18px rgba(5, 5, 16, 0.22),
+    inset 9px 9px 16px rgba(255, 249, 238, 0.12),
+    0 0 18px rgba(62, 230, 212, 0.16),
+    0 0 34px rgba(255, 79, 196, 0.1);
+  opacity: 0.78;
+  pointer-events: none;
+  mix-blend-mode: screen;
+  transform:
+    translate3d(calc(var(--bubble-x, 0px) - 50%), calc(var(--bubble-y, 0px) - 50%), 0)
+    scale(var(--bubble-scale, 1))
+    rotate(var(--bubble-rotate, 0deg));
+  transition: opacity 0.28s ease, filter 0.28s ease, background 0.28s ease, box-shadow 0.28s ease;
+}
+
+.orbit-bubble::before,
+.orbit-bubble::after {
+  content: "";
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+.orbit-bubble::before {
+  inset: 16%;
+  border: 1px solid rgba(255, 249, 238, 0.2);
+  opacity: 0.62;
+  animation: bubbleBreathe 5.8s ease-in-out infinite;
+}
+
+.orbit-bubble::after {
+  width: 26%;
+  aspect-ratio: 1;
+  left: 23%;
+  top: 18%;
+  background: rgba(255, 249, 238, 0.72);
+  filter: blur(2px);
+  opacity: 0.58;
+  animation: bubbleGlint 4.8s ease-in-out infinite;
+}
+
+.portal.is-bubble-curious .orbit-bubble {
+  opacity: 0.9;
+  filter: saturate(1.08) brightness(1.03);
+}
+
+.portal.is-bubble-captured .orbit-bubble {
+  border-color: rgba(255, 249, 238, 0.42);
+  background:
+    radial-gradient(circle at 30% 24%, rgba(255, 249, 238, 0.95), rgba(255, 249, 238, 0.2) 17%, transparent 32%),
+    radial-gradient(circle at 70% 72%, rgba(62, 230, 212, 0.38), transparent 42%),
+    radial-gradient(circle at 24% 74%, rgba(255, 79, 196, 0.28), transparent 38%),
+    linear-gradient(135deg, rgba(255, 249, 238, 0.2), rgba(255, 200, 87, 0.14) 36%, rgba(62, 230, 212, 0.18) 72%, rgba(255, 79, 196, 0.14));
+  box-shadow:
+    inset -12px -14px 20px rgba(5, 5, 16, 0.2),
+    inset 11px 11px 18px rgba(255, 249, 238, 0.18),
+    0 0 26px rgba(62, 230, 212, 0.24),
+    0 0 54px rgba(255, 79, 196, 0.16),
+    0 0 76px rgba(255, 200, 87, 0.08);
+  filter: saturate(1.22) brightness(1.08);
+}
+
+.portal.is-bubble-captured .orbit-bubble::before {
+  border-color: rgba(255, 249, 238, 0.28);
+  animation-duration: 3.6s;
+}
+
+.portal.is-bubble-captured .orbit-bubble::after {
+  background: rgba(255, 249, 238, 0.86);
+  opacity: 0.72;
+  animation-duration: 2.9s;
+}
+
+@keyframes bubbleBreathe {
+  50% {
+    transform: scale(1.08);
+    opacity: 0.36;
+  }
+}
+
+@keyframes bubbleGlint {
+  50% {
+    transform: translate(12%, 8%) scale(0.78);
+    opacity: 0.36;
+  }
 }
 
 .case-hero-shot {
@@ -1094,10 +1197,6 @@ h3 {
   0%, 100% { border-radius: 42% 58% 45% 55%; }
   33% { border-radius: 58% 42% 52% 48%; }
   66% { border-radius: 47% 53% 38% 62%; }
-}
-
-@keyframes portalSpin {
-  to { background-position: 180px 0, 0 0; }
 }
 
 @keyframes ringOrbit {
@@ -4098,7 +4197,6 @@ h3 {
   }
 
   .portal,
-  .portal-core,
   .portal::after {
     animation-duration: 18s;
   }
@@ -4212,6 +4310,10 @@ h3 {
   }
 
   .cursor-glow {
+    display: none;
+  }
+
+  .orbit-bubble {
     display: none;
   }
 }
@@ -4499,7 +4601,8 @@ h3 {
   .aura-canvas,
   .noise-overlay,
   .flow-line,
-  .cursor-glow {
+  .cursor-glow,
+  .orbit-bubble {
     display: none;
   }
 
@@ -4537,10 +4640,6 @@ h3 {
 
   .portal::after {
     animation: pulseCore 7s ease-in-out infinite;
-  }
-
-  .portal-core {
-    animation: morph 12s ease-in-out infinite;
   }
 
   .visual-sofinityx {

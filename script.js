@@ -5,6 +5,8 @@ const cursor = document.querySelector('.cursor-glow');
 const toggle = document.querySelector('.psychedelic-toggle');
 const themeBrush = document.querySelector('.theme-brush');
 const hireHanger = document.querySelector('.hire-hanger');
+const productOrbit = document.querySelector('.product-orbit');
+const orbitBubble = document.querySelector('.orbit-bubble');
 const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 const mobileQuery = window.matchMedia('(max-width: 700px), (pointer: coarse)');
 
@@ -27,6 +29,7 @@ let hireFloatVelocityX = 0;
 let hireFloatY = 0;
 let hireFloatVelocityY = 0;
 let hireFloatSeed = 0;
+let orbitBubbleFrame = null;
 const colorThemes = [
   { name: 'default', label: 'Original spectrum' },
   { name: 'violet', label: 'Violet dream' },
@@ -165,6 +168,176 @@ function animateHireHanger() {
 
 animateHireHanger();
 
+function initOrbitBubble() {
+  if (!productOrbit || !orbitBubble || reduceMotion || isMobile) return;
+
+  const bubble = {
+    x: 0,
+    y: 0,
+    vx: 0,
+    vy: 0,
+    targetX: 0,
+    targetY: 0,
+    scale: 1,
+    targetScale: 1,
+    rotation: 0,
+    membranePull: 0,
+    targetMembranePull: 0,
+    membraneX: 50,
+    membraneY: 50,
+    membraneDx: 0,
+    membraneDy: 0,
+    membraneAngle: 0,
+    captured: false,
+    curious: false,
+    seeded: false,
+  };
+
+  const seedBubble = () => {
+    const rect = productOrbit.getBoundingClientRect();
+    const angle = -0.9 + Math.random() * 1.8;
+    const distance = Math.min(rect.width, rect.height) * (0.6 + Math.random() * 0.16);
+
+    bubble.x = rect.width / 2 + Math.cos(angle) * distance;
+    bubble.y = rect.height / 2 + Math.sin(angle) * distance;
+    bubble.vx = 0;
+    bubble.vy = 0;
+    bubble.targetX = bubble.x;
+    bubble.targetY = bubble.y;
+    bubble.seeded = true;
+  };
+
+  const constrainBubble = (x, y, rect, allowInside = true) => {
+    const centerX = rect.width / 2;
+    const centerY = rect.height / 2;
+    const maxDistance = Math.min(rect.width, rect.height) * 0.82;
+    const minDistance = allowInside ? 0 : Math.min(rect.width, rect.height) * 0.5;
+    const dx = x - centerX;
+    const dy = y - centerY;
+    const distance = Math.max(0.001, Math.hypot(dx, dy));
+    const clampedDistance = Math.max(minDistance, Math.min(maxDistance, distance));
+
+    return {
+      x: centerX + dx / distance * clampedDistance,
+      y: centerY + dy / distance * clampedDistance,
+    };
+  };
+
+  const updateBubbleTarget = (event) => {
+    const rect = productOrbit.getBoundingClientRect();
+    const localX = event.clientX - rect.left;
+    const localY = event.clientY - rect.top;
+    const centerX = rect.width / 2;
+    const centerY = rect.height / 2;
+    const distance = Math.hypot(localX - centerX, localY - centerY);
+    const orbitRadius = Math.min(rect.width, rect.height) * 0.48;
+    const reach = Math.min(rect.width, rect.height) * 0.64;
+    const isNear = distance < orbitRadius + reach;
+    const dx = localX - centerX;
+    const dy = localY - centerY;
+    const safeDistance = Math.max(0.001, distance);
+    const edgeX = centerX + dx / safeDistance * orbitRadius;
+    const edgeY = centerY + dy / safeDistance * orbitRadius;
+    const boundaryPressure = Math.max(0, 1 - Math.abs(distance - orbitRadius) / reach);
+    const directionalPressure = Math.max(0, 1 - Math.max(0, distance - orbitRadius) / reach);
+
+    bubble.curious = isNear;
+    productOrbit.classList.toggle('is-bubble-curious', isNear);
+
+    if (!isNear) {
+      bubble.targetMembranePull = 0;
+      productOrbit.classList.remove('is-bubble-captured');
+      return;
+    }
+
+    bubble.membraneX = Math.max(8, Math.min(92, (edgeX / rect.width) * 100));
+    bubble.membraneY = Math.max(8, Math.min(92, (edgeY / rect.height) * 100));
+    bubble.membraneDx = dx / safeDistance * boundaryPressure * (bubble.captured ? 14 : 24) * (distance > orbitRadius ? 1 : -0.72);
+    bubble.membraneDy = dy / safeDistance * boundaryPressure * (bubble.captured ? 14 : 24) * (distance > orbitRadius ? 1 : -0.72);
+    bubble.membraneAngle = Math.atan2(dy, dx) * 180 / Math.PI;
+    bubble.targetMembranePull = Math.min(1, Math.max(boundaryPressure, directionalPressure * 0.42));
+
+    if (!bubble.captured && distance < orbitRadius * 0.72) {
+      bubble.captured = true;
+      bubble.vx += (localX - bubble.x) * 0.018;
+      bubble.vy += (localY - bubble.y) * 0.018;
+    }
+
+    if (bubble.captured && distance > orbitRadius * 1.18) {
+      bubble.captured = false;
+      bubble.vx += (localX - bubble.x) * 0.014;
+      bubble.vy += (localY - bubble.y) * 0.014;
+    }
+
+    const pull = bubble.captured ? 0.82 : boundaryPressure * 0.34;
+    const resistance = bubble.captured ? 1 : 0.58;
+    const target = constrainBubble(
+      bubble.x + (localX - bubble.x) * pull * resistance,
+      bubble.y + (localY - bubble.y) * pull * resistance,
+      rect,
+      bubble.captured
+    );
+
+    bubble.targetX = target.x;
+    bubble.targetY = target.y;
+    bubble.targetScale = bubble.captured ? 1.1 : 1.01;
+    productOrbit.classList.toggle('is-bubble-captured', bubble.captured);
+  };
+
+  const releaseBubble = () => {
+    bubble.curious = false;
+    bubble.targetScale = 1;
+    bubble.targetMembranePull = 0;
+    productOrbit.classList.remove('is-bubble-curious');
+  };
+
+  const animateBubble = () => {
+    if (!bubble.seeded) seedBubble();
+
+    const rect = productOrbit.getBoundingClientRect();
+    const spring = bubble.captured ? 0.082 : 0.05;
+    const damping = bubble.captured ? 0.8 : 0.86;
+    const idleDrift = bubble.curious ? 0 : 0.018;
+
+    bubble.vx += (bubble.targetX - bubble.x) * spring;
+    bubble.vy += (bubble.targetY - bubble.y) * spring;
+    bubble.vx += Math.sin(performance.now() * 0.0011) * idleDrift;
+    bubble.vy += Math.cos(performance.now() * 0.0009) * idleDrift;
+    bubble.vx *= damping;
+    bubble.vy *= damping;
+    bubble.x += bubble.vx;
+    bubble.y += bubble.vy;
+
+    const constrained = constrainBubble(bubble.x, bubble.y, rect, bubble.captured);
+    bubble.x = constrained.x;
+    bubble.y = constrained.y;
+    bubble.scale += (bubble.targetScale - bubble.scale) * 0.08;
+    bubble.membranePull += (bubble.targetMembranePull - bubble.membranePull) * 0.09;
+    bubble.rotation += bubble.vx * 0.08;
+
+    orbitBubble.style.setProperty('--bubble-x', `${bubble.x.toFixed(3)}px`);
+    orbitBubble.style.setProperty('--bubble-y', `${bubble.y.toFixed(3)}px`);
+    orbitBubble.style.setProperty('--bubble-scale', bubble.scale.toFixed(3));
+    orbitBubble.style.setProperty('--bubble-rotate', `${bubble.rotation.toFixed(3)}deg`);
+    productOrbit.style.setProperty('--membrane-x', `${bubble.membraneX.toFixed(2)}%`);
+    productOrbit.style.setProperty('--membrane-y', `${bubble.membraneY.toFixed(2)}%`);
+    productOrbit.style.setProperty('--membrane-dx', `${(bubble.membraneDx * bubble.membranePull).toFixed(3)}px`);
+    productOrbit.style.setProperty('--membrane-dy', `${(bubble.membraneDy * bubble.membranePull).toFixed(3)}px`);
+    productOrbit.style.setProperty('--membrane-angle', `${bubble.membraneAngle.toFixed(3)}deg`);
+    productOrbit.style.setProperty('--membrane-pull', bubble.membranePull.toFixed(3));
+
+    orbitBubbleFrame = requestAnimationFrame(animateBubble);
+  };
+
+  document.addEventListener('mousemove', updateBubbleTarget);
+  document.addEventListener('mouseleave', releaseBubble);
+  window.addEventListener('resize', seedBubble);
+  seedBubble();
+  animateBubble();
+}
+
+initOrbitBubble();
+
 document.querySelectorAll('a, button, .tilt-card').forEach((element) => {
   element.addEventListener('mouseenter', () => document.body.classList.add('cursor-hover'));
   element.addEventListener('mouseleave', () => document.body.classList.remove('cursor-hover'));
@@ -196,6 +369,13 @@ if (themeBrush) {
       localStorage.setItem('sofinityx-color-theme', nextTheme.name);
     } catch (error) {
       // Theme switching still works even when storage is unavailable.
+    }
+
+    if (window.posthog && typeof window.posthog.capture === 'function') {
+      window.posthog.capture('theme_changed', {
+        theme: nextTheme.name,
+        label: nextTheme.label,
+      });
     }
   });
 }
@@ -535,4 +715,29 @@ document.addEventListener('DOMContentLoaded', () => {
   }, { rootMargin: '-35% 0px -55% 0px', threshold: 0.01 });
 
   navTargets.forEach(target => navObserver.observe(target));
+
+  document.querySelectorAll('a[href]').forEach((link) => {
+    link.addEventListener('click', () => {
+      if (!window.posthog || typeof window.posthog.capture !== 'function') return;
+
+      const href = link.getAttribute('href') || '';
+      let eventName = 'link_clicked';
+
+      if (link.classList.contains('service-learn-more')) {
+        eventName = 'service_learn_more_clicked';
+      } else if (href.includes('cal.com/sofinityx')) {
+        eventName = 'booking_link_clicked';
+      } else if (href.startsWith('mailto:')) {
+        eventName = 'email_link_clicked';
+      } else if (link.classList.contains('case-link')) {
+        eventName = 'case_study_link_clicked';
+      }
+
+      window.posthog.capture(eventName, {
+        href,
+        text: link.textContent.trim().replace(/\s+/g, ' ').slice(0, 120),
+        path: window.location.pathname,
+      });
+    });
+  });
 });
