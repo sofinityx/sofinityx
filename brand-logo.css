@@ -1,0 +1,15 @@
+/* The approved Crosscut signature, shared by both design editions. */
+body .site-logo,body.inner-page .site-logo{display:inline-flex;flex-direction:row;align-items:center;gap:10px;flex-shrink:0;line-height:1;text-decoration:none}
+body .site-logo .brand-crosscut{display:block;width:34px;height:34px;flex-shrink:0;color:var(--text,#f5f4f1)}
+body .site-logo .brand-word,body.inner-page .site-logo .brand-word{display:inline;font-family:'Manrope','Montserrat',Arial,sans-serif;font-size:27px;font-weight:800;line-height:1;letter-spacing:-1.5px;color:var(--text,#f5f4f1)}
+body .site-logo .brand-x,body.inner-page .site-logo .brand-x{display:inline;font-family:inherit;font-size:inherit;font-weight:inherit;line-height:inherit;letter-spacing:inherit;color:var(--accent,var(--aqua,#d9fd81))}
+@media(max-width:700px){body .site-logo,body.inner-page .site-logo{gap:7px}body .site-logo .brand-crosscut{width:27px;height:27px}body .site-logo .brand-word,body.inner-page .site-logo .brand-word{font-size:22px;letter-spacing:-1.2px}}
+@media(max-width:380px){body .site-logo,body.inner-page .site-logo{gap:5px}body .site-logo .brand-crosscut{width:24px;height:24px}body .site-logo .brand-word,body.inner-page .site-logo .brand-word{font-size:20px}}
+@media(max-width:600px){body .site-header .site-nav{gap:10px}body .site-header .site-nav a[href='#services'],body .site-header .site-nav a[href='index.html#services']{display:none}body .site-header .nav-cta{padding:8px 10px}}
+@media(max-width:380px){body .site-header .site-nav a[href='#work'],body .site-header .site-nav a[href='case-studies.html']{display:none}}
+
+/* Reset the original stacked wordmark rules for the horizontal Crosscut lockup. */
+body .site-logo .brand-word,body .site-logo .brand-x{margin-top:0;text-transform:none}
+
+/* About is a desktop shortcut; the mobile navigation stays compact. */
+@media(max-width:1000px){body .site-header .site-nav .nav-about{display:none}}

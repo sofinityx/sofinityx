@@ -15,37 +15,46 @@
   <meta name="twitter:description" content="UX/UI product design case study for a local-first real-estate image enhancement workflow." />
   <meta name="twitter:image" content="https://sofinityx.com/assets/lumaro-before-after.webp" />
   <title>Lumaro Case Study | Sofi</title>
-  <link rel="icon" type="image/svg+xml" href="assets/sofinityx-crosscut-favicon.svg" />
+  <link rel="icon" type="image/svg+xml" href="../assets/sofinityx-crosscut-favicon.svg" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="homepage.css?v=premium-6">
-  <link rel="stylesheet" href="inner-pages.css?v=2">
-  <link rel="stylesheet" href="design-switch.css?v=1">
-  <script src="design-switch.js?v=1"></script>
-  <link rel="stylesheet" href="brand-logo.css?v=3">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../style.css?v=seo-funnel-1" />
+  <link rel="stylesheet" href="../design-switch.css?v=1">
+  <script src="../design-switch.js?v=1"></script>
+  <link rel="stylesheet" href="../brand-logo.css?v=3">
 </head>
-<body class="inner-page">
-  <a class="skip-link" href="#top">Skip to content</a>
-  <div class="scroll-progress" aria-hidden="true"><span></span></div>
+<body>
+  <canvas class="aura-canvas" aria-hidden="true"></canvas>
+  <div class="noise-overlay" aria-hidden="true"></div>
+  <div class="cursor-glow" aria-hidden="true"></div>
+  <div class="flow-field" aria-hidden="true">
+    <span class="flow-line line-one"></span>
+    <span class="flow-line line-two"></span>
+    <span class="flow-line line-three"></span>
+  </div>
+
   <header class="site-header">
-    <a href="index.html#top" class="site-logo" aria-label="SofinityX home"><svg class="brand-crosscut" viewBox="0 0 130 130" fill="currentColor" aria-hidden="true" focusable="false"><path d="M25 22H58L104 106H72Z"/><path d="M72 22H105L78 67 61 38Z"/><path d="M48 65L65 94 58 106H25Z"/></svg><span class="brand-word">sofinity<span class="brand-x">x</span></span></a>
+    <a href="index.html#top" class="site-logo magnetic" aria-label="SofinityX home"><svg class="brand-crosscut" viewBox="0 0 130 130" fill="currentColor" aria-hidden="true" focusable="false"><path d="M25 22H58L104 106H72Z"/><path d="M72 22H105L78 67 61 38Z"/><path d="M48 65L65 94 58 106H25Z"/></svg><span class="brand-word">sofinity<span class="brand-x">x</span></span></a>
     <nav class="site-nav" aria-label="Primary navigation">
-      <a href="case-studies.html">Work</a><a href="index.html#services">Expertise</a><a class="nav-about" href="index.html#about">About</a><a href="index.html#process">Process</a>
-      <button class="theme-brush" type="button" aria-label="Change website color theme" title="Change the vibe"><span aria-hidden="true">✳</span></button>
-      <a class="nav-cta" href="https://cal.com/sofinityx/30min" target="_blank" rel="noopener">Let’s talk <span aria-hidden="true">↗</span></a>
+      <a href="index.html#services">Services</a>
+      <a href="index.html#work">Work</a>
+      <a class="nav-about" href="index.html#about">About</a><a href="index.html#process">Process</a>
+      <a href="index.html#contact">Contact</a>
     </nav>
   </header>
+
+  <button class="psychedelic-toggle" type="button" aria-pressed="false">Intensify</button>
+
   <main id="top" class="case-study-page">
     <section class="case-hero hero">
-<a class="page-back" href="case-studies.html">← All case studies</a>
       <div class="hero-copy">
-        <p class="eyebrow">Desktop Product Design &middot; Creative Workflow</p>
-        <h1 class="">Lumaro</h1>
-        <p class="tagline">
+        <p class="eyebrow hero-line delay-1">Desktop Product Design &middot; Creative Workflow</p>
+        <h1 class="hero-line delay-2">Lumaro</h1>
+        <p class="tagline hero-line delay-3">
           A Windows desktop app for real-estate image enhancement. Lumaro processes bracketed real-estate photos, aligns and merges exposures, improves interior lighting, and helps preserve window detail through an optional manual Window Pull workflow.
         </p>
-        <dl class="case-meta">
+        <dl class="case-meta hero-line delay-4">
           <div>
             <dt>Role</dt>
             <dd>Product Design, UX Direction, Visual Design, Implementation Collaboration</dd>
@@ -63,21 +72,33 @@
             <dd>Website/trial installer with Lemon Squeezy licensing and an unlocked Microsoft Store .appx build.</dd>
           </div>
         </dl>
-        <div class="hero-actions">
-          <a href="#interface" class="cta">View Interface</a>
-          <a href="https://lumaro.cc/" class="text-link" target="_blank" rel="noopener noreferrer">Visit Live Website</a>
+        <div class="hero-actions hero-line delay-4">
+          <a href="#interface" class="cta magnetic">View Interface</a>
+          <a href="https://lumaro.cc/" class="text-link magnetic" target="_blank" rel="noopener noreferrer">Visit Live Website</a>
         </div>
       </div>
-      <div class="hero-visual"><figure class="case-hero-shot"><img src="assets/lumaro-before-after.webp" alt="Lumaro product interface" decoding="async"><figcaption>Lumaro — product experience</figcaption></figure></div></section>
+      <div class="hero-visual hero-line delay-3">
+        <div class="portal product-orbit" aria-hidden="true">
+          <span class="portal-ring ring-one"></span>
+          <span class="portal-ring ring-two"></span>
+          <span class="portal-ring ring-three"></span>
+          <span class="portal-core"></span>
+          <span class="portal-particle particle-one"></span>
+          <span class="portal-particle particle-two"></span>
+          <span class="portal-particle particle-three"></span>
+        </div>
+        <p>Local workflow<br />natural results</p>
+      </div>
+    </section>
 
-    <section class="case-section">
+    <section class="case-section reveal living-section">
       <p class="section-kicker">Overview</p>
       <h2>Faster HDR-style listing edits without a cloud workflow.</h2>
       <p>Lumaro is for real-estate photographers, property media creators, and image editors who need faster listing-ready enhancement from bracketed property photos. The product reduces manual editing steps around exposure balance, window recovery, review, adjustment, and export.</p>
       <p>The core workflow runs locally on the user's Windows computer, with selected images processed by the local Python processor rather than uploaded as part of the core app workflow.</p>
     </section>
 
-    <section class="case-section">
+    <section class="case-section reveal living-section">
       <p class="section-kicker">The Problem</p>
       <div class="case-list-grid">
         <article><h3>Bracket complexity</h3><p>Real-estate image workflows involve multiple exposures that need to stay grouped, aligned, merged, and reviewed.</p></article>
@@ -88,7 +109,7 @@
       </div>
     </section>
 
-    <section class="case-section">
+    <section class="case-section reveal living-section">
       <p class="section-kicker">My Role</p>
       <p>I worked as product designer, UX director, visual designer, and implementation collaborator across the app and website experience.</p>
       <ul class="tag-list">
@@ -106,7 +127,7 @@
       </ul>
     </section>
 
-    <section class="case-section">
+    <section class="case-section reveal living-section">
       <p class="section-kicker">Product Scope</p>
       <div class="decision-grid">
         <article><h3>Main screens</h3><p>Folder selection/drop area, first-launch tutorial, enhancement dashboard, optional Window Pull selection modal, processing log, Natural HDR Base preview, Premium Launch Result preview, adjustment panel, export flow, license activation, and update notification.</p></article>
@@ -116,7 +137,7 @@
       </div>
     </section>
 
-    <section class="case-section">
+    <section class="case-section reveal living-section">
       <p class="section-kicker">Core Workflow</p>
       <div class="journey-strip">
         <span>Select a folder</span>
@@ -130,7 +151,7 @@
       </div>
     </section>
 
-    <section class="case-section">
+    <section class="case-section reveal living-section">
       <p class="section-kicker">Key Design Decisions</p>
       <div class="decision-grid">
         <article><h3>Folder-based selection</h3><p>Lumaro uses folder-based selection instead of asking users to manually select each bracket, making real-estate shoot workflows faster.</p></article>
@@ -142,30 +163,30 @@
       </div>
     </section>
 
-    <section class="case-section" id="interface">
+    <section class="case-section reveal living-section" id="interface">
       <p class="section-kicker">Interface Showcase</p>
       <div class="asset-grid">
-        <figure class="asset-figure"><img decoding="async" loading="lazy" src="assets/lumaro-folder-selection.webp" alt="Lumaro main folder selection interface" /><figcaption>Folder selection</figcaption></figure>
-        <figure class="asset-figure"><img decoding="async" loading="lazy" src="assets/lumaro-bracket-review.webp" alt="Lumaro workflow and bracket review interface" /><figcaption>Bracket and workflow review</figcaption></figure>
-        <figure class="asset-figure"><img decoding="async" loading="lazy" src="assets/lumaro-processing.webp" alt="Lumaro processing-ready interface" /><figcaption>Processing and app state</figcaption></figure>
-        <figure class="asset-figure"><img decoding="async" loading="lazy" src="assets/lumaro-before-after.webp" alt="Lumaro before and after comparison interface" /><figcaption>Before and after review</figcaption></figure>
-        <figure class="asset-figure"><img decoding="async" loading="lazy" src="assets/lumaro-adjustments.webp" alt="Lumaro adjustment panel interface" /><figcaption>Adjustment controls</figcaption></figure>
-        <figure class="asset-figure"><img decoding="async" loading="lazy" src="assets/lumaro-export.webp" alt="Lumaro export-ready interface" /><figcaption>Export-ready state</figcaption></figure>
-        <figure class="asset-figure"><img decoding="async" loading="lazy" src="assets/lumaro-error-state.webp" alt="Lumaro first launch onboarding and guidance" /><figcaption>Onboarding and guidance</figcaption></figure>
+        <figure class="asset-figure"><img decoding="async" loading="lazy" src="../assets/lumaro-folder-selection.webp" alt="Lumaro main folder selection interface" /><figcaption>Folder selection</figcaption></figure>
+        <figure class="asset-figure"><img decoding="async" loading="lazy" src="../assets/lumaro-bracket-review.webp" alt="Lumaro workflow and bracket review interface" /><figcaption>Bracket and workflow review</figcaption></figure>
+        <figure class="asset-figure"><img decoding="async" loading="lazy" src="../assets/lumaro-processing.webp" alt="Lumaro processing-ready interface" /><figcaption>Processing and app state</figcaption></figure>
+        <figure class="asset-figure"><img decoding="async" loading="lazy" src="../assets/lumaro-before-after.webp" alt="Lumaro before and after comparison interface" /><figcaption>Before and after review</figcaption></figure>
+        <figure class="asset-figure"><img decoding="async" loading="lazy" src="../assets/lumaro-adjustments.webp" alt="Lumaro adjustment panel interface" /><figcaption>Adjustment controls</figcaption></figure>
+        <figure class="asset-figure"><img decoding="async" loading="lazy" src="../assets/lumaro-export.webp" alt="Lumaro export-ready interface" /><figcaption>Export-ready state</figcaption></figure>
+        <figure class="asset-figure"><img decoding="async" loading="lazy" src="../assets/lumaro-error-state.webp" alt="Lumaro first launch onboarding and guidance" /><figcaption>Onboarding and guidance</figcaption></figure>
       </div>
     </section>
 
-    <section class="case-section">
+    <section class="case-section reveal living-section">
       <p class="section-kicker">Iteration</p>
       <h2>From basic enhancement flow to a more complete editing workflow.</h2>
       <p>Major refinements included optional Window Pull, polygon selection for one or more windows, moving window replacement into the Natural HDR Base stage, window-only adjustments, sharper zoom behavior, fixed mask offset/cropping issues, clearer full-image versus window-only adjustment state, first-launch onboarding, top app menus, and separate website/trial and Store build modes.</p>
       <div class="comparison-grid">
-        <figure class="asset-figure"><img decoding="async" loading="lazy" src="assets/lumaro-before.webp" alt="Lumaro demo before image" /><figcaption>Before enhancement</figcaption></figure>
-        <figure class="asset-figure"><img decoding="async" loading="lazy" src="assets/lumaro-after.webp" alt="Lumaro demo after image" /><figcaption>After enhancement</figcaption></figure>
+        <figure class="asset-figure"><img decoding="async" loading="lazy" src="../assets/lumaro-before.webp" alt="Lumaro demo before image" /><figcaption>Before enhancement</figcaption></figure>
+        <figure class="asset-figure"><img decoding="async" loading="lazy" src="../assets/lumaro-after.webp" alt="Lumaro demo after image" /><figcaption>After enhancement</figcaption></figure>
       </div>
     </section>
 
-    <section class="case-section">
+    <section class="case-section reveal living-section">
       <p class="section-kicker">Constraints</p>
       <ul class="tag-list">
         <li>Local Windows processing</li>
@@ -181,7 +202,7 @@
       </ul>
     </section>
 
-    <section class="case-section">
+    <section class="case-section reveal living-section">
       <p class="section-kicker">Outcome</p>
       <ul class="outcome-list">
         <li>Launched as a functional local desktop product and continues to be improved after release.</li>
@@ -191,23 +212,24 @@
       </ul>
     </section>
 
-    <section class="case-section">
+    <section class="case-section reveal living-section">
       <p class="section-kicker">External Links</p>
       <div class="capability-list">
         <a href="https://lumaro.cc/" target="_blank" rel="noopener noreferrer">Live Website</a>
       </div>
     </section>
 
-    <section class="next-project">
+    <section class="next-project reveal">
       <p class="section-kicker">Next Project</p>
-      <a href="trendium.html" class="case-link">Read the Trendium case study</a>
+      <a href="trendium.html" class="case-link magnetic">Read the Trendium case study</a>
     </section>
 
-
-  <section class="contact" id="contact"><div class="contact-top"><p class="eyebrow">Let’s talk about your next project</p><span aria-hidden="true">✳</span></div><h2>Have something<br>in <em>mind?</em></h2><div class="contact-bottom"><p>Tell me what you’re building.<br>We’ll find the right starting point together.</p><div><a class="cta" href="https://cal.com/sofinityx/30min" target="_blank" rel="noopener">Book a 30-minute call <span aria-hidden="true">↗</span></a><a class="email-link" href="mailto:SofinityX@gmail.com">Prefer email? SofinityX@gmail.com</a></div></div></section>
-    <footer class="footer"><a class="site-logo" href="index.html#top"><svg class="brand-crosscut" viewBox="0 0 130 130" fill="currentColor" aria-hidden="true" focusable="false"><path d="M25 22H58L104 106H72Z"/><path d="M72 22H105L78 67 61 38Z"/><path d="M48 65L65 94 58 106H25Z"/></svg><span class="brand-word">sofinity<span class="brand-x">x</span></span></a><p>Independent thinking. Intentional design.</p><a href="#top">Back to top ↑</a></footer>
+    <footer class="footer">
+      <p>Sofi · SofinityX</p>
+      <a href="mailto:SofinityX@gmail.com">SofinityX@gmail.com</a>
+    </footer>
   </main>
 
-  <script src="script.js?v=seo-funnel-1"></script>
+  <script src="../script.js?v=seo-funnel-1"></script>
 </body>
 </html>
