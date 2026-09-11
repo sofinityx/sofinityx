@@ -13,7 +13,7 @@
   const key = 'sofinityx-design';
   const stored = () => { try { return localStorage.getItem(key); } catch { return null; } };
   function destination(design) {
-    const url = new URL(page, design === 'original' ? originalRoot : root);
+    const url = new URL(page === 'index.html' ? './' : page, design === 'original' ? originalRoot : root);
     url.search = location.search;
     url.hash = location.hash;
     return url.href;
@@ -29,6 +29,10 @@
   if (desktop.matches && !original && stored() === 'original') {
     location.replace(destination('original'));
     return;
+  }
+  // Clean up older bookmarks and internal links without another page load.
+  if (page === 'index.html' && /\/index(?:\.html)?\/?$/.test(location.pathname)) {
+    history.replaceState(history.state, '', destination(original ? 'original' : 'refined'));
   }
   desktop.addEventListener('change', enforceDevice);
   document.addEventListener('DOMContentLoaded', () => {
