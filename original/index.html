@@ -87,6 +87,8 @@
   <link rel="stylesheet" href="../design-switch.css?v=1">
   <script src="../design-switch.js?v=2"></script>
   <link rel="stylesheet" href="../brand-logo.css?v=3">
+  <link rel="stylesheet" href="../inquiry.css?v=1">
+  <script src="../inquiry.js?v=1" defer></script>
 </head>
 <body>
   <canvas class="aura-canvas" aria-hidden="true"></canvas>
@@ -561,7 +563,25 @@
         <a href="mailto:SofinityX@gmail.com" class="cta magnetic">Start a Conversation</a>
         <a href="https://cal.com/sofinityx/30min" target="_blank" rel="noopener" class="cta cta-secondary magnetic">Book a Call</a>
       </div>
-    </section>
+
+      <div class="inquiry-layout" id="project-inquiry">
+        <div class="inquiry-intro"><p class="inquiry-kicker">A good place to start</p><h3>Tell me about<br>your project.</h3><p>A new business, an established brand, or an idea still taking shape—I'd love to hear it.</p><p>No polished brief needed. Share what you have in mind, and we can explore the next step by email.</p></div>
+        <form class="inquiry-form ph-no-capture" name="project-inquiry" method="POST" data-netlify="true" netlify-honeypot="bot-field" aria-label="Project inquiry">
+          <input type="hidden" name="form-name" value="project-inquiry">
+          <p hidden><label>Leave this field empty <input name="bot-field" tabindex="-1" autocomplete="off"></label></p>
+          <div class="inquiry-fields">
+            <label for="inquiry-name">Your name <input id="inquiry-name" name="name" autocomplete="name" required maxlength="120" placeholder="What should I call you?"></label>
+            <label for="inquiry-email">Email address <input id="inquiry-email" name="email" type="email" autocomplete="email" required maxlength="254" placeholder="you@example.com"></label>
+            <label class="inquiry-wide" for="inquiry-project">What do you have in mind? <textarea id="inquiry-project" name="project" required maxlength="5000" rows="4" placeholder="A little about your business, what you need, and what you'd like to achieve."></textarea></label>
+            <label for="inquiry-budget">Budget <span>(optional)</span><input id="inquiry-budget" name="budget" maxlength="120" placeholder="A range + currency, or not sure yet"></label>
+            <label for="inquiry-timing">Timing <span>(optional)</span><input id="inquiry-timing" name="timing" maxlength="120" placeholder="A target date, or flexible"></label>
+          </div>
+          <p class="inquiry-note">Your details will be used to respond to your inquiry. Please leave out confidential information.</p>
+          <button class="inquiry-submit" type="submit">Send project inquiry <span aria-hidden="true">↗</span></button>
+          <p class="inquiry-status" role="status" aria-live="polite" aria-atomic="true"></p>
+        </form>
+      </div>
+</section>
 
     <footer class="footer">
       <p>Sofi · SofinityX</p>

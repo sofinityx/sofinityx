@@ -87,6 +87,8 @@
   <link rel="stylesheet" href="design-switch.css?v=1">
   <script src="design-switch.js?v=2"></script>
   <link rel="stylesheet" href="brand-logo.css?v=3">
+  <link rel="stylesheet" href="inquiry.css?v=1">
+  <script src="inquiry.js?v=1" defer></script>
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
@@ -179,7 +181,25 @@
       <details><summary>Can you help with the launch too?</summary><p>Yes. Campaign creative, social content, paid ad visuals, and video editing can be scoped alongside the website, product, or brand work.</p></details>
     </div></section>
 
-    <section class="contact" id="contact" aria-labelledby="contact-title"><div class="contact-top"><p class="eyebrow">Your next chapter starts with a conversation</p><span aria-hidden="true">✳</span></div><h2 id="contact-title">Let’s make<br>something <em>matter.</em></h2><div class="contact-bottom"><p>Tell me what you’re building.<br>We’ll figure out the right next step together.</p><div><a class="cta" href="https://cal.com/sofinityx/30min" target="_blank" rel="noopener">Book a 30-minute call <span aria-hidden="true">↗</span></a><a class="email-link" href="mailto:SofinityX@gmail.com?subject=Let%E2%80%99s%20talk%20about%20my%20project">Prefer email? SofinityX@gmail.com</a></div></div></section>
+    <section class="contact" id="contact" aria-labelledby="contact-title"><div class="contact-top"><p class="eyebrow">Your next chapter starts with a conversation</p><span aria-hidden="true">✳</span></div><h2 id="contact-title">Let’s make<br>something <em>matter.</em></h2><div class="contact-bottom"><p>Tell me what you’re building.<br>We’ll figure out the right next step together.</p><div><a class="cta" href="https://cal.com/sofinityx/30min" target="_blank" rel="noopener">Book a 30-minute call <span aria-hidden="true">↗</span></a><a class="email-link" href="mailto:SofinityX@gmail.com?subject=Let%E2%80%99s%20talk%20about%20my%20project">Prefer email? SofinityX@gmail.com</a></div></div>
+      <div class="inquiry-layout" id="project-inquiry">
+        <div class="inquiry-intro"><p class="inquiry-kicker">A good place to start</p><h3>Tell me about<br>your project.</h3><p>A new business, an established brand, or an idea still taking shape—I'd love to hear it.</p><p>No polished brief needed. Share what you have in mind, and we can explore the next step by email.</p></div>
+        <form class="inquiry-form ph-no-capture" name="project-inquiry" method="POST" data-netlify="true" netlify-honeypot="bot-field" aria-label="Project inquiry">
+          <input type="hidden" name="form-name" value="project-inquiry">
+          <p hidden><label>Leave this field empty <input name="bot-field" tabindex="-1" autocomplete="off"></label></p>
+          <div class="inquiry-fields">
+            <label for="inquiry-name">Your name <input id="inquiry-name" name="name" autocomplete="name" required maxlength="120" placeholder="What should I call you?"></label>
+            <label for="inquiry-email">Email address <input id="inquiry-email" name="email" type="email" autocomplete="email" required maxlength="254" placeholder="you@example.com"></label>
+            <label class="inquiry-wide" for="inquiry-project">What do you have in mind? <textarea id="inquiry-project" name="project" required maxlength="5000" rows="4" placeholder="A little about your business, what you need, and what you'd like to achieve."></textarea></label>
+            <label for="inquiry-budget">Budget <span>(optional)</span><input id="inquiry-budget" name="budget" maxlength="120" placeholder="A range + currency, or not sure yet"></label>
+            <label for="inquiry-timing">Timing <span>(optional)</span><input id="inquiry-timing" name="timing" maxlength="120" placeholder="A target date, or flexible"></label>
+          </div>
+          <p class="inquiry-note">Your details will be used to respond to your inquiry. Please leave out confidential information.</p>
+          <button class="inquiry-submit" type="submit">Send project inquiry <span aria-hidden="true">↗</span></button>
+          <p class="inquiry-status" role="status" aria-live="polite" aria-atomic="true"></p>
+        </form>
+      </div>
+</section>
     <footer class="footer"><a class="site-logo" href="#top"><svg class="brand-crosscut" viewBox="0 0 130 130" fill="currentColor" aria-hidden="true" focusable="false"><path d="M25 22H58L104 106H72Z"/><path d="M72 22H105L78 67 61 38Z"/><path d="M48 65L65 94 58 106H25Z"/></svg><span class="brand-word">sofinity<span class="brand-x">x</span></span></a><p>Independent thinking. Intentional design.</p><a href="#top">Back to top ↑</a></footer>
   </main>
 
