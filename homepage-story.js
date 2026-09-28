@@ -37,9 +37,9 @@
   }
   function syncCopy() {
     const n = total();
-    status.textContent = n === 0 ? 'Potential, looking for a little direction.' : n === 6 ? 'A clear story. A meaningful next step.' : 'Identity. Story. A reason to act.';
-    hint.textContent = n === 6 ? 'That’s what I bring to your next project.' : matchMedia('(max-width: 700px), (pointer: coarse)').matches ? 'Tap the scattered pieces to bring them together.' : 'Move over the pieces. Give them a little direction.';
-    action.innerHTML = n === 6 ? 'Scatter & replay <span aria-hidden="true">↺</span>' : 'Organize the ideas <span aria-hidden="true">↗</span>';
+    status.textContent = n === 0 ? 'A little direction changes everything.' : n === 6 ? 'Everything in its place.' : 'Bringing the idea together.';
+    hint.textContent = n === 6 ? 'Your next idea could be next.' : matchMedia('(max-width: 700px), (pointer: coarse)').matches ? 'Tap the pieces to bring them together.' : 'Move over the pieces to bring them together.';
+    action.innerHTML = n === 6 ? 'Replay <span aria-hidden="true">↺</span>' : 'Organize <span aria-hidden="true">↗</span>';
   }
   function collect(i) {
     if (pieces[i].collected) return;

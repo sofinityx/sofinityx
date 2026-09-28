@@ -13,3 +13,33 @@ body .site-logo .brand-word,body .site-logo .brand-x{margin-top:0;text-transform
 
 /* About is a desktop shortcut; the mobile navigation stays compact. */
 @media(max-width:1000px){body .site-header .site-nav .nav-about{display:none}}
+
+body .site-header .site-nav .nav-contact{display:inline-flex;align-items:center;min-height:44px}
+body .site-header .site-nav .nav-contact[aria-current="page"]{text-decoration:underline;text-underline-offset:6px}
+@media(max-width:1100px){body .site-header .site-nav a[href$='#process']{display:none}}
+@media(max-width:700px){body .site-header .site-nav .nav-cta{display:none}}
+
+/* Crosscut prism: silver and living color, separated by the signature cut. */
+body .site-header .theme-brush{display:inline-grid;place-items:center;flex-shrink:0;width:32px;height:32px;padding:6px;border:1px solid #ffffff14;border-radius:10px;background:linear-gradient(145deg,#ffffff05,transparent);color:var(--accent,var(--aqua,#d9fd81));box-shadow:inset 0 1px 0 #ffffff08;transform:none;transition:border-color .25s,background .25s,box-shadow .25s;cursor:pointer}
+body .site-header .theme-brush::before,body .site-header .theme-brush::after{display:none}
+body .site-header .theme-brush:hover,body .site-header .theme-brush:focus-visible{transform:none;border-color:#ffffff40;background:#ffffff06;box-shadow:inset 0 1px 0 #ffffff12}
+body .site-header .theme-brush:focus-visible{outline:2px solid currentColor;outline-offset:4px}
+.theme-crosscut{display:block;width:18px;height:18px;overflow:visible}
+.theme-facet{transition:transform .35s cubic-bezier(.2,.7,.2,1),fill .35s;transform-origin:16px 16px}
+.theme-facet-silver{fill:#d8dbd9}.theme-facet-color{fill:currentColor;opacity:.72}
+.theme-prism-cut{fill:#151713;stroke:#ffffff30;stroke-width:.5}
+.theme-brush:hover .theme-facet-silver,.theme-brush:focus-visible .theme-facet-silver{transform:translate(.5px,-.5px)}
+.theme-brush:hover .theme-facet-color,.theme-brush:focus-visible .theme-facet-color{transform:translate(-.5px,.5px)}
+@media(max-width:700px){body .site-header .theme-brush{width:32px;height:34px;padding:6px;border-radius:10px}.theme-crosscut{width:18px;height:18px}}
+@media(prefers-reduced-motion:reduce){.theme-facet{transition:none}.theme-brush:hover .theme-facet,.theme-brush:focus-visible .theme-facet{transform:none}}
+
+/* A restrained chrome edge, with a prism fill that follows reading progress. */
+body .site-header .site-nav .nav-cta{position:relative;isolation:isolate;overflow:hidden;border:1px solid #ffffff58;background:linear-gradient(125deg,#ffffff12,#ffffff03 55%,#ffffff0a);color:#f5f4f1;box-shadow:inset 0 1px 0 #ffffff18;transition:border-color .25s,box-shadow .25s,transform .25s}
+body .site-header .site-nav .nav-cta::before{content:'';position:absolute;inset:0;z-index:-1;border-radius:inherit;background:linear-gradient(115deg,#145c61 0%,#454077 38%,#673855 70%,#555735 100%);transform:scaleX(calc(.06 + var(--scroll-progress,0)*.94));transform-origin:left;transition:filter .3s;pointer-events:none}
+body .site-header .site-nav .nav-cta::after{content:'';display:block;position:absolute;inset:-60% -25%;z-index:-1;background:linear-gradient(110deg,transparent 38%,#ffffff18 48%,#ffffff30 50%,transparent 61%);transform:translateX(-95%) skewX(-12deg);transition:transform .65s cubic-bezier(.2,.7,.2,1);pointer-events:none;border:0}
+body .site-header .site-nav .nav-cta:hover,body .site-header .site-nav .nav-cta:focus-visible{color:#fff;border-color:#d8d7ee;box-shadow:inset 0 1px 0 #ffffff38,0 4px 20px #9990dc20;transform:translateY(-1px)}
+body .site-header .site-nav .nav-cta:hover::before,body .site-header .site-nav .nav-cta:focus-visible::before{filter:brightness(1.35)}
+body .site-header .site-nav .nav-cta:hover::after,body .site-header .site-nav .nav-cta:focus-visible::after{transform:translateX(55%) skewX(-12deg)}
+body .site-header .site-nav .nav-cta>span{transition:transform .25s}
+body .site-header .site-nav .nav-cta:hover>span,body .site-header .site-nav .nav-cta:focus-visible>span{transform:translate(2px,-2px)}
+@media(prefers-reduced-motion:reduce){body .site-header .site-nav .nav-cta,body .site-header .site-nav .nav-cta>span{transition:none;transform:none}body .site-header .site-nav .nav-cta::before{transform:none;opacity:.55;transition:none}body .site-header .site-nav .nav-cta::after{display:none}}
