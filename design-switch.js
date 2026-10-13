@@ -7,7 +7,7 @@
   // Netlify may serve /vespera or /vespera/ instead of /vespera.html.
   const route = relative.replace(/\/+$/, '');
   const page = !route ? 'index.html' : route.includes('.') ? route : `${route}.html`;
-  const pages = new Set(['contact.html','index.html','website-design.html','ux-ui-design.html','brand-identity-design.html','creative-marketing-support.html','social-media-design.html','video-editing-for-brands.html','case-studies.html','lumaro.html','lumaro-brand.html','lumaro-launch.html','trendium.html','trendium-brand.html','trendium-product-system.html','sofinityx-case-study.html','vespera.html','voltara.html','eclipse-district.html']);
+  const pages = new Set(['start-project.html','contact.html','index.html','website-design.html','ux-ui-design.html','brand-identity-design.html','creative-marketing-support.html','social-media-design.html','video-editing-for-brands.html','case-studies.html','lumaro.html','lumaro-brand.html','lumaro-launch.html','trendium.html','trendium-brand.html','trendium-product-system.html','sofinityx-case-study.html','vespera.html','voltara.html','eclipse-district.html']);
   if (!pages.has(page)) return;
   const desktop = matchMedia('(min-width: 1001px) and (pointer: fine)');
   const key = 'sofinityx-design';
