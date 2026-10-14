@@ -40,9 +40,33 @@
     control.className = 'design-switch';
     control.setAttribute('role', 'group');
     control.setAttribute('aria-label', 'Website design');
-    const label = document.createElement('span');
+    const label = document.createElement('button');
+    label.type = 'button';
     label.className = 'design-switch-label';
     label.textContent = 'View';
+    label.setAttribute('aria-expanded', 'false');
+    label.setAttribute('aria-controls', 'design-switch-options');
+    const options = document.createElement('div');
+    options.id = 'design-switch-options';
+    options.className = 'design-switch-options';
+    options.hidden = true;
+    const setOpen = (open) => {
+      options.hidden = !open;
+      label.setAttribute('aria-expanded', String(open));
+    };
+    label.addEventListener('click', () => setOpen(options.hidden));
+    document.addEventListener('click', (event) => {
+      if (!control.contains(event.target)) setOpen(false);
+    });
+    control.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape') {
+        setOpen(false);
+        label.focus();
+      }
+    });
+    control.addEventListener('focusout', (event) => {
+      if (!control.contains(event.relatedTarget)) setOpen(false);
+    });
     control.append(label);
     for (const [value, title] of [['refined','Refined'],['original','Original']]) {
       const button = document.createElement('button');
@@ -52,9 +76,11 @@
       button.addEventListener('click', () => {
         try { localStorage.setItem(key, value); } catch { /* Switching still works without storage. */ }
         if ((original ? 'original' : 'refined') !== value) location.assign(destination(value));
+        else { setOpen(false); label.focus(); }
       });
-      control.append(button);
+      options.append(button);
     }
+    control.append(options);
     document.body.append(control);
   });
 })();
