@@ -24,3 +24,7 @@
 .inquiry-status:empty{display:none}.contact .inquiry-status[data-state="error"]{color:#ffd1c3}
 @media(max-width:850px){.inquiry-layout{grid-template-columns:1fr;gap:22px}.contact .inquiry-intro>p:not(.inquiry-kicker){max-width:560px}}
 @media(max-width:520px){.inquiry-fields{grid-template-columns:1fr}.inquiry-form{padding:20px 16px}.inquiry-layout{margin-top:32px;padding-top:30px}}
+
+/* Override contact paragraph colors without adding a panel. */
+.contact .inquiry-form .inquiry-status{color:#e2f4c1;scroll-margin-block:120px}
+.contact .inquiry-form .inquiry-status[data-state="error"]{color:#ffd1c3}

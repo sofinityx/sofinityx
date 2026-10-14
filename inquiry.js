@@ -3,6 +3,16 @@
   if (!form) return;
   const status = form.querySelector('.inquiry-status');
   const submit = form.querySelector('[type="submit"]');
+  const submitLabel = submit.innerHTML;
+  status.tabIndex = -1;
+  function showStatus(state, message, focus = false) {
+    status.dataset.state = state;
+    status.textContent = message;
+    if (focus) {
+      status.focus({ preventScroll: true });
+      status.scrollIntoView({ behavior: 'auto', block: 'nearest' });
+    }
+  }
   // Keep native validation as a fallback when JavaScript is unavailable.
   form.noValidate = true;
   const fields = [...form.querySelectorAll('.inquiry-fields input, .inquiry-fields textarea')];
@@ -54,11 +64,12 @@
     }
     status.dataset.state = 'error';
     if (['localhost', '127.0.0.1', '[::1]'].includes(location.hostname) || location.protocol === 'file:') {
-      status.textContent = 'Preview only: inquiries can be sent once this form is deployed to Netlify. Nothing has been sent.';
+      showStatus('error', 'This preview cannot send messages. Please use the live website.', true);
       return;
     }
     sending = true;
     submit.disabled = true;
+    submit.textContent = 'Sending…';
     form.setAttribute('aria-busy', 'true');
     status.dataset.state = 'pending';
     status.textContent = 'Sending your inquiry…';
@@ -73,15 +84,14 @@
       });
       if (!response.ok) throw new Error('Submission failed');
       form.reset();
-      status.dataset.state = 'success';
-      status.textContent = 'Thank you—your inquiry has been sent. I’ll reply by email to discuss the next step.';
+      showStatus('success', 'Your message has been submitted. Thank you for getting in touch.', true);
     } catch (error) {
-      status.dataset.state = 'error';
-      status.textContent = 'I couldn’t confirm your inquiry was sent. Your details are still here. Please try again or email SofinityX@gmail.com.';
+      showStatus('error', 'We couldn’t confirm your message was sent. Please try again or email SofinityX@gmail.com.', true);
     } finally {
       clearTimeout(timeout);
       sending = false;
       submit.disabled = false;
+      submit.innerHTML = submitLabel;
       form.removeAttribute('aria-busy');
     }
   });
