@@ -14,12 +14,13 @@
   <meta name="twitter:title" content="Freelance Web, Brand &amp; UX/UI Designer | SofinityX" />
   <meta name="twitter:description" content="Premium websites, UX/UI product design, brand strategy, launch visuals, and growth-focused creative systems." />
   <meta name="twitter:image" content="https://sofinityx.com/assets/sofinityx-favicon.svg" />
+  <meta name="theme-color" content="#111113" />
+  <script>(function(d){var m=window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches;d.classList.add('js');d.classList.add(m?'rm':'motion');})(document.documentElement);</script>
   <title>Freelance Web, Brand &amp; UX/UI Designer | SofinityX</title>
   <link rel="icon" type="image/svg+xml" href="assets/sofinityx-crosscut-favicon.svg" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="homepage.css?v=liquid-chrome-1" />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&family=IBM+Plex+Sans+Arabic:wght@500;600&display=swap" rel="stylesheet">
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -88,11 +89,17 @@
   <script src="design-switch.js?v=5"></script>
   <link rel="stylesheet" href="brand-logo.css?v=5">
   <link rel="stylesheet" href="inquiry.css?v=2">
+  <link rel="stylesheet" href="story.css?v=1">
   <script src="inquiry.js?v=2" defer></script>
+  <script src="story.js?v=1" defer></script>
 </head>
-<body>
+<body class="story-home" data-chapter="intro">
   <a class="skip-link" href="#main">Skip to content</a>
   <div class="scroll-progress" aria-hidden="true"><span></span></div>
+  <div class="ambient" aria-hidden="true"><span class="amb amb-1"></span><span class="amb amb-2"></span><span class="amb amb-3"></span></div>
+  <div class="grain" aria-hidden="true"></div>
+  <div class="cursor" aria-hidden="true"><span class="cursor-ring"><b class="cursor-label"></b></span><span class="cursor-dot"></span></div>
+
   <header class="site-header">
     <a href="#top" class="site-logo" aria-label="SofinityX home"><svg class="brand-crosscut" viewBox="0 0 130 130" fill="currentColor" aria-hidden="true" focusable="false"><path d="M25 22H58L104 106H72Z"/><path d="M72 22H105L78 67 61 38Z"/><path d="M48 65L65 94 58 106H25Z"/></svg><span class="brand-word">sofinity<span class="brand-x">x</span></span></a>
     <nav class="site-nav" aria-label="Primary navigation">
@@ -101,34 +108,313 @@
       <a class="nav-cta" href="start-project.html">Let’s talk <span aria-hidden="true">↗</span></a>
     </nav>
   </header>
+
+  <nav class="chapter-rail" aria-label="Story chapters">
+    <a href="#top" data-chapter-link="intro"><b>00</b><span>Intro</span></a>
+    <a href="#design" data-chapter-link="design"><b>01</b><span>Design</span></a>
+    <a href="#build" data-chapter-link="build"><b>02</b><span>Build</span></a>
+    <a href="#move" data-chapter-link="move"><b>03</b><span>Move</span></a>
+    <a href="#work" data-chapter-link="work"><b>04</b><span>Work</span></a>
+    <a href="#services" data-chapter-link="services"><b>05</b><span>Services</span></a>
+    <a href="#about" data-chapter-link="about"><b>06</b><span>About</span></a>
+    <a href="#process" data-chapter-link="process"><b>07</b><span>Process</span></a>
+    <a href="#contact" data-chapter-link="contact"><b>08</b><span>Let’s talk</span></a>
+  </nav>
+
   <main id="main">
-    <section class="hero" id="top" aria-labelledby="hero-title">
-      <div class="hero-topline"><p class="eyebrow">Independent designer. Ambitious ideas.</p><span class="location-note">Sofi / Working worldwide</span></div>
-      <div class="hero-layout">
-        <div class="hero-copy">
-          <div class="hero-message">
+
+    <!-- PROLOGUE + THE PROBLEM + THE TURN: one pinned opening sequence -->
+    <section class="opening" id="top" data-chapter="intro" aria-labelledby="hero-title">
+      <div class="pin opening-pin">
+
+        <div class="op-hero">
+          <p class="kicker"><span class="kicker-dots" aria-hidden="true"><i></i><i></i><i></i></span>Design · Development · Video</p>
           <h1 id="hero-title">Make your brand<br>their <em>first choice.</em></h1>
-          <p class="hero-description">I help founders and growing businesses turn what they do best into brands, websites, and digital products people understand, trust, and want to use.</p>
+          <p class="lede">I design, build and bring brands to life: websites, product interfaces, identities, and the videos that launch them. One creative partner, from the first idea to launch day.</p>
+          <div class="op-actions">
+            <a class="btn-chrome" href="start-project.html" data-magnetic><span class="btn-label">Let’s talk about your project</span><span class="btn-arrow" aria-hidden="true">↗</span></a>
+            <a class="text-link" href="#story">See how it comes together <span aria-hidden="true">↓</span></a>
           </div>
-          <div class="hero-actions"><a class="cta prism-cta" href="start-project.html"><span class="prism-label">Let’s talk about your project</span><span class="prism-arrow" aria-hidden="true">↗</span></a><a class="text-link" href="#work">Explore the work <span aria-hidden="true">↓</span></a></div>
           <p class="call-note">Start by email, send an inquiry, or choose a 15- or 30-minute call.</p>
         </div>
-        <div class="idea-story" aria-label="Interactive SofinityX design story">
-          <div class="idea-stage">
-          <canvas id="idea-canvas" width="560" height="440" role="img" aria-label="An infinity-headed SofinityX character brings six website fragments together: identity, navigation, headline, brand artwork, description, and call to action. Move over the fragments or use the Organize button.">Scattered ideas become a clear design. Use the Organize button to bring them together.</canvas>
-          <div class="idea-caption"><p class="idea-status" aria-live="polite">A little direction changes everything.</p></div>
+
+        <div class="op-play-hint" aria-hidden="true"><span>Play with the pieces</span></div>
+
+        <div class="facets" aria-hidden="true">
+          <div class="facet" data-facet="0"><svg viewBox="0 0 130 130"><path d="M72 22H105L78 67 61 38Z"/></svg><span class="facet-tag">Design</span></div>
+          <div class="facet" data-facet="1"><svg viewBox="0 0 130 130"><path d="M25 22H58L104 106H72Z"/></svg><span class="facet-tag">Development</span></div>
+          <div class="facet" data-facet="2"><svg viewBox="0 0 130 130"><path d="M48 65L65 94 58 106H25Z"/></svg><span class="facet-tag">Video</span></div>
+        </div>
+
+        <div class="op-roles" aria-hidden="true">
+          <svg class="op-lines" preserveAspectRatio="none"><path class="op-line" data-line="0"/><path class="op-line" data-line="1"/><circle class="op-packet" data-packet="0" r="4"/><circle class="op-packet" data-packet="1" r="4"/></svg>
+          <article class="role" data-role="0">
+            <header><span class="role-avatar">D</span><div><b>The designer</b><small>Freelancer #1</small></div></header>
+            <div class="role-art art-design">
+              <div class="ad-logo"><svg viewBox="0 0 130 130"><path d="M25 22H58L104 106H72Z"/><path d="M72 22H105L78 67 61 38Z"/><path d="M48 65L65 94 58 106H25Z"/></svg><i></i><i></i><i></i><i></i></div>
+              <div class="ad-spec"><b>Aa</b><small>Manrope</small><span class="ad-swatches"><i></i><i></i><i></i></span></div>
+              <span class="flag">Files not shared</span>
+            </div>
+            <p class="role-file"><span class="role-file-name" data-states="brand_v1.fig|brand_v2.fig|brand_FINAL_v3.fig">brand_v1.fig</span></p>
+            <p class="role-status" data-states="Designing the brand|Waiting on feedback|Out of sync">Designing the brand</p>
+          </article>
+          <article class="role" data-role="1">
+            <header><span class="role-avatar">D</span><div><b>The developer</b><small>Freelancer #2</small></div></header>
+            <div class="role-art art-dev">
+              <div class="dv-code"><i></i><i></i><i></i><i></i><i></i></div>
+              <div class="dv-site"><span class="dv-nav"><svg viewBox="0 0 130 130"><path d="M25 22H58L104 106H72Z"/><path d="M72 22H105L78 67 61 38Z"/><path d="M48 65L65 94 58 106H25Z"/></svg><i></i></span><b class="dv-h">Ideas people remember.</b><span class="dv-btn"></span></div>
+              <span class="flag">Wrong font &amp; color</span>
+            </div>
+            <p class="role-file"><span class="role-file-name" data-states="site_build.zip|site_build_v2.zip|site_rebuild.zip">site_build.zip</span></p>
+            <p class="role-status" data-states="Building the site|Needs the latest files|Rebuilding pages">Building the site</p>
+          </article>
+          <article class="role" data-role="2">
+            <header><span class="role-avatar">V</span><div><b>The video editor</b><small>Freelancer #3</small></div></header>
+            <div class="role-art art-video">
+              <div class="vd-screen"><span class="vd-logo"><i></i>yourbrand</span><span class="vd-rec">REC</span></div>
+              <div class="vd-track"><i></i><i></i><i></i><i></i><span class="vd-head"></span></div>
+              <span class="flag">Old logo</span>
+            </div>
+            <p class="role-file"><span class="role-file-name" data-states="launch_cut.mp4|launch_cut_v4.mp4|launch_cut_v7.mp4">launch_cut.mp4</span></p>
+            <p class="role-status" data-states="Editing the launch video|Using old brand colors|Re-exporting again">Editing the launch video</p>
+          </article>
+          <p class="bubble" data-bubble="0" data-from="1">Which font are we using again?</p>
+          <p class="bubble" data-bubble="1" data-from="2">Can someone resend the logo files?</p>
+          <p class="bubble" data-bubble="2" data-from="0">Wait, the site doesn’t match the brand.</p>
+          <p class="bubble bubble-client" data-bubble="3">Why is the launch delayed again?</p>
+          <p class="op-tally"><span>3 briefs</span><span>3 timelines</span><span>3 invoices</span></p>
+        </div>
+
+        <div class="op-statements" id="story">
+          <p class="st" data-st="0">Most brands are built <em>in pieces.</em></p>
+          <p class="st" data-st="1">A designer here. A developer there.<br>A video editor somewhere else.</p>
+          <p class="st" data-st="2">And between the hand-offs,<br><em>the vision gets lost.</em></p>
+          <p class="st" data-st="3">What if one person carried<br><em>every piece?</em></p>
+        </div>
+
+        <div class="op-reveal">
+          <svg class="op-reveal-mark" viewBox="0 0 130 130" aria-hidden="true" focusable="false"><path d="M72 22H105L78 67 61 38Z" fill="#d1b2ff"/><path d="M25 22H58L104 106H72Z" fill="#8ce8ff"/><path d="M48 65L65 94 58 106H25Z" fill="#ffb58e"/></svg>
+          <p class="op-reveal-chips" aria-hidden="true"><span style="--c:var(--violet)">Design</span><span style="--c:var(--cyan)">Development</span><span style="--c:var(--ember)">Video</span></p>
+          <h2 class="op-reveal-title">Hi, I’m <em>Sofi.</em></h2>
+          <p class="op-reveal-text">Your designer, developer and video editor, in one. One brief, one point of contact, and one consistent brand from the first sketch to launch day.</p>
+        </div>
+
+        <div class="op-impact" aria-hidden="true"></div>
+        <div class="scroll-cue" aria-hidden="true"><span>Scroll</span><i></i></div>
+      </div>
+    </section>
+
+    <!-- ACT 01: DESIGN -->
+    <section class="act act-design" id="design" data-chapter="design" aria-labelledby="design-title" style="--c:var(--violet)">
+      <div class="pin act-pin">
+        <div class="act-copy">
+          <p class="chapter-no"><b>01</b> Design</p>
+          <h2 id="design-title">I <em>design</em> it.</h2>
+          <p class="act-lede">Brand identities, websites and product interfaces that help people understand you, and trust you, within seconds.</p>
+          <ul class="act-list">
+            <li><a href="brand-identity-design.html">Brand identity &amp; visual direction <span aria-hidden="true">↗</span></a></li>
+            <li><a href="ux-ui-design.html">UX/UI &amp; product design <span aria-hidden="true">↗</span></a></li>
+            <li><a href="website-design.html">Websites &amp; landing pages <span aria-hidden="true">↗</span></a></li>
+          </ul>
+          <div class="playground" role="group" aria-label="Restyle the example page">
+            <p class="playground-label"><span>Your turn.</span> Restyle the page.</p>
+            <div class="pg-row" role="group" aria-label="Color palette">
+              <button type="button" class="pg-swatch is-on" data-palette="night" aria-pressed="true" aria-label="Midnight and lime" style="--a:#d9fd81;--b:#121214"></button>
+              <button type="button" class="pg-swatch" data-palette="paper" aria-pressed="false" aria-label="Paper and ember" style="--a:#e0643c;--b:#f1ece4"></button>
+              <button type="button" class="pg-swatch" data-palette="ocean" aria-pressed="false" aria-label="Ocean and cyan" style="--a:#8ce8ff;--b:#0d1b2a"></button>
+              <button type="button" class="pg-swatch" data-palette="plum" aria-pressed="false" aria-label="Plum and violet" style="--a:#d1b2ff;--b:#1d1426"></button>
+            </div>
+            <div class="pg-row pg-toggles">
+              <button type="button" class="pg-toggle" data-toggle="type" aria-pressed="false"><span>Aa</span> Editorial type</button>
+              <button type="button" class="pg-toggle" data-toggle="shape" aria-pressed="false"><span>◠</span> Soft corners</button>
+            </div>
           </div>
-          <button class="idea-action" type="button">Organize <span aria-hidden="true">↗</span></button>
-          <p class="idea-hint">Move over the pieces to bring them together.</p>
+        </div>
+
+        <div class="act-stage" aria-hidden="true">
+          <div class="mock-window">
+            <div class="mock-bar"><i></i><i></i><i></i><span>yourbrand.com</span><b class="mock-state" data-states="Wireframe|Styling|Final ✓">Wireframe</b></div>
+            <div class="mock" data-palette="night">
+              <div class="mk-grid"><i></i><i></i><i></i><i></i><i></i><i></i></div>
+              <div class="mk-real">
+                <div class="mk-nav"><span class="mk-logo" data-mk><svg viewBox="0 0 130 130"><path d="M25 22H58L104 106H72Z"/><path d="M72 22H105L78 67 61 38Z"/><path d="M48 65L65 94 58 106H25Z"/></svg>yourbrand</span><span class="mk-links" data-mk><i>Work</i><i>About</i><i>Journal</i></span><span class="mk-btn" data-mk>Book a call</span></div>
+                <div class="mk-hero">
+                  <div class="mk-copy"><p class="mk-eyebrow" data-mk>Studio for bold ideas</p><p class="mk-h" data-mk>Ideas people <span>remember.</span></p><p class="mk-p" data-mk>A brand, a website and a story, designed to be chosen.</p><span class="mk-cta" data-mk>Start a project →</span></div>
+                  <div class="mk-art" data-mk>
+                    <span class="mk-glow"></span><span class="mk-dots"></span><span class="mk-ring"></span><span class="mk-ring mk-ring-2"></span>
+                    <svg class="mk-mark" viewBox="0 0 130 130"><defs><linearGradient id="mk-grad" x1="0" y1="0" x2="1" y2="1"><stop offset="0" style="stop-color:var(--mk-acc)"/><stop offset="1" style="stop-color:var(--mk-fg)"/></linearGradient></defs><path d="M25 22H58L104 106H72Z"/><path d="M72 22H105L78 67 61 38Z"/><path d="M48 65L65 94 58 106H25Z"/></svg>
+                    <span class="mk-chip mk-chip-1"><i></i>Brand system</span>
+                    <span class="mk-chip mk-chip-2">Aa</span>
+                  </div>
+                </div>
+                <div class="mk-cards"><span data-mk><b>Strategy</b><i></i></span><span data-mk><b>Identity</b><i></i></span><span data-mk><b>Launch</b><i></i></span></div>
+              </div>
+              <div class="mk-wire" aria-hidden="true"></div>
+              <div class="mk-notes"><span class="note note-h"></span><span class="note note-gap"></span></div>
+            </div>
+          </div>
         </div>
       </div>
-      <div class="story-strip" aria-label="The design approach"><span><b>01</b> Show what sets you apart.</span><span><b>02</b> Build confidence in your brand.</span><span><b>03</b> Make the next step easy.</span></div>
+    </section>
+
+    <!-- ACT 02: BUILD -->
+    <section class="act act-build" id="build" data-chapter="build" aria-labelledby="build-title" style="--c:var(--cyan)">
+      <div class="pin act-pin">
+        <div class="act-copy">
+          <p class="chapter-no"><b>02</b> Development</p>
+          <h2 id="build-title">I <em>build</em> it.</h2>
+          <p class="act-lede">Fast, responsive websites built from the approved design, so what you signed off is exactly what goes live. No hand-off, nothing lost in translation.</p>
+          <ul class="act-list act-list-plain">
+            <li>Responsive on every screen</li>
+            <li>Fast-loading and SEO-ready</li>
+            <li>Easy to update as you grow</li>
+          </ul>
+          <div class="playground" role="group" aria-label="Preview the site on different screens">
+            <p class="playground-label"><span>Your turn.</span> Change the screen, or hover the code.</p>
+            <div class="pg-row pg-devices">
+              <button type="button" class="pg-toggle is-on" data-device="desktop" aria-pressed="true">Desktop</button>
+              <button type="button" class="pg-toggle" data-device="tablet" aria-pressed="false">Tablet</button>
+              <button type="button" class="pg-toggle" data-device="phone" aria-pressed="false">Phone</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="act-stage build-stage" aria-hidden="true">
+          <div class="editor">
+            <div class="mock-bar"><i></i><i></i><i></i><span>index.html</span><b>Code</b></div>
+            <pre class="code"></pre>
+            <div class="editor-status"><span class="led"></span><span class="status-text">Writing code…</span></div>
+          </div>
+          <div class="preview">
+            <div class="pv-frame" data-device="desktop">
+              <div class="pv-site"><div class="pv-inner">
+                <div class="pv-nav" data-ref="nav"><span class="pv-logo">yourbrand</span><span class="pv-links"><i>Work</i><i>Services</i><i>About</i></span><span class="pv-navbtn">Book a call</span></div>
+                <div class="pv-hero">
+                  <p class="pv-h" data-ref="h1">Built to be <em>chosen.</em></p>
+                  <p class="pv-p" data-ref="p">Fast, responsive and made to convert.</p>
+                  <span class="pv-btn" data-ref="btn">Get started →</span>
+                </div>
+                <div class="pv-cards" data-ref="cards"><span><b>Strategy</b></span><span><b>Design</b></span><span><b>Launch</b></span></div>
+              </div></div>
+            </div>
+            <div class="pv-checks"><span>✓ Responsive</span><span>✓ Fast</span><span>✓ SEO-ready</span><span class="pv-live">● Live</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ACT 03: MOVE -->
+    <section class="act act-move" id="move" data-chapter="move" aria-labelledby="move-title" style="--c:var(--ember)">
+      <div class="pin act-pin">
+        <div class="act-copy">
+          <p class="chapter-no"><b>03</b> Video</p>
+          <h2 id="move-title">I make it <em>move.</em></h2>
+          <p class="act-lede">Launch videos, reels and ads that turn attention into action, edited with the same eye that shaped your brand.</p>
+          <ul class="act-list">
+            <li><a href="video-editing-for-brands.html">Video editing &amp; motion <span aria-hidden="true">↗</span></a></li>
+            <li><a href="creative-marketing-support.html">Ads &amp; campaign creative <span aria-hidden="true">↗</span></a></li>
+            <li><a href="social-media-design.html">Reels &amp; social content <span aria-hidden="true">↗</span></a></li>
+          </ul>
+          <p class="film-note">Concept, motion design, sound and edit: one 32-second story, start to finish.</p>
+        </div>
+
+        <div class="act-stage film-stage">
+          <div class="phone">
+            <div class="phone-screen">
+              <video class="film" muted playsinline loop preload="none" poster="assets/film/sofinityx-ad-poster.webp" data-src-en="assets/film/sofinityx-ad-en.mp4" data-src-ar="assets/film/sofinityx-ad-ar.mp4" data-poster-en="assets/film/sofinityx-ad-poster.webp" data-poster-ar="assets/film/sofinityx-ad-poster-ar.webp" aria-label="SofinityX 32-second ad"></video>
+              <button class="film-big-play" type="button" aria-label="Play the ad"><span aria-hidden="true">▶</span></button>
+            </div>
+          </div>
+          <div class="film-controls">
+            <div class="film-buttons">
+              <button type="button" class="film-btn film-play" aria-label="Play">▶</button>
+              <button type="button" class="film-btn film-sound" aria-label="Turn sound on" aria-pressed="false">🔇</button>
+              <input class="film-volume" type="range" min="0" max="1" step="0.05" value="0.4" aria-label="Volume">
+              <span class="film-time">0:00 / 0:32</span>
+              <span class="film-lang" role="group" aria-label="Ad language"><button type="button" data-lang="en" aria-pressed="true">EN</button><button type="button" data-lang="ar" aria-pressed="false" lang="ar">عربي</button></span>
+            </div>
+            <div class="timeline">
+              <div class="tl-strip" style="--strip:url('assets/film/sofinityx-ad-strip-en.webp')"></div>
+              <div class="tl-markers" aria-hidden="true"><span style="--t:0">Hook</span><span style="--t:7">Design</span><span style="--t:11">Build</span><span style="--t:15">Video</span><span style="--t:19">Work</span><span style="--t:28">Call</span></div>
+              <div class="tl-head"></div>
+              <input class="tl-range" type="range" min="0" max="32" step="0.01" value="0" aria-label="Scrub through the ad">
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROOF: WORK -->
+    <section class="work" id="work" data-chapter="work" aria-labelledby="work-title">
+      <div class="pin work-pin">
+        <div class="work-head">
+          <div><p class="chapter-no"><b>04</b> Selected work</p>
+          <h2 id="work-title">Different challenges.<br>The same <em>intent.</em></h2></div>
+          <p class="work-lede">Released products, brand worlds and creative concepts.<span class="work-hint" aria-hidden="true"> Keep scrolling →</span></p>
+        </div>
+        <div class="work-track">
+          <a class="wcard case-link" href="lumaro-launch.html" data-cursor="View">
+            <div class="wcard-media"><img src="assets/lumaro-launch/website-hero-clean.webp" alt="Lumaro website explaining its real estate photo editing workflow" width="1600" height="1000" loading="lazy" decoding="async"></div>
+            <div class="wcard-meta"><span class="wcard-no">01</span><span>Website · Product launch</span></div>
+            <h3>Lumaro</h3>
+            <p>The launch website for a released real-estate photo app, made to explain the product in seconds.</p>
+          </a>
+          <a class="wcard case-link" href="trendium-product-system.html" data-cursor="View">
+            <div class="wcard-media"><img src="assets/trendium-dashboard.webp" alt="Trendium dashboard with structured trend cards, charts, and risk states" width="1440" height="900" loading="lazy" decoding="async"></div>
+            <div class="wcard-meta"><span class="wcard-no">02</span><span>UX/UI · Product system</span></div>
+            <h3>Trendium</h3>
+            <p>Turning dense market information into an interface people can read at a glance.</p>
+          </a>
+          <a class="wcard case-link" href="vespera.html" data-cursor="View">
+            <div class="wcard-media"><img src="assets/vespera/vespera-packaging.webp" alt="Vespera fragrance packaging and visual identity concept" width="1600" height="1000" loading="lazy" decoding="async"></div>
+            <div class="wcard-meta"><span class="wcard-no">03</span><span>Brand · Self-initiated concept</span></div>
+            <h3>Vespera</h3>
+            <p>A fragrance world inspired by the emotional shift from daylight to night.</p>
+          </a>
+          <a class="wcard case-link" href="eclipse-district.html" data-cursor="View">
+            <div class="wcard-media"><img src="assets/eclipse-district/eclipse-district-cover.jpg" alt="Eclipse District key art of a noir city at night" width="1500" height="1000" loading="lazy" decoding="async"></div>
+            <div class="wcard-meta"><span class="wcard-no">04</span><span>Creative direction · Storytelling</span></div>
+            <h3>Eclipse District</h3>
+            <p>A cinematic noir concept set in a city where memories can be traded and erased.</p>
+          </a>
+          <a class="wcard case-link" href="trendium-brand.html" data-cursor="View">
+            <div class="wcard-media"><img src="assets/trendium-brand/launch-identity.webp" alt="Trendium launch identity across desktop app, store listing and social banner" width="1600" height="1000" loading="lazy" decoding="async"></div>
+            <div class="wcard-meta"><span class="wcard-no">05</span><span>Brand identity · Creative direction</span></div>
+            <h3>Trendium brand</h3>
+            <p>A launch-ready identity for a released product, built for clarity and trust.</p>
+          </a>
+          <a class="wcard case-link" href="voltara.html" data-cursor="View">
+            <div class="wcard-media"><img src="assets/voltara/voltara-hero-system.svg" alt="VOLTARA brand system with packaging and campaign applications" width="1600" height="1000" loading="lazy" decoding="async"></div>
+            <div class="wcard-meta"><span class="wcard-no">06</span><span>Brand concept · Packaging · Commerce</span></div>
+            <h3>VOLTARA</h3>
+            <p>A performance nutrition brand built around disciplined energy and clear product architecture.</p>
+          </a>
+          <a class="wcard wcard-end" href="case-studies.html" data-cursor="Open">
+            <span class="wcard-end-mark" aria-hidden="true"><svg viewBox="0 0 130 130"><path d="M25 22H58L104 106H72Z"/><path d="M72 22H105L78 67 61 38Z"/><path d="M48 65L65 94 58 106H25Z"/></svg></span>
+            <h3>Explore all<br><em>case studies</em></h3>
+            <span class="wcard-end-arrow" aria-hidden="true">↗</span>
+          </a>
+        </div>
+        <div class="work-progress" aria-hidden="true"><span></span></div>
+      </div>
     </section>
 
     <section class="experience-strip" aria-labelledby="experience-title">
-      <div class="experience-heading"><p class="eyebrow" id="experience-title">Experience Across</p><p>Platforms, marketplaces, and creator communities connected to my work.</p></div>
+      <div class="experience-heading"><p class="eyebrow" id="experience-title">Experience across</p><p>Platforms, marketplaces, and creator communities connected to my work.</p></div>
       <div class="experience-window"><div class="experience-track">
         <div class="experience-group">
+          <span><img src="assets/brand-logos/toptal.png" alt="" width="28" height="28">Toptal</span>
+          <span><img src="assets/brand-logos/linkedin.png" alt="" width="28" height="28">LinkedIn</span>
+          <span><img src="assets/brand-logos/instagram.png" alt="" width="28" height="28">Instagram</span>
+          <span><img src="assets/brand-logos/x.png" alt="" width="28" height="28">X</span>
+          <span><img src="assets/brand-logos/fiverr.png" alt="" width="28" height="28">Fiverr</span>
+          <span><img src="assets/brand-logos/upwork.png" alt="" width="28" height="28">Upwork</span>
+          <span><img src="assets/brand-logos/peopleperhour.png" alt="" width="28" height="28">PeoplePerHour</span>
+          <span><img src="assets/brand-logos/guru.png" alt="" width="28" height="28">Guru.com</span>
+          <span><img src="assets/brand-logos/youtube.png" alt="" width="28" height="28">YouTube Creators</span>
+          <span><img src="assets/brand-logos/twitch.png" alt="" width="28" height="28">Twitch Creators</span>
+        </div>
+        <div class="experience-group" aria-hidden="true">
           <span><img src="assets/brand-logos/toptal.png" alt="" width="28" height="28">Toptal</span>
           <span><img src="assets/brand-logos/linkedin.png" alt="" width="28" height="28">LinkedIn</span>
           <span><img src="assets/brand-logos/instagram.png" alt="" width="28" height="28">Instagram</span>
@@ -143,50 +429,94 @@
       </div></div>
     </section>
 
-    <section class="section selected-work" id="work" aria-labelledby="work-title">
-      <div class="section-heading"><div><p class="eyebrow">01 / Selected work</p><h2 id="work-title">Different challenges.<br>The same <em>intent.</em></h2></div><p>Clarity that people can feel.<br>Craft you can see in the details.</p></div>
-      <div class="work-grid">
-        <a class="project project-wide case-link" href="lumaro-launch.html"><div class="project-image lumaro-image"><img src="assets/lumaro-launch/website-hero-clean.webp" alt="Lumaro website explaining its real estate photo editing workflow" width="1600" height="1000" loading="lazy"><span class="project-open" aria-hidden="true">↗</span></div><div class="project-title"><h3>Lumaro</h3><span>Website / Product launch</span></div><p>Making a technical product feel immediately understandable.</p></a>
-        <a class="project case-link" href="trendium-product-system.html"><div class="project-image"><img src="assets/trendium-dashboard.webp" alt="Trendium dashboard with structured trend cards, charts, and risk states" width="1440" height="900" loading="lazy"><span class="project-open" aria-hidden="true">↗</span></div><div class="project-title"><h3>Trendium</h3><span>UX/UI / Product system</span></div><p>Turning dense market information into a clear interface.</p></a>
-        <a class="project case-link" href="vespera.html"><div class="project-image"><img src="assets/vespera/vespera-packaging.webp" alt="Vespera fragrance packaging and visual identity concept" width="1600" height="1000" loading="lazy"><span class="project-open" aria-hidden="true">↗</span></div><div class="project-title"><h3>Vespera</h3><span>Brand / Self-initiated concept</span></div><p>Building a distinctive world around an everyday ritual.</p></a>
+    <!-- SERVICES -->
+    <section class="services" id="services" data-chapter="services" aria-labelledby="services-title">
+      <div class="section-head">
+        <div><p class="chapter-no"><b>05</b> Built around your next move</p><h2 id="services-title">Where do you<br>want to <em>go?</em></h2></div>
+        <p>Start with what you need. Each service can stand alone or be part of the bigger picture.</p>
       </div>
-      <a class="text-link all-work" href="case-studies.html">Explore all case studies <span aria-hidden="true">↗</span></a>
-    </section>
-
-    <section class="section expertise" id="services" aria-labelledby="services-title">
-      <div class="section-heading"><div><p class="eyebrow">02 / Built around your next move</p><h2 id="services-title">Where do you<br>want to <em>go?</em></h2></div><p>Start with what you need.<br>Each service can stand alone or be part of a bigger project.</p></div>
       <div class="service-list">
-        <a class="service-row service-learn-more" href="website-design.html"><span class="row-number">01</span><div><h3>“We need a website that brings in inquiries.”</h3><p>Websites & landing pages</p></div><p>Show visitors what you offer, why it’s right for them, and how to get in touch.</p><span class="row-arrow" aria-hidden="true">↗</span></a>
-        <a class="service-row service-learn-more" href="ux-ui-design.html"><span class="row-number">02</span><div><h3>“We need our product to be easier to use.”</h3><p>UX/UI & product design</p></div><p>Simplify confusing journeys and design interfaces that help people find what they need and get things done.</p><span class="row-arrow" aria-hidden="true">↗</span></a>
-        <a class="service-row service-learn-more" href="brand-identity-design.html"><span class="row-number">03</span><div><h3>“Our brand doesn’t reflect how good we are.”</h3><p>Brand identity & visual direction</p></div><p>Give your business an identity that reflects the quality of your work, from your logo to every customer touchpoint.</p><span class="row-arrow" aria-hidden="true">↗</span></a>
-        <details class="more-services">
-          <summary><span class="services-show">See more services</span><span class="services-hide">See fewer services</span><span class="services-toggle-icon" aria-hidden="true">+</span></summary>
-          <div class="more-services-list">
-        <a class="service-row service-learn-more" href="creative-marketing-support.html"><span class="row-number">04</span><div><h3>“We need better creative for our ads.”</h3><p>Campaign creative & advertising</p></div><p>Bring your offer into focus with campaign concepts, ad visuals, and messaging shaped around your audience.</p><span class="row-arrow" aria-hidden="true">↗</span></a>
-        <a class="service-row service-learn-more" href="social-media-design.html"><span class="row-number">05</span><div><h3>“We need to show up consistently on social.”</h3><p>Social content & account support</p></div><p>Keep your channels active and recognizable with content planning, branded visuals, and ongoing account support.</p><span class="row-arrow" aria-hidden="true">↗</span></a>
-        <a class="service-row service-learn-more" href="video-editing-for-brands.html"><span class="row-number">06</span><div><h3>“We have the footage. We need a great video.”</h3><p>Video editing & production support</p></div><p>Turn raw footage into a story worth watching, with purposeful pacing, clean edits, and motion that supports your message.</p><span class="row-arrow" aria-hidden="true">↗</span></a>
+        <a class="service-row service-learn-more" href="website-design.html" data-preview="assets/lumaro-launch/website-hero-clean.webp" style="--c:var(--cyan)"><span class="row-number">01</span><div><h3>“We need a website that brings in inquiries.”</h3><p>Websites &amp; landing pages</p></div><p>Show visitors what you offer, why it’s right for them, and how to get in touch.</p><span class="row-arrow" aria-hidden="true">↗</span></a>
+        <a class="service-row service-learn-more" href="ux-ui-design.html" data-preview="assets/trendium-dashboard.webp" style="--c:var(--violet)"><span class="row-number">02</span><div><h3>“We need our product to be easier to use.”</h3><p>UX/UI &amp; product design</p></div><p>Simplify confusing journeys and design interfaces that help people find what they need and get things done.</p><span class="row-arrow" aria-hidden="true">↗</span></a>
+        <a class="service-row service-learn-more" href="brand-identity-design.html" data-preview="assets/vespera/vespera-packaging.webp" style="--c:var(--violet)"><span class="row-number">03</span><div><h3>“Our brand doesn’t reflect how good we are.”</h3><p>Brand identity &amp; visual direction</p></div><p>Give your business an identity that reflects the quality of your work, from your logo to every customer touchpoint.</p><span class="row-arrow" aria-hidden="true">↗</span></a>
+        <a class="service-row service-learn-more" href="creative-marketing-support.html" data-preview="assets/vespera/vespera-campaign-hero.webp" style="--c:var(--ember)"><span class="row-number">04</span><div><h3>“We need better creative for our ads.”</h3><p>Campaign creative &amp; advertising</p></div><p>Bring your offer into focus with campaign concepts, ad visuals, and messaging shaped around your audience.</p><span class="row-arrow" aria-hidden="true">↗</span></a>
+        <a class="service-row service-learn-more" href="social-media-design.html" data-preview="assets/lumaro-launch/social-launch-assets.webp" style="--c:var(--ember)"><span class="row-number">05</span><div><h3>“We need to show up consistently on social.”</h3><p>Social content &amp; account support</p></div><p>Keep your channels active and recognizable with content planning, branded visuals, and ongoing account support.</p><span class="row-arrow" aria-hidden="true">↗</span></a>
+        <a class="service-row service-learn-more" href="video-editing-for-brands.html" data-preview="assets/film/sofinityx-ad-poster.webp" style="--c:var(--ember)"><span class="row-number">06</span><div><h3>“We have the footage. We need a great video.”</h3><p>Video editing &amp; production support</p></div><p>Turn raw footage into a story worth watching, with purposeful pacing, clean edits, and motion that supports your message.</p><span class="row-arrow" aria-hidden="true">↗</span></a>
+      </div>
+      <div class="service-preview" aria-hidden="true"><img alt=""></div>
+    </section>
+
+    <!-- THE PERSON -->
+    <section class="about" id="about" data-chapter="about" aria-labelledby="about-title">
+      <div class="about-grid">
+        <div>
+          <p class="chapter-no"><b>06</b> A person behind the pixels</p>
+          <h2 id="about-title">No middlemen.<br>You work <em>directly</em><br>with me.</h2>
+          <ul class="about-facts">
+            <li><b>3 in 1</b><span>Designer, developer and video editor</span></li>
+            <li><b>1 : 1</b><span>You talk to the person doing the work</span></li>
+            <li><b>Worldwide</b><span>Remote collaboration, wherever you are</span></li>
+          </ul>
+        </div>
+        <div class="about-body">
+          <p class="about-lead">I connect the way something looks with the way it works.</p>
+          <p>My background spans visual and commercial design, brand systems, and digital products. That means I can think about the whole experience, from the first impression to the smallest interface detail.</p>
+          <p>There are no account managers and no hand-offs. The person you talk to is the person who designs, builds and edits your project, turning the messy, half-formed parts into something clear, considered, and ready to share.</p>
+          <div class="chat" aria-hidden="true">
+            <p class="chat-in">Hi! Can you help with our launch?</p>
+            <p class="chat-out" data-cursor="Hi!" data-cursor-size="sm"><span class="chat-words"><span lang="en">Hello 👋</span><span lang="ar">مرحبا 👋</span><span lang="tr">Merhaba 👋</span><span lang="es">Hola 👋</span><span lang="fr">Bonjour 👋</span><span lang="pt">Olá 👋</span><span lang="de">Hallo 👋</span><span lang="it">Ciao 👋</span><span lang="ru">Привет 👋</span><span lang="hi">नमस्ते 👋</span><span lang="zh">你好 👋</span><span lang="ja">こんにちは 👋</span><span lang="ko">안녕하세요 👋</span></span></p>
+            <p class="chat-meta"><span class="chat-avatar"><svg viewBox="0 0 130 130"><path d="M25 22H58L104 106H72Z"/><path d="M72 22H105L78 67 61 38Z"/><path d="M48 65L65 94 58 106H25Z"/></svg></span>Sofi · Working worldwide</p>
           </div>
-        </details>
+          <span class="signature" aria-hidden="true">Sofi.</span>
+        </div>
       </div>
     </section>
 
-    <section class="section about" id="about" aria-labelledby="about-title"><p class="eyebrow">A person behind the pixels</p><div class="about-layout"><h2 id="about-title">Hi, I’m Sofi.<br>Your idea’s next<br><em>creative partner.</em></h2><div><p class="about-lead">I connect the way something looks with the way it works.</p><p>My background spans visual and commercial design, brand systems, and digital products. That means I can think about the whole experience—from the first impression to the smallest interface detail.</p><p>You work directly with me to turn the messy, half-formed parts into something clear, considered, and ready to share.</p><span class="signature" aria-hidden="true">Sofi.</span></div></div></section>
+    <!-- PROCESS: A TO Z -->
+    <section class="process" id="process" data-chapter="process" aria-labelledby="process-title">
+      <div class="pin process-pin">
+        <div class="section-head">
+          <div><p class="chapter-no"><b>07</b> From possibility to something real</p><h2 id="process-title">From first idea<br>to <em>launch day.</em></h2></div>
+          <p>You don’t need the perfect brief. You just need a starting point.</p>
+        </div>
+        <div class="route">
+          <svg class="route-svg" aria-hidden="true"><path class="route-base"/><path class="route-line"/></svg>
+          <span class="route-dot" aria-hidden="true"></span>
+          <span class="route-end route-a" aria-hidden="true">A</span><span class="route-end route-z" aria-hidden="true">Z<i class="rz-ring"></i><i class="rz-ring"></i><i class="rz-ring"></i></span>
+          <span class="route-flag" aria-hidden="true">Launch day <b>✓</b></span>
+          <ol class="steps">
+            <li class="step" style="--x:.06"><span class="step-no">01 / Discover</span><h3>Find the real goal.</h3><p>We talk about your audience, what isn’t working, and the action you want people to take.</p></li>
+            <li class="step" style="--x:.27"><span class="step-no">02 / Define</span><h3>Give the idea a shape.</h3><p>Scope, priorities, structure and messaging come before the polish.</p></li>
+            <li class="step" style="--x:.5"><span class="step-no">03 / Design</span><h3>Make it feel like you.</h3><p>Identity, interfaces and every detail people will touch.</p></li>
+            <li class="step" style="--x:.73"><span class="step-no">04 / Build</span><h3>Make it real.</h3><p>The approved design becomes a fast, responsive website.</p></li>
+            <li class="step" style="--x:.94"><span class="step-no">05 / Launch</span><h3>Make it move.</h3><p>Videos, ads and social content that put it in front of people.</p></li>
+          </ol>
+        </div>
+      </div>
+    </section>
 
-    <section class="section" id="process" aria-labelledby="process-title"><div class="section-heading"><div><p class="eyebrow">03 / From possibility to something real</p><h2 id="process-title">Good chemistry.<br><em>Clear process.</em></h2></div><p>You don’t need the perfect brief.<br>You just need a starting point.</p></div><div class="process-grid">
-      <article><span class="step">01 / Discover</span><h3>Find the real goal.</h3><p>We talk about your audience, what isn’t working, and the action you want people to take.</p></article>
-      <article><span class="step">02 / Define</span><h3>Give the idea a shape.</h3><p>We align on scope, priorities, and direction. Structure and messaging come before the polish.</p></article>
-      <article><span class="step">03 / Design</span><h3>Make it feel like you.</h3><p>I bring the direction to life through visuals, interfaces, and thoughtful interaction.</p></article>
-      <article><span class="step">04 / Refine</span><h3>Get the details right.</h3><p>We review, refine, and prepare the agreed deliverables for your launch or implementation.</p></article>
-    </div></section>
+    <!-- FAQ -->
+    <section class="faq" id="faq" aria-labelledby="faq-title">
+      <div><p class="chapter-no">A few things you might be wondering</p><h2 id="faq-title">Before we<br><em>say hello.</em></h2></div>
+      <div class="faq-list">
+        <details><summary>What if I’m not sure what I need?</summary><p>That’s a useful place to start. Tell me what you’re building and what feels unclear. We’ll use the first conversation to explore the right direction.</p></details>
+        <details><summary>Do you build the website too, or only design it?</summary><p>Both. I can design and develop your website, so nothing gets lost between the two, and create the launch content around it if you need it.</p></details>
+        <details><summary>Can you work with my existing brand?</summary><p>Yes. I can build on your existing identity, refine what’s already there, or develop a new visual direction if the project needs it.</p></details>
+        <details><summary>How do pricing and timelines work?</summary><p>They depend on scope and deliverables. Share your priorities, target launch date, and budget range so we can discuss a practical approach before committing to the project.</p></details>
+        <details><summary>Can you help with the launch too?</summary><p>Yes. Campaign creative, social content, paid ad visuals, and video editing can be scoped alongside the website, product, or brand work.</p></details>
+      </div>
+    </section>
 
-    <section class="section faq-section" id="faq" aria-labelledby="faq-title"><div><p class="eyebrow">A few things you might be wondering</p><h2 id="faq-title">Before we<br><em>say hello.</em></h2></div><div class="faq-list">
-      <details><summary>What if I’m not sure what I need?</summary><p>That’s a useful place to start. Tell me what you’re building and what feels unclear. We’ll use the first conversation to explore the right direction.</p></details>
-      <details><summary>Can you work with my existing brand?</summary><p>Yes. I can build on your existing identity, refine what’s already there, or develop a new visual direction if the project needs it.</p></details>
-      <details><summary>How do pricing and timelines work?</summary><p>They depend on scope and deliverables. Share your priorities, target launch date, and budget range so we can discuss a practical approach before committing to the project.</p></details>
-      <details><summary>Can you help with the launch too?</summary><p>Yes. Campaign creative, social content, paid ad visuals, and video editing can be scoped alongside the website, product, or brand work.</p></details>
-    </div></section>
-
-    <section class="contact" id="contact" aria-labelledby="contact-title"><div class="contact-top"><p class="eyebrow">Your next chapter starts with a conversation</p><svg class="contact-crosscut" viewBox="0 0 130 130" fill="currentColor" aria-hidden="true" focusable="false"><path d="M25 22H58L104 106H72Z"/><path d="M72 22H105L78 67 61 38Z"/><path d="M48 65L65 94 58 106H25Z"/></svg></div><h2 id="contact-title">Let’s make<br>something <em>matter.</em></h2><div class="contact-bottom"><p>Tell me what you’re building.<br>We’ll figure out the right next step together.</p><div><a class="cta" href="https://cal.com/sofinityx/30min" target="_blank" rel="noopener">Book a 30-minute call <span aria-hidden="true">↗</span></a><a class="email-link" href="mailto:SofinityX@gmail.com?subject=Let%E2%80%99s%20talk%20about%20my%20project">Prefer email? SofinityX@gmail.com</a></div></div>
+    <!-- EPILOGUE: CONTACT -->
+    <section class="contact" id="contact" data-chapter="contact" aria-labelledby="contact-title">
+      <div class="contact-top"><p class="eyebrow">Your next chapter starts with a conversation</p><svg class="contact-crosscut" viewBox="0 0 130 130" fill="currentColor" aria-hidden="true" focusable="false"><path class="cc-a" d="M72 22H105L78 67 61 38Z"/><path class="cc-b" d="M25 22H58L104 106H72Z"/><path class="cc-c" d="M48 65L65 94 58 106H25Z"/></svg></div>
+      <h2 id="contact-title">Let’s make your brand<br>their <em>first choice.</em></h2>
+      <div class="contact-options">
+        <a class="contact-option" href="#project-inquiry"><span class="co-meta">01 / At your own pace</span><b>Send a message</b><span class="co-arrow" aria-hidden="true">↓</span></a>
+        <a class="contact-option" href="https://cal.com/sofinityx/15min-copy" target="_blank" rel="noopener"><span class="co-meta">02 / 15 minutes</span><b>A quick introduction</b><span class="co-arrow" aria-hidden="true">↗</span></a>
+        <a class="contact-option" href="https://cal.com/sofinityx/30min" target="_blank" rel="noopener"><span class="co-meta">03 / 30 minutes</span><b>Explore your project</b><span class="co-arrow" aria-hidden="true">↗</span></a>
+      </div>
+      <a class="email-link" href="mailto:SofinityX@gmail.com?subject=Let%E2%80%99s%20talk%20about%20my%20project">Prefer email? SofinityX@gmail.com</a>
       <div class="inquiry-layout" id="project-inquiry">
         <div class="inquiry-intro"><p class="inquiry-kicker">A good place to start</p><h3>Tell me about<br>your project.</h3><p>A new business, an established brand, or an idea still taking shape—I'd love to hear it.</p><p>No polished brief needed. Share what you have in mind, and we can explore the next step by email.</p></div>
         <form class="inquiry-form ph-no-capture" name="project-inquiry" method="POST" data-netlify="true" netlify-honeypot="bot-field" aria-label="Project inquiry">
@@ -204,12 +534,12 @@
           <p class="inquiry-status" role="status" aria-live="polite" aria-atomic="true"></p>
         </form>
       </div>
-</section>
-    <footer class="footer"><a class="site-logo" href="#top"><svg class="brand-crosscut" viewBox="0 0 130 130" fill="currentColor" aria-hidden="true" focusable="false"><path d="M25 22H58L104 106H72Z"/><path d="M72 22H105L78 67 61 38Z"/><path d="M48 65L65 94 58 106H25Z"/></svg><span class="brand-word">sofinity<span class="brand-x">x</span></span></a><p>Independent thinking. Intentional design.</p><a href="#top">Back to top ↑</a></footer>
+    </section>
+
+    <footer class="footer"><a class="site-logo" href="#top"><svg class="brand-crosscut" viewBox="0 0 130 130" fill="currentColor" aria-hidden="true" focusable="false"><path d="M25 22H58L104 106H72Z"/><path d="M72 22H105L78 67 61 38Z"/><path d="M48 65L65 94 58 106H25Z"/></svg><span class="brand-word">sofinity<span class="brand-x">x</span></span></a><p>Design · Development · Video. Independent thinking, intentional design.</p><a href="#top">Back to top ↑</a></footer>
   </main>
 
   <script src="script.js?v=hero-bubble-5"></script>
-  <script src="homepage-story.js?v=9"></script>
   <script>
     !function(t,e){var o,n,p,r;e.__SV||(window.posthog=e,e._i=[],e.init=function(i,s,a){function g(t,e){var o=e.split(".");2==o.length&&(t=t[o[0]],e=o[1]),t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}}(p=t.createElement("script")).type="text/javascript",p.crossOrigin="anonymous",p.async=!0,p.src=s.api_host.replace(".i.posthog.com","-assets.i.posthog.com")+"/static/array.js",(r=t.getElementsByTagName("script")[0]).parentNode.insertBefore(p,r);var u=e;for(void 0!==a?u=e[a]=[]:a="posthog",u.people=u.people||[],u.toString=function(t){var e="posthog";return"posthog"!==a&&(e+="."+a),t||(e+=" (stub)"),e},u.people.toString=function(){return u.toString(1)+".people (stub)"},o="init capture register register_once register_for_session unregister unregister_for_session getFeatureFlag getFeatureFlagPayload isFeatureEnabled reloadFeatureFlags updateEarlyAccessFeatureEnrollment getEarlyAccessFeatures on onFeatureFlags onSessionId getSurveys getActiveMatchingSurveys renderSurvey canRenderSurvey getNextSurveyStep identify setPersonProperties group resetGroups setPersonPropertiesForFlags resetPersonPropertiesForFlags setGroupPropertiesForFlags resetGroupPropertiesForFlags reset get_distinct_id getGroups get_session_id get_session_replay_url alias set_config startSessionRecording stopSessionRecording sessionRecordingStarted captureException loadToolbar get_property getSessionProperty createPersonProfile opt_in_capturing opt_out_capturing has_opted_in_capturing has_opted_out_capturing clear_opt_in_out_capturing debug".split(" "),n=0;n<o.length;n++)g(u,o[n]);e._i.push([i,s,a])},e.__SV=1)}(document,window.posthog||[]);
     posthog.init('phc_68CDJND6buKnz0xgs1jfsP9d2jbHuXPIdlapUUaWlfD',{api_host:'https://eu.i.posthog.com', defaults:'2026-01-30'})
