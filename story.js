@@ -183,7 +183,7 @@
       e.preventDefault();
       f.setPointerCapture(e.pointerId);
       phys[i].drag = { px: e.clientX, py: e.clientY, ox: phys[i].x, oy: phys[i].y, lx: e.clientX, ly: e.clientY };
-      track('hero_piece_dragged', { piece: ['design', 'development', 'video'][i] });
+      track('hero_piece_dragged', { piece: ['design', 'development', 'marketing'][i] });
     });
     f.addEventListener('pointermove', (e) => {
       const d = phys[i].drag; if (!d) return;
@@ -459,7 +459,7 @@
   if (!motion) renderCode(totalChars);
 
   /* =========================================================
-     ACT 03 · MOVE: the ad itself, with a timeline you can drag
+     ACT 03 · GROW: the ad as a case in point, with a timeline you can drag
      ========================================================= */
   const filmStage = $('.film-stage'), video = $('.film');
   const playBtn = $('.film-play'), soundBtn = $('.film-sound'), bigPlay = $('.film-big-play');
@@ -544,7 +544,7 @@
       if (e.intersectionRatio < 0.15 && !video.paused) video.pause();
     });
   }, { threshold: [0, 0.15, 0.45, 0.8] }).observe(filmStage);
-  function renderMove(p) { filmStage.style.setProperty('--enter', E.o3(seg(p, 0, 0.3)).toFixed(3)); if (!video.paused) renderFilmHead(); }
+  function renderGrow(p) { filmStage.style.setProperty('--enter', E.o3(seg(p, 0, 0.3)).toFixed(3)); if (!video.paused) renderFilmHead(); }
 
   /* =========================================================
      PROOF: work moves sideways as you scroll down
@@ -722,7 +722,7 @@
     { el: opening, render: renderOpening, enabled: motion },
     { el: designAct, render: renderDesign, stage: $('.act-design .act-stage'), enabled: true },
     { el: buildAct, render: renderBuild, stage: buildStage, measure: measurePreview, enabled: true },
-    { el: $('.act-move'), render: renderMove, stage: filmStage, enabled: true },
+    { el: $('.act-grow'), render: renderGrow, stage: filmStage, enabled: true },
     { el: work, render: renderWork, enabled: true },
     { el: process, render: renderProcess, stage: $('.route'), enabled: true },
   ];

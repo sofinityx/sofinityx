@@ -3,13 +3,13 @@
 (() => {
   'use strict';
   const doc = document.documentElement;
-  // Which of the three pieces (design, build, video) each page belongs to; the first one leads.
+  // Which of the three pieces (design, build, marketing) each page belongs to; the first one leads.
   const FACETS = {
     'website-design': ['build', 'design'], 'ux-ui-design': ['design'], 'brand-identity-design': ['design'],
-    'creative-marketing-support': ['video', 'design'], 'social-media-design': ['video', 'design'], 'video-editing-for-brands': ['video'],
-    lumaro: ['design'], 'lumaro-brand': ['design'], 'lumaro-launch': ['build', 'design'],
-    trendium: ['design'], 'trendium-brand': ['design'], 'trendium-product-system': ['design'],
-    'sofinityx-case-study': ['build', 'design'], vespera: ['design'], voltara: ['design'], 'eclipse-district': ['video', 'design'],
+    'creative-marketing-support': ['marketing', 'design'], 'social-media-design': ['marketing', 'design'], 'video-editing-for-brands': ['marketing'],
+    lumaro: ['design'], 'lumaro-brand': ['design'], 'lumaro-launch': ['build', 'design', 'marketing'],
+    trendium: ['design'], 'trendium-brand': ['design', 'marketing'], 'trendium-product-system': ['design'],
+    'sofinityx-case-study': ['build', 'design'], vespera: ['design', 'marketing'], voltara: ['design', 'marketing'], 'eclipse-district': ['marketing', 'design'],
   };
   const slug = (href) => (new URL(href, location.href).pathname.split('/').pop() || 'index').replace(/\.html$/, '');
   const page = slug(location.href);
@@ -55,7 +55,7 @@
     if (eyebrow) {
       const dots = document.createElement('span');
       dots.className = 'sp-dots'; dots.setAttribute('aria-hidden', 'true');
-      dots.innerHTML = ['design', 'build', 'video'].map((f) => `<i class="${mine.length === 0 || mine.includes(f) ? 'on' : ''}"></i>`).join('');
+      dots.innerHTML = ['design', 'build', 'marketing'].map((f) => `<i class="${mine.length === 0 || mine.includes(f) ? 'on' : ''}"></i>`).join('');
       eyebrow.prepend(dots);
     }
     const h1 = $('.hero-copy h1');
@@ -136,7 +136,7 @@
     /* facet visual: pieces drift with the cursor, tags light their piece */
     const fv = $('.facet-visual');
     if (fv) {
-      const active = fv.dataset.active ? fv.dataset.active.split(' ') : ['design', 'build', 'video'];
+      const active = fv.dataset.active ? fv.dataset.active.split(' ') : ['design', 'build', 'marketing'];
       $$('.fv-piece, .fv-tag', fv).forEach((el) => el.classList.toggle('on', active.includes(el.dataset.piece)));
       $$('.fv-tag', fv).forEach((tag) => {
         const piece = $(`.fv-piece[data-piece="${tag.dataset.piece}"]`, fv);
@@ -244,7 +244,7 @@
         if (label && facets.length) label.insertAdjacentHTML('afterbegin', `<span class="sp-facets" aria-hidden="true">${facets.map((f) => `<i data-f="${f}"></i>`).join('')}</span>`);
         return { card, facets };
       });
-      const kinds = [['all', 'All work', 'var(--accent)'], ['design', 'Design', 'var(--violet)'], ['build', 'Development', 'var(--cyan)'], ['video', 'Video & story', 'var(--ember)']];
+      const kinds = [['all', 'All work', 'var(--accent)'], ['design', 'Design', 'var(--violet)'], ['build', 'Development', 'var(--cyan)'], ['marketing', 'Marketing', 'var(--ember)']];
       const bar = document.createElement('div');
       bar.className = 'sp-filter'; bar.setAttribute('role', 'group'); bar.setAttribute('aria-label', 'Filter case studies');
       bar.innerHTML = kinds.map(([k, label, c]) => `<button type="button" data-k="${k}" aria-pressed="${k === 'all'}" style="--fc:${c}"><i></i>${label} <b>${k === 'all' ? cards.length : cards.filter((x) => x.facets.includes(k)).length}</b></button>`).join('');
