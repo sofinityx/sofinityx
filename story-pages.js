@@ -6,7 +6,7 @@
   // Which of the three pieces (design, build, marketing) each page belongs to; the first one leads.
   const FACETS = {
     'website-design': ['build', 'design'], 'ux-ui-design': ['design'], 'brand-identity-design': ['design'],
-    'creative-marketing-support': ['marketing', 'design'], 'social-media-design': ['marketing', 'design'], 'video-editing-for-brands': ['marketing'],
+    'creative-marketing-support': ['marketing', 'design'], 'social-media-design': ['marketing', 'design'], 'video-editing-for-brands': ['marketing'], content: ['marketing', 'design'],
     lumaro: ['design'], 'lumaro-brand': ['design'], 'lumaro-launch': ['build', 'design', 'marketing'],
     trendium: ['design'], 'trendium-brand': ['design', 'marketing'], 'trendium-product-system': ['design'],
     'sofinityx-case-study': ['build', 'design'], vespera: ['design', 'marketing'], voltara: ['design', 'marketing'], 'eclipse-district': ['marketing', 'design'],
