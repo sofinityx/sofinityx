@@ -635,65 +635,16 @@
     route.stepAt = steps.map((st) => { const r = st.getBoundingClientRect(); return (r.left + 12 - rr.left) / w; });
   }
 
-  // Arrival at Z: the logo's own pieces burst out like confetti.
+  // Arrival at Z: the route is marked as launched.
   const routeEl = $('.route'), routeFlag = $('.route-flag');
   steps.forEach((s, i) => s.style.setProperty('--n', i));
-  const PIECE_PATHS = ['M72 22H105L78 67 61 38Z', 'M25 22H58L104 106H72Z', 'M48 65L65 94 58 106H25Z'].map((d) => new Path2D(d));
-  const PIECE_CENT = [[79, 37], [65, 64], [49, 93]];
-  let burstCanvas = null, burstParts = [], burstRunning = false, launched = false;
-  function burst(x, y, scale = 1) {
-    if (!burstCanvas) {
-      burstCanvas = document.createElement('canvas');
-      burstCanvas.className = 'burst-canvas'; burstCanvas.setAttribute('aria-hidden', 'true');
-      document.body.append(burstCanvas);
-    }
-    const dpr = Math.min(devicePixelRatio || 1, 2);
-    burstCanvas.width = innerWidth * dpr; burstCanvas.height = innerHeight * dpr;
-    const css = getComputedStyle(document.body);
-    const colors = [css.getPropertyValue('--violet'), css.getPropertyValue('--cyan'), css.getPropertyValue('--ember'), css.getPropertyValue('--accent'), '#f5f4f1'].map((c) => c.trim());
-    const narrow = innerWidth < 700;
-    for (let i = 0; i < Math.round((narrow ? 80 : 170) * scale); i++) {
-      // mostly up and back along the route, with a few flying everywhere
-      const a = i % 7 === 0 ? Math.random() * Math.PI * 2 : -Math.PI * (0.18 + Math.random() * 0.8);
-      const v = ((narrow ? 5 : 7) + Math.random() * (narrow ? 9 : 16)) * (scale < 1 ? 1.25 : 1);
-      const piece = Math.random() < 0.78;
-      burstParts.push({
-        x, y, vx: Math.cos(a) * v, vy: Math.sin(a) * v, r: Math.random() * Math.PI * 2, vr: (Math.random() - 0.5) * 0.35,
-        s: piece ? 0.07 + Math.random() * 0.1 : 2 + Math.random() * 2.5, kind: piece ? i % 3 : -1,
-        c: colors[i % colors.length], life: 0, max: 90 + Math.random() * 70,
-      });
-    }
-    if (!burstRunning) { burstRunning = true; requestAnimationFrame(stepBurst); }
-  }
-  function stepBurst() {
-    const ctx = burstCanvas.getContext('2d'), dpr = burstCanvas.width / innerWidth;
-    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-    ctx.clearRect(0, 0, innerWidth, innerHeight);
-    burstParts = burstParts.filter((q) => q.life < q.max);
-    for (const q of burstParts) {
-      q.life++; q.vy += 0.24; q.vx *= 0.985; q.vy *= 0.985; q.x += q.vx; q.y += q.vy; q.r += q.vr;
-      ctx.globalAlpha = Math.min(1, (q.max - q.life) / 30);
-      ctx.fillStyle = q.c;
-      ctx.save(); ctx.translate(q.x, q.y); ctx.rotate(q.r);
-      if (q.kind < 0) { ctx.beginPath(); ctx.arc(0, 0, q.s, 0, Math.PI * 2); ctx.fill(); }
-      else { ctx.scale(q.s, q.s); ctx.translate(-PIECE_CENT[q.kind][0], -PIECE_CENT[q.kind][1]); ctx.fill(PIECE_PATHS[q.kind]); }
-      ctx.restore();
-    }
-    if (burstParts.length) requestAnimationFrame(stepBurst);
-    else { burstRunning = false; ctx.clearRect(0, 0, innerWidth, innerHeight); }
-  }
+  let launched = false;
   function setLaunched(on) {
     if (on === launched) return;
     launched = on;
     routeEl.classList.toggle('is-done', on);
     process.classList.toggle('is-launched', on);
     if (!on || !motion) return;
-    // desktop: from Z; phones: from the "Launched" stamp on the last step
-    const origin = (route.visible ? routeZ : steps[steps.length - 1]).getBoundingClientRect();
-    const ox = route.visible ? origin.left + origin.width / 2 : origin.right - 50;
-    const oy = route.visible ? origin.top + origin.height / 2 : origin.top + 30;
-    burst(ox, oy);
-    setTimeout(() => { if (launched) burst(ox, oy, 0.45); }, 260); // a second, faster pop
     track('process_launch_moment');
   }
 

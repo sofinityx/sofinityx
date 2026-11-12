@@ -9,7 +9,7 @@
     'creative-marketing-support': ['marketing', 'design'], 'social-media-design': ['marketing', 'design'], 'video-editing-for-brands': ['marketing'], content: ['marketing', 'design'],
     lumaro: ['design'], 'lumaro-brand': ['design'], 'lumaro-launch': ['build', 'design', 'marketing'],
     trendium: ['design'], 'trendium-brand': ['design', 'marketing'], 'trendium-product-system': ['design'],
-    'sofinityx-case-study': ['build', 'design'], vespera: ['design', 'marketing'], voltara: ['design', 'marketing'], 'eclipse-district': ['marketing', 'design'],
+    'sofinityx-case-study': ['build', 'design'], 'sacred-assembly': ['build', 'design'], vespera: ['design', 'marketing'], voltara: ['design', 'marketing'], 'eclipse-district': ['marketing', 'design'],
   };
   const slug = (href) => (new URL(href, location.href).pathname.split('/').pop() || 'index').replace(/\.html$/, '');
   const page = slug(location.href);

@@ -24,11 +24,11 @@
   <link rel="stylesheet" href="design-switch.css?v=2">
   <script src="design-switch.js?v=5"></script>
   <link rel="stylesheet" href="brand-logo.css?v=5">
-  <link rel="stylesheet" href="inquiry.css?v=2">
+  <link rel="stylesheet" href="inquiry.css?v=3">
   <link rel="stylesheet" href="contact-page.css?v=1">
   <script src="inquiry.js?v=2" defer></script>
   <link rel="stylesheet" href="story-pages.css?v=1">
-  <script src="story-pages.js?v=1"></script>
+  <script src="story-pages.js?v=2"></script>
 </head>
 <body class="inner-page contact-page"><a class="skip-link" href="#main">Skip to content</a>
 <header class="site-header">
@@ -46,7 +46,19 @@
             <label for="inquiry-name">Your name <input id="inquiry-name" name="name" autocomplete="name" required maxlength="120" placeholder="What should I call you?"></label>
             <label for="inquiry-email">Email address <input id="inquiry-email" name="email" type="email" autocomplete="email" required maxlength="254" placeholder="you@example.com"></label>
             <label class="inquiry-wide" for="inquiry-project">What do you have in mind? <textarea id="inquiry-project" name="project" required maxlength="5000" rows="4" placeholder="A little about your business, what you need, and what you'd like to achieve."></textarea></label>
-            <label for="inquiry-budget">Budget <span>(optional)</span><input id="inquiry-budget" name="budget" maxlength="120" placeholder="A range + currency, or not sure yet"></label>
+            <label for="inquiry-budget">Budget <span>(optional)</span><select id="inquiry-budget" name="budget">
+              <option value="">Select a range (USD)</option>
+              <option>Less than $500</option>
+              <option>$500 – $1,000</option>
+              <option>$1,000 – $2,500</option>
+              <option>$2,500 – $5,000</option>
+              <option>$5,000 – $10,000</option>
+              <option>$10,000 – $25,000</option>
+              <option>$25,000 – $50,000</option>
+              <option>$50,000 – $100,000</option>
+              <option>$100,000+</option>
+              <option>Not sure yet</option>
+            </select></label>
             <label for="inquiry-timing">Timing <span>(optional)</span><input id="inquiry-timing" name="timing" maxlength="120" placeholder="A target date, or flexible"></label>
           </div>
           <p class="inquiry-note">Your details will be used to respond to your inquiry. Please leave out confidential information.</p>
